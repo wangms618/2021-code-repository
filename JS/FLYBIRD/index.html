@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./CSS/index.css">
+  <title>Document</title>
+
+</head>
+<body>
+  <div id="wrapBg">
+    <!-- 标题 -->
+    <div id="headTitle">
+      <img src="img/bird0.png" alt="" id='headBird'>
+    </div>
+    <!-- 开始按钮 -->
+    <button id="startBtn"></button>
+    <!-- 草地 -->
+    <div id="grassLand1"></div>
+    <div id="grassLand2"></div>
+  </div>
+  <script src="./js/bird.js"></script>
+  <script src="./js/baseObj.js"></script>
+  <script src="./js/block.js"></script>
+  <script>
+    var jsWrapBg = document.getElementById('wrapBg');
+    var jsHeadTitle = document.getElementById('headTitle');
+    var jsHeadBird = document.getElementById('headBird');
+
+    var Y = 3 //上下摆动的幅度
+    var imgArr = ['img/bird0.png','img/bird1.png']
+    var index = 0;
+    function headWave(){
+      Y=Y*-1;
+      jsHeadTitle.style.top = jsHeadTitle.offsetTop + Y +'px';// 获取某容器距离顶部的距离
+      // bird交替更换图片
+      // if(Y==-3){
+      //   jsHeadBird.src = 'img/bird1.png' 
+      // }
+      // else{
+      //   jsHeadBird.src = 'img/bird0.png'
+      // }
+      jsHeadBird.scr = imgArr[index++];
+      if(index==2){
+        index = 0;
+      }
+    }
+    var headWaveTimer = setInterval(headWave,200)// 每隔200毫秒调用一次headWave()
+
+    var jsGrassLand1 = document.getElementById('grassLand1');
+    var jsGrassLand2 = document.getElementById('grassLand2');
+    function landRun(){
+      jsGrassLand1.style.left = jsGrassLand1.offsetLeft - 3 +'px';
+      jsGrassLand2.style.left = jsGrassLand2.offsetLeft - 3 +'px';
+      if(jsGrassLand1.offsetLeft <= -343){
+        jsGrassLand1.style.left = '343px'
+      }
+      if(jsGrassLand2.offsetLeft <= -343){
+        jsGrassLand2.style.left = '343px'
+      }
+    }
+    setInterval(landRun,30)
+
+    //点击开始按钮
+    var jsStartBtn = document.getElementById('startBtn');
+    jsStartBtn.onclick=function(){
+      jsHeadTitle.style.display = 'none'
+      jsStartBtn.style.display = 'none'
+      clearInterval(headWaveTimer)
+
+      //插入小鸟到页面上
+      bird.showBird(jsWrapBg)
+      bird.flyBird()
+      bird.wingWave()
+      jsWrapBg.onclick = function() {
+        bird.fallSpeed = -8;
+      }
+      // 出现管道
+      var b = new Block() //b是一个对象
+      b.createBlock()
+    }
+  </script>
+</body>
+</html>

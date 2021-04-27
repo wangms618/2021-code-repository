@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="overview product_info_product_price">
+    <div class="goods-price">
+        <div class="layout align-baseline justify-start">
+          <div class="price cur-price"></div>
+        </div>
+    </div>
+  </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">slider1</div>
+      <div class="swiper-slide">slider2</div>
+      <div class="swiper-slide">slider3</div>
+    </div>
+  </div>
+  <script> 
+    var mySwiper = new Swiper('.swiper-container', {
+      autoplay: 5000,//可选选项，自动滑动
+    })
+    </script>
+  <script>
+    fetch('http://localhost:3000/data')
+      .then(data => data.json())//到接口去取数据
+      .then(data => {
+        // console.log(data.price);
+        const price = data.price;
+        document.querySelector('.cur-price').innerHTML = price;
+      })
+  </script>
+</body>
+</html>

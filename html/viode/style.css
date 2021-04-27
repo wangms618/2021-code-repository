@@ -1,0 +1,51 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  /* vh是一个相对单位 */
+  min-height: 100vh;
+  background: #4c4c4c url('https://unsplash.it/1500/900?image=1021');
+  /*以容器为基准覆盖满*/
+  background-size: cover;
+  /* 弹性容器会让他内部的子元素呈同一行展示*/
+  display: flex;
+  /* X轴居中 */
+  justify-content: center;
+  /* Y轴居中 */
+  align-items: center;
+}
+
+
+
+
+#wrapper{
+  width: 850px;
+  /* 将容器设置为弹性容器 */
+  display: flex;
+}
+
+.speed{
+  /* 等比继承 ，如果给video也写一个就会是speed和video各占父容器wrapper的50% */
+  flex: 1;
+  /* 外边距上下左右-20 */
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 50px;
+  display: flex;
+  overflow: hidden;
+  align-items: flex-start;
+}
+.speed-bar{
+  width: 100%;
+  height: 16.3%;
+  background: linear-gradient(-170deg, #2376ae 0% , #c16ecf 100%);
+  /* 弹性容器才能加 justify-content，align-items这两个属性*/
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  color: #fff;
+  /* 鼠标变手 */
+  cursor: pointer;
+}

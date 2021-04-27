@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/weui/2.4.3/style/weui.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_2493371_5l1zk54xou4.css">
+</head>
+<body>
+<div class="movie">
+  <div class="movie-head">
+    <!-- iconfont是固定要写的 -->
+    <i class = 'iconfont icon-DiagramArrowLeft'></i>
+    <span class="title">影片详情</span>
+  </div>
+  <div class="movie-info">
+    <div class="movie-info_desc">
+      <div class="info-pic">
+        <img src="https://p1.meituan.net/moviemachine/58732574fbc2f64c04c3e825c058da7f16742753.jpg@300w_414h_80q_1e_1c" alt="">
+      </div>
+      <div class="info-container">
+        <h2 class="name">哥斯拉大战金刚</h2>
+        <p class="en-name">Godzilla vs KingKong</p>
+        <p class="like">
+          <i class="iconfont icon-like"></i>
+          <span>两大怪兽之王，谁与争锋？</span>
+        </p>
+        <p class="type">动作 / 冒险 / 科幻</p>
+        <p class="play-time">2021-03-26 08:00 中国大陆上映</p>
+        <!-- btn -->
+        <div class="btn-wrap">
+          <div class="flex" id="watch">
+            <i class="iconfont icon-heart"></i>
+            想看
+          </div>
+          <div class="flex">
+            <i class="iconfont icon-star"></i>
+            看过
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="movie-info_rate">
+      <div class="rate-title">
+        <div class="rate-title__left">
+          <i class="iconfont icon-maoyan"></i>
+          猫眼购票评分
+        </div>
+          <div class="rate-title__right">
+          <span class="want">506,799</span>人想看
+          <span class="watch">29,951,749</span>看过
+          <i class="iconfont icon-arrow-right"></i>
+        </div>
+      </div>
+      <div class="rate-detail">
+        <div class="rate-detail__left">
+          <div class="grade">
+            <h2>8.9</h2>
+            <p><span>390,964</span>人评</p>
+          </div>
+          <div class="star">
+            <ul>
+              <li class="list">
+                <p class="star-num1">
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                </p>
+                <p class="persent">
+                  <span class="persent-val1"></span>
+                </p>
+              </li>
+              <li class="list">
+                <p class="star-num2">
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                </p>
+                <p class="persent">
+                  <span class="persent-val2"></span>
+                </p>
+              </li>
+              <li class="list">
+                <p class="star-num3">
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                </p>
+                <p class="persent">
+                  <span class="persent-val3"></span>
+                </p>
+              </li>
+              <li class="list">
+                <p class="star-num4">
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                </p>
+                <p class="persent">
+                  <span class="persent-val4"></span>
+                </p>
+              </li>
+              <li class="list">
+                <p class="star-num5">
+                  <i class="iconfont icon-starmarkhighligh1"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                  <i class="iconfont icon-starmarkhighligh"></i>
+                </p>
+                <p class="persent">
+                  <span class="persent-val5">123</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="rate-detail__right"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast">
+  <div class="weui-mask_transparent"></div>
+  <div class="weui-toast">
+      <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+      <p class="weui-toast__content">已标注为想看</p>
+  </div>
+</div>
+
+  <script>
+    var watchBtn = document.getElementById('watch');
+    var toast = document.getElementById('toast');
+    var heart = document.querySelector('.icon-heart')
+    var toastContent = document.querySelector('.weui-toast__content')
+    var flag = false
+
+    watchBtn.addEventListener('click',function(){
+      toast.style.display = 'block'
+      var toastText, heartColor;
+      flag= !flag
+      // if(flag){
+      //   toastText = '已标注为想看'
+      //   heartColor = 'red'
+      // }else{
+      //   toastText ='已取消想看'
+      //   heartColor = '#fff'
+      // }
+      toastText = (flag == true) ? '已标注为想看' : '已取消想看'
+      heartColor = (flag == true) ? 'red' : '#fff'
+      toastContent.innerHTML = toastText
+      heart.style.color = heartColor
+
+
+      setTimeout(function(){
+        toast.style.display = 'none'
+      },2000)
+    })
+  </script>
+</body>
+</html>

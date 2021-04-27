@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./movie.css"></link>
+</head>
+<body>
+    <!-- 电影区块 -->
+    <!--<section class="movie-list">
+        <ul>
+            <li>
+                <div class="pic">
+                    <a href="">
+                        <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2637603645.webp" alt="">
+                    </a>
+                </div>
+                <div class="title">
+                    <a href="">我的姐姐</a>
+                </div>
+                <a href="" class="btn-link btn-ticket">选座购票</a>
+            </li>
+        </ul>
+    </section>-->
+    <!-- 电影区块 html的快速输入
+        section 语义化标签 内容区 评论区 商品区 尺寸区
+        css 选择器
+        > 子元素
+        + 兄弟元素
+        看到盒子的能力
+        块级元素
+        a 业务标签
+    -->
+    <!-- section.movie-list.list>ul>li>(.pic>a>img)+(.title>a{第十一回})+a.btn-link.btn-ticket -->
+    <section class="movie-list list">
+        <ul>
+            <li>
+                <div class="pic">
+                    <a href="">
+                        <img src="./syh.webp" alt="">
+                    </a>
+                </div>
+                <div class="title">
+                    <a href="">第十一回</a>
+                </div>
+                <a href="" class="btn-link btn-ticket">选座购标</a>
+            </li>
+        </ul>
+    </section>
+
+    <script src="./data.js">
+        alert("good");
+    </script>
+</body>
+</html>

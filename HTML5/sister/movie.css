@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+ul,
+li {
+  list-style: none;
+}
+.list {
+  display: block;
+  text-align: center;
+}
+.pic {
+  height: 145px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.pic img {
+  width: 100px;
+}
+.title {
+  line-height: 1.45;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+a {
+  color: #ccc;
+}
+.btn-link {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2px 10px;
+  border-radius: 2px;
+  background: #1c8bd0;
+  color: #fff;
+  font-size: 12px;
+}

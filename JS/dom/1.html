@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="pid">hello</p>
+  <button id="btn">按钮</button>
+  <script>
+    // 添加句柄
+    // 监听事件
+    var x = document.getElementById("btn");
+    x.addEventListener("click",hello)
+    x.addEventListener("click",world)
+    // 移除事件
+    x.removeEventListener("click",world)
+    function hello(){alert("hello")}
+    function world(){alert("world")}
+  </script>
+</body>
+</html>

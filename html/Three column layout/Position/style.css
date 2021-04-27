@@ -1,0 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  width: 100%;
+  height: 500px;
+}
+/* display: inline-block;变成行内布局，即不换行 */
+#left,#right{
+  width: 200px;
+  height: 100%;
+  background: pink;
+}
+#left{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#right{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#middle{
+  /* 空出，上下为0，左右为200 */
+  margin: 0 200px;
+  overflow-y: scroll;
+}

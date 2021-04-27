@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .body{
+      display: flex;
+    }
+    .box{
+      /* 标准的盒模型 盒子的大小 = 内容(w/h) + padding + border + margin  */
+      box-sizing: border-box;
+      /* box-sizing属性用于更改用于计算元素的宽度和高度默认的CSS盒子模型，可以使用此属性来模拟不正确支持CSS盒子模型规范的游览器行为。 */
+      padding: 10px;
+      border: 5px solid red;
+      margin: 20px;
+      /* 在垂直方向上，会重叠 */
+      /* width: 200px; */
+      width: 50%;
+      /* display: inline-block; */
+      /* float: left; */
+      /* 浮动 */
+      height: 100px;
+      background: pink;
+    }
+    .box:nth-child(2){
+      margin: 30px;
+      background: #000;
+    }
+    /* BFC 全新的BFC区域 Block Format Context*/
+    /* 将两个重叠的元素隔开来 */
+    .row{
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="box">
+      a simple box
+    </div>
+  </div>
+  <div class="box">
+    another box
+  </div>
+  <script>
+  document
+    .querySelector('.box')
+    .style
+    .backgroundColor = 'green';
+  </script>
+</body>
+</html>

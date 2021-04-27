@@ -1,0 +1,524 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+   /* 本身就是 width: 100%; display: block;*/
+  width: 100%;
+  display: block;
+  /* 渐变，默认由上到下 */
+  background: linear-gradient(#48dbfb, #2980b9);
+  /* 定义高度才能有效果 */
+  /* height: 500px; */
+}
+.background-linear{
+  /* 根据浏览器屏幕固定定位 */
+  position: fixed;
+  /* 继承浏览器宽度100% */
+  width: 100%;
+  /* 继承浏览器高度100% */
+  height: 100%;
+  background: linear-gradient(#48dbfb, #2980b9);
+  z-index: 1;
+}
+.wrapper{
+  /* 相对定位 */
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  min-height: 100vh;
+}
+.summer-wrapper{
+  width: 600px;
+  height: 450px;
+  position: absolute;
+  /* 距离顶部50% */
+  top: 50%;
+  left: 50%;
+  /* 平移，参考自己的位置来平移 */
+  transform: translate(-50%, -50%);
+}
+.summer-wrap{
+  width: 100%;
+  height: 100%;
+}
+.bird-wrapper{
+  position: absolute;
+  left: 166px;
+  bottom: 226px;
+  /* z-index层级 */
+  z-index: 8;
+  animation: birdFly 3.5s ease infinite;
+  animation-delay: 0.4s;
+}
+
+.bird-wrapper.snd{
+  left: 340px;
+  bottom: 215px;
+  animation-delay: 0s;
+}
+.bird-wrapper.trd{
+  left: 450px;
+  bottom: 282px;
+  animation-delay: 1s;
+}
+
+@keyframes birdFly {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.left-wing{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 14px;
+  height: 14px;
+  animation: wingLeft 0.4s ease infinite;
+  transform-origin: right bottom;
+}
+
+@keyframes wingLeft{
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(40deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.left-wing span{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #030308;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  border-color: #030308 transparent transparent transparent;
+  transform: translate(1px, 15px);
+}
+
+.right-wing{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 14px;
+  height: 14px;
+  animation: wingRight 0.4s ease infinite;
+  transform-origin: left bottom;
+}
+
+@keyframes wingRight {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-40deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.right-wing span{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #030308;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  border-color: #030308 transparent transparent transparent;
+  transform: translate(-2px, 14px);
+}
+
+.sun{
+  position: absolute;
+  top: 40px;
+  left: 70px;
+  width: 37px;
+  height: 37px;
+  /* 变圆 */
+  border-radius: 50%;
+  background-color: #e67e22;
+  /* 阴影 */
+  /* X轴、Y轴、模糊部分、尺寸 */
+  box-shadow: 0 0 0 8px #f3ac12,
+              0 0 0 20px #f1c40f;
+  animation: brilla-sun 1.5s alternate infinite;
+}
+@keyframes brilla-sun{
+  0%,100%{
+    box-shadow: 0 0 0 8px #f3ac12,
+                0 0 0 20px #f1c40f;
+  }
+  50%{
+    background-color: #e67e22;
+    box-shadow: 0 0 0 5px #f3ac12,
+                0 0 0 14px #f1c40f;
+  }
+}
+
+/* grand */
+.bottom-snow{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 21px;
+  background-color: #1dcd59;
+  z-index: 1;
+  /* 左上角、右上角、左下角、右下角 */
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  overflow: hidden;
+}
+.bottom-snow span{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 7px;
+  background-color: #1ab74f;
+  border-radius: 4px;
+}
+
+.bottom-snow-over{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+}
+
+.middle-snow{
+  position: absolute;
+  bottom: 21px;
+  left: 15px;
+  /* calc计算 一定要空格，否则就会判断为-30*/
+  width: calc(100% - 30px);
+  background-color: #17a145;
+  z-index: 1;
+  overflow: hidden;
+  height: 30px;
+}
+
+.buildings{
+  position: absolute;
+  bottom: 51px;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: 399px;
+  z-index: 2;
+  overflow: hidden;
+}
+.buildings span{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 180px;
+  background-color: #109bbb;
+}
+
+/* 选择第几个 */
+.buildings span:nth-child(2){
+  left: 40px;
+  width: 55px;
+  height: 240px;
+}
+.buildings span:nth-child(3){
+	left: 95px;
+	width: 65px;
+	height: 140px;
+}
+.buildings span:nth-child(4){
+	left: 160px;
+	width: 50px;
+	height: 120px;
+}
+.buildings span:nth-child(5){
+	left: 210px;
+	width: 10px;
+	height: 80px;
+}
+.buildings span:nth-child(6){
+	left: 220px;
+	width: 60px;
+	height: 140px;
+}
+.buildings span:nth-child(7){
+	left: 280px;
+	width: 50px;
+	height: 270px;
+}
+.buildings span:nth-child(8){
+	left: 330px;
+	width: 30px;
+	height: 170px;
+}
+.buildings span:nth-child(9){
+	left: 360px;
+	width: 20px;
+	height: 120px;
+}
+.buildings span:nth-child(10){
+	left: 380px;
+	width: 60px;
+	height: 230px;
+}
+.buildings span:nth-child(11){
+	left: 440px;
+	width: 40px;
+	height: 170px;
+}
+.buildings span:nth-child(12){
+	left: 480px;
+	width: 50px;
+	height: 190px;
+}
+.buildings span:nth-child(13){
+	left: 530px;
+	width: 40px;
+	height: 150px;
+}
+
+.buildings.back{
+  z-index: 1;
+}
+.buildings.back span{
+	width: 20px;
+	height: 140px;
+	background-color: #12aed6;
+}
+.buildings.back span:nth-child(2){
+	left: 20px;
+	width: 60px;
+	height: 200px;
+}
+.buildings.back span:nth-child(3){
+	left: 80px;
+	width: 40px;
+	height: 220px;
+}
+.buildings.back span:nth-child(4){
+	left: 120px;
+	width: 20px;
+	height: 170px;
+}
+.buildings.back span:nth-child(5){
+	left: 140px;
+	width: 60px;
+	height: 250px;
+}
+.buildings.back span:nth-child(6){
+	left: 200px;
+	width: 60px;
+	height: 290px;
+}
+.buildings.back span:nth-child(7){
+	left: 260px;
+	width: 40px;
+	height: 210px;
+}
+.buildings.back span:nth-child(8){
+	left: 300px;
+	width: 65px;
+	height: 310px;
+}
+.buildings.back span:nth-child(9){
+	left: 365px;
+	width: 45px;
+	height: 200px;
+}
+.buildings.back span:nth-child(10){
+	left: 410px;
+	width: 60px;
+	height: 260px;
+}
+.buildings.back span:nth-child(11){
+	left: 470px;
+	width: 50px;
+	height: 240px;
+}
+.buildings.back span:nth-child(12){
+	left: 520px;
+	width: 50px;
+	height: 220px;
+}
+
+.swing{
+  position: absolute;
+  bottom: 2px;
+  left: 240px;
+  width: 40px;
+  height: 90px;
+  border: 5px solid #366a78;
+  z-index: 5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+}
+
+.swing-over-wrap{
+  position: absolute;
+  bottom: 2px;
+  left: 265px;
+  z-index: 6;
+  perspective: 400px;
+}
+
+.swing-over{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: -25px;
+  width: 50px;
+  height: 95px;
+  animation: swinging 3s ease infinite;
+  transform-origin: center top;
+  
+}
+.swing-over span{
+  position: absolute;
+  bottom: 22px;
+  left: 10px;
+  width: 30px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #f08139;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.swing-over span:nth-child(2){
+  bottom: auto;
+  top: 0;
+  left: 13px;
+  width: 2px;
+  height: 74px;
+  border-radius: 0;
+  background-color: #4f4c4d;
+  z-index: 4;
+}
+.swing-over span:nth-child(3){
+  bottom: auto;
+  top: 0;
+  /* 覆盖掉上面的left值 */
+  left: auto;
+  right: 13px;
+  width: 2px;
+  height: 74px;
+  border-radius: 0;
+  background-color: #4f4c4d;
+  z-index: 4;
+
+}
+
+
+@keyframes swinging {
+  0%,100%{
+    transform: rotateX(25deg);
+  }
+  50%{
+    transform: rotateX(-25deg);
+  }
+}
+
+.tree{
+  position: absolute;
+  bottom: 2px;
+  left: 15px;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.tree span:nth-child(1){
+  position: absolute;
+  bottom: 2px;
+  left: 66px;
+  width: 20px;
+  height: 90px;
+  transform: rotate(-3deg);
+  /* 渐变色从左到右 */
+  background:linear-gradient(to right,#a6755d,#615a3d);
+  z-index: 3;
+  overflow: hidden;
+}
+.tree span:nth-child(2){
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  width: 8px;
+  height: 28px;
+  transform: rotate(-20deg);
+  background:linear-gradient(to right,#a6755d,#615a3d);
+  z-index: 4;
+}
+.tree span:nth-child(3){
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+  width: 8px;
+  height: 28px;
+  transform: rotate(20deg);
+  background:linear-gradient(to right,#a6755d,#615a3d);
+  z-index: 2;
+}
+.tree span:nth-child(4){
+  position: absolute;
+  bottom: 80px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  background-color: #03fa6a;
+  z-index: 6;
+  border-radius: 50%;
+  box-shadow:-10px -8px 18px 5px #098566 inset;
+}
+.tree span:nth-child(5){
+  position: absolute;
+  bottom: 75px;
+  left: 10px;
+  width: 70px;
+  height:70px;
+  background-color: #03fa6a;
+  z-index: 4;
+  border-radius: 50%;
+  box-shadow:2px -2px 10px 5px #057c5e inset;
+}
+.tree span:nth-child(6){
+  position: absolute;
+  bottom:100px;
+  left: 40px;
+  width: 90px;
+  height: 90px;
+  background-color: #03fa6a;
+  z-index: 5;
+  border-radius: 50%;
+  box-shadow:-1px -6px 18px 5px #037457 inset;
+}
+
+
+
+
+
+
+
+
+
+
+

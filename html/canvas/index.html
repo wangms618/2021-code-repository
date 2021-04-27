@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="canvas" width="800" height="800"></canvas>
+  <script>
+    var canvas = document.getElementById('canvas')
+    // 创建画布
+    var ctx = canvas.getContext('2d')
+    //设置起点
+    // ctx.moveTo(10,10)
+    // 设置终点
+    // ctx.lineTo(100,100)
+    // 画一条线
+    // ctx.stroke()
+
+    // 画正方形
+    // myRect(ctx,50,50,200,200)
+     
+    // 画正方形
+    // ctx.strokeRect(50,50,200,200)
+
+    // 清除
+    // ctx.clearRect(50,50,200,200)
+
+    // 圆弧
+    ctx.arc(100, 100, 100, 0, degToArc(125),degToArc(300))
+
+    // 自动连接原点
+    ctx.closePath()
+    ctx.stroke()
+
+
+
+
+    // 角度转弧度
+    function degToArc(num){
+      return (Math.PI/180) * num
+    }
+
+
+
+
+    function myRect(ctxTmp,x,y,w,h){
+      ctxTmp.moveTo( x , y )
+      ctxTmp.lineTo( x + w, y )
+      ctxTmp.lineTo(x+w,y+h)
+      ctxTmp.lineTo(x,y+h)
+      ctxTmp.lineTo(x,y)
+      ctx.stroke()
+    }
+
+
+    /*
+    var canvas = document.getElementById('canvas')
+    if(canvas.getContext){
+        console.log('你的浏览器支持canvas')
+    }else{
+      console.log('你的浏览器不支持canvas')
+    }
+    */
+  </script>
+</body>
+</html>

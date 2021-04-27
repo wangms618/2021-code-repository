@@ -1,0 +1,31 @@
+{"data":{
+  "photos":[
+    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/22eda774f325b50bf95c83d7d6d1373e.jpg",
+    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/75b35105f31cc19a83be4ba9a3fcf80c.jpg",
+    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/22eda774f325b50bf95c83d7d6d1373e.jpg",
+    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/75b35105f31cc19a83be4ba9a3fcf80c.jpg",
+    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/22eda774f325b50bf95c83d7d6d1373e.jpg",
+    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/75b35105f31cc19a83be4ba9a3fcf80c.jpg",
+    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/22eda774f325b50bf95c83d7d6d1373e.jpg",
+    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/75b35105f31cc19a83be4ba9a3fcf80c.jpg"
+  ],
+  "price":"5299",
+  "title":"小米11 Pro",
+  "desc":"「+949元得MiCare尊享服务；最高享12期免息；尊享真无线耳机Air 2 Pro优惠加价购」",
+  "spec":["【专业影像】超感光夜景相机+电影镜头VLOG模式","【突破性能】全新骁龙888+新型散热材料+WiFi6增强版","【极速快充】5000mAh大电池+双67W快充+10W反向充电"],
+  "discount":[{
+    "id":1,
+    "title":"2倍米金",
+    "desc":"预计得350米金"
+  }],
+  "pz":[{
+    "cpu":"高通骁龙888"
+  },{
+    "三摄像头":"480万+8000万"
+  },
+  {
+    "超大屏":"6.53英寸"
+  }
+  ]
+}
+}

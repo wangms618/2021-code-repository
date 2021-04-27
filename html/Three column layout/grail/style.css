@@ -1,0 +1,45 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.wrap{
+  min-width: 600px;
+}
+
+#header, #footer{
+  height: 50px;
+  width: 100%;
+  background: grey;
+}
+#middle,#left,#right{
+  float: left;
+}
+
+#content{
+  overflow: hidden;
+  padding: 0 200px;
+}
+
+#middle{
+  background: greenyellow;
+  width: 100%;
+}
+
+#left,#right{
+  width: 200px;
+  height: 200px;
+  background: plum;
+}
+
+#left{
+  margin-left: -100%;
+  position: relative;
+  left: -200px;
+}
+
+#right{
+  margin-left: -200px;
+  position: relative;
+  left: 200px;
+}

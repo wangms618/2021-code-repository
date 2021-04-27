@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- ul>li{$}*10 -->
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+  <script>
+    const lis = document.querySelectorAll('ul>li');
+    // lis.addEventListener('click',function(){
+    //   console.log('--------');
+    // })
+    // 作用域链 俄罗斯套娃
+    // 同步
+    // 通过创建了一个块级作用域
+    for(let i = 0;i<lis.length;i++){//十个区块
+      // (function(i){
+      //   // console.log('hello 立即执行函数')
+      //   lis[i].addEventListener('click',() =>{
+      //   //异步
+      //   console.log(i+1); // 变量的查找 去作用域
+      // });
+      // })(i)//传参给function(i)
+      addClickListener(i);//函数每次运行是有作用域的，都是独立的
+     
+    }
+    function addClickListener(i){
+      // i 在函数作用域内
+      lis[i].addEventListener('click', () => {
+        console.log(i+1);
+      },false);
+    }
+    // 作用域 Scope 全局作用域 
+    // 校长 书记 document统管着html文档对象 线程：代码运行的最小单元 HTMLCSSJS
+    // window 新的进程 进程：资源分配的最小单元
+    // console(x);
+    // console(ddc);//变量查找
+    // var testValue = 123;
+    // var testFunc = function(){console.log('just test');}
+    // let ddc = '滴滴陈'; // let 和 var 有区别 let发生了提升，但是 var 的变量提升的空间对象 与 let 不在一起，let 存在于临时暂死区，是帮你杜绝变量提升带来的错误
+    // 临时暂死区
+    // JS的 Good parts Bad parts 变量提升是 Bad 看过去跟运行是不一致的
+    // let 是用来修改变量提升bug的方案 JS的运行机制无法改变 
+    // 既让传统的错误可以运行，同时又出新的方案
+    // function foo(value){
+    //   var a = 1;
+    // }
+    // foo();
+    // console.log(a);
+    // 块级作用域
+    // {
+    //   let i = 1;
+    //   var c = 2;
+    // }
+    // i在块级作用域里，即{},当你在打印i的时候，i的生命周期结束
+    // console.log(i);
+    // console.log(c);
+    let name = '毕浩楠';
+    window.localStorage.setItem('username',name)//本地存储
+  </script>
+</body>
+</html>
