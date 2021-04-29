@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <style>
+    html,body{
+      height: 100vh;
+    }
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    /* page css 四级单词 */
+    .page{
+      overflow-y: scroll;
+      /* -webkit 内核 android ios webkit */
+      -webkit-overflow-scrolling: touch; 
+      overflow-y: hidden;
+      width: 100vw;
+      /* height: 100vh; */
+      background: gold;
+    }
+    /* container css 四级单词 */
+    .container{
+      /* -webkit-overflow-scrolling: touch; 
+      overflow-y: hidden; */
+    }
+    .row{
+      display: flex;
+    }
+    .col{
+      width: 50vw;
+      height: 20vh;
+      background: green;
+      opacity: .5;
+
+      /* float: left; */
+    }
+    .col:nth-child(2){
+      background: yellow;
+      /* float: right; */
+    }
+  </style>
+  <title>单屏应用</title>
+</head>
+<body>
+  <!-- 页 -->
+  <div class="page">
+    <!-- 容器 -->
+    <div class="container">
+      <!-- 行 -->
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <!-- 列 -->
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

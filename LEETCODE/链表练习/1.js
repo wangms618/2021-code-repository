@@ -1,16 +1,32 @@
-// Node 类用来保存节点上的数据，next用来保存下一个节点的链接
-function Node(element) {// 构造函数
-  this.element = element;// 当前节点的元素
-  this.next = null; //下一个节点的元素
+var LikedList = function () {
+  // 链表头
+  var head = null
+  // 链表长度
+  var length = 0
+  // 辅助类：节点
+  var Node = function (element) {
+    this.element = element
+    this.next = null
+  }
+  this.append = function (element) {
+    var node = new Node(element)
+    if (head == null) {
+      head = node
+    } else {
+      var current = head
+      while (current.next) {
+        current = current.next
+      }
+      current.next = node
+    }
+    length ++
+  }
+  this.getHead = function () {
+    return head
+  }
 }
-var node = new Node(1);
-console.log(node.element)
-
-
-
-    // function Person(){
-    //     this.name = 'zhangsan';
-    //     this.age = 18;
-    // }
-    // var p = new Person();
-    // console.log(typeof p);//object
+var l = new LikedList
+l.append(1)
+l.append(2)
+l.append(3)
+console.log(l.getHead())
