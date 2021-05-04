@@ -1,11 +1,3 @@
-let doc = document
-let canvas = doc.getElementById('canvas')
-let video = doc.getElementById('video')
-let $txt = doc.getElementById('text')
-let $btn = doc.getElementById('btn')
-let $color = doc.getElementById('color')
-let $range = doc.getElementById('range')
-
 let data = [
   {value: '麻烦给我爱人来一杯mojito', time: 5, color: 'red', speed: 1, fontSize: 22},
   {value: '听妈妈的话', time: 10, color: 'green', speed: 1, fontSize: 30},
@@ -14,20 +6,32 @@ let data = [
   {value: '再恋爱吧！', time: 20},
   {value: '恋爱吧！', time: 18}
 ]
-创建CanvasBarrage类
+
+
+let doc = document
+let canvas = doc.getElementById('canvas')
+let video = doc.getElementById('video')
+let $txt = doc.getElementById('text')
+let $btn = doc.getElementById('btn')
+let $color = doc.getElementById('color')
+let $range = doc.getElementById('range')
+
+
+// 创建CanvasBarrage类
 class CanvasBarrage {
-  // ={} 不传值，则默认为空对象（可以不传） 
-  constructor(canvas,video,opts={}) {
-    if (!canvas || !video) return
-    // 把传进来的参数挂载到this上，方便取用
-    this.video = video;
-    this.canvas = canvas;
+  constructor(canvas, video, opts={}) {
+    if (!canvas || !video) return 
+
+    // 挂载到this上，方便取用
+    this.video = video
+    this.canvas = canvas
     // 设置canvas的宽高和video保持一致
     this.canvas.width = video.width
     this.canvas.height = video.height
 
     // 创建画布
     this.ctx = canvas.getContext('2d')
+
     // 设置默认的参数，如果没传就带上
     let defOpts = {
       color: '#e91e63',
@@ -90,3 +94,68 @@ class CanvasBarrage {
     this.barrages.push(new Barrage(obj, this))
   }
 }
+
+
+class Barrage { // 初始化每一条弹幕的
+  constructor(obj, ctx) {
+    this.value = obj.value
+    this.time = obj.time
+    this.obj = obj
+    this.context = ctx
+  }
+  init() {
+    this.color = this.obj.color || this.context.color;
+    this.speed = this.obj.speed || this.context.speed;
+    this.opacity = this.obj.opacity || this.context.opacity;
+    this.fontSize = this.obj.fontSize || this.context.fontSize;
+
+    // 计算每条弹幕的宽度
+    let p = document.createElement('p')
+    p.style.fontSize = this.fontSize + 'px'
+    p.innerHTML = this.value
+    document.body.appendChild(p)
+
+    this.width = p.clientWidth;
+    document.body.removeChild(p)
+
+    // 设置弹幕出现的位置
+    this.x = this.context.canvas.width
+    this.y = this.context.canvas.height * Math.random()
+    // 弹幕上下超出
+    if (this.y < this.fontSize) {
+      this.y = this.fontSize
+    } else if (this.y > this.context.canvas.height - this.fontSize) {
+      this.y = this.context.canvas.height - this.fontSize
+    }
+  }
+  render() {
+    // 设置画布文字的字号和字体
+    this.context.ctx.font = `${this.fontSize}px Arial`
+    // 设置画布文字的颜色
+    this.context.ctx.fillStyle = this.color
+    // 绘制文字
+    this.context.ctx.fillText(this.value, this.x, this.y)
+  }
+}
+
+
+let canvsBarrage = new CanvasBarrage(canvas, video, { data })
+
+video.addEventListener('play', () => {
+  canvsBarrage.isPaused = false
+  canvsBarrage.render()
+})
+
+
+// 发送弹幕
+function send() {
+  let value = $txt.value;
+  let time = video.currentTime;
+  let color = $color.value
+  let fontSize = $range.value
+  let obj = { value, time, color, fontSize }
+  canvsBarrage.add(obj)
+  $txt.value = ''
+}
+
+$btn.addEventListener('click', send)
