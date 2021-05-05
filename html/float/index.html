@@ -5,12 +5,46 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .topDiv{
+      width: 500px;
+      border: 2px solid #000;
+      overflow: hidden;
+    }
+    .floatDiv{
+      width: 100px;
+      height: 100px;
+      /* 虚线 dotted */
+      border: 2px dotted red;
+      color: red;
+      margin: 4px;
+      float:left;
+    }
+    .textDiv{
+      color: blue;
+      border: 2px solid blue;
+      /* clear: both; */
+    }
+    .bottomDiv{
+      width: 500px;
+      height: 100px;
+      margin: 5px 0;
+      border: 2px dotted #000;
+    }
+    .clearfix::after{
+      content:'.';
+      height: 0;
+      display: block;
+      clear: both;
+    }
+  </style>
 </head>
 <body>
-  <div class="topDiv">
+  <div class="topDiv clearfix">
     <div class="floatDiv">float left</div>
-    <div class="textDiv">针对</div>
+    <div class="textDiv">鹈鹕的防守漏洞太大了，在追梦看来处处都是机会。次节结束前1分29秒</div>
+    <!-- <div class="clearfix"></div> -->
   </div>
-  <div class="bottomDiv"></div>
+  <div class="bottomDiv">追梦显然仔细研究过锡安的比赛，他知道胖虎是左撇子，喜欢往底线突破，他就锁住篮下的突破路线，让锡安只能无奈传球。锡安体重惊人，臂展却不是顶尖，这让追梦也能在篮下干扰到对手。比赛中，追梦也付出了脚部受伤的代价。</div>
 </body>
 </html>
