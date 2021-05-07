@@ -1,0 +1,21 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class="header">
+  <view class="header_hd">
+  <text>南昌</text>
+  <view class="downtips"></view>
+  </view>
+  <view class="header_ct">
+    <view class="header_ct-hot header_Ct-btn" bindtap="tapChange" data-index="1">热映</view>
+    <view class="header_ct-cinema header_Ct-btn" bindtap="tapChange" data-index="2">影院</view>
+    <view class="header_ct-waiting header_Ct-btn" bindtap="tapChange" data-index="3">待映</view>
+    <view class="header_ct-classic header_Ct-btn" bindtap="tapChange" data-index="4">经典电影</view>
+    <view class="bottomLine" style="left:{{left}}px"></view>
+  </view>
+  <view class="header_bd">
+    <image src="../../images/chaxun.png">
+      
+    </image>
+  </view>
+  </view>
+</view>
