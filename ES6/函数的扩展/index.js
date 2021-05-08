@@ -73,12 +73,72 @@
 // add(1,2,3,4,5,6) // [ 1, 2, 3, 4, 5, 6 ]
 
 
-// rest
-function add(...values) {
-  let sum = 0
-  for (let val of values) {
-    sum += val
+// // rest
+// function add(...values) {
+//   let sum = 0
+//   for (let val of values) {  // val 遍历数组没一项
+//     sum += val
+//   }
+//   return sum
+// }
+// console.log(add(1,2,3,4,5,6)) //21
+
+// function foo() { }
+// console.log(foo.name) // foo
+
+
+// 箭头函数
+// var f = v => v
+
+// var f = function (v) {
+//   return v
+// }
+
+// 多个形参时要括号
+// var f = (v,z) => v
+
+// 花括号里面不止一条语句
+// var f = (v, z) => {
+//   v = 4
+//   return z
+// }
+
+
+// // 不需要return 
+// var f = (v,z) => void v
+
+// // 普通函数和箭头函数
+// [1, 2, 3].map(function (x) {
+//   return x*x
+// })
+// [1, 2, 3].map(x => x * x)
+
+// 函数被谁调用，他的this就指向谁
+// var x = 123
+// function foo() {
+//   console.log(this.x);
+// }
+// foo() //123
+
+// var a = 111
+// var obj = {
+//   a: 123,
+//   foo: function () {
+//     console.log(this.a); //123
+//   }
+// }
+// obj.foo()
+
+var a = 111
+var obj = {
+  a: 123,
+  foo: function () {
+    console.log(this.a); //111
   }
-  return sum
 }
-console.log(add(1,2,3,4,5,6))
+var bar = obj.foo
+bar()
+
+
+
+// 箭头函数内的this对象，就是定义时所在的对象，而不是使用时所在的对象
