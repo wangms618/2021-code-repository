@@ -129,16 +129,77 @@
 // }
 // obj.foo()
 
-var a = 111
-var obj = {
-  a: 123,
-  foo: function () {
-    console.log(this.a); //111
-  }
-}
-var bar = obj.foo
-bar()
+
+// var a = 111
+// var obj = {
+//   a: 123,
+//   foo: function () {
+//     console.log(this.a); //111
+//   }
+// }
+// // obj.foo不是调用，这里将其赋给bar,调用bar()等于在全局环境下调用obj.foo()，所以this指向window，console.log(this.a)输出111
+// var bar = obj.foo
+// bar() 
+
 
 
 
 // 箭头函数内的this对象，就是定义时所在的对象，而不是使用时所在的对象
+// var a = 111
+// var obj = {
+//   a: 123,
+//   foo: () => {
+//     console.log(this.a); //111
+//   }
+// }
+// var bar = obj.foo
+// bar() 
+
+// var obj = {
+//   birth: 2000,
+//   getAge: function () {
+//     var b = this.birth
+//     var fn = function () {
+//       return new Date().getFullYear() - this.birth
+//     }
+//     return fn()
+//   }
+// }
+// console.log(obj.getAge()) //NaN ,因为两个this.birth不同
+
+// var obj = {
+//   birth: 2000,
+//   getAge: function () {
+//     var b = this.birth
+//     var fn = function () {
+//       return new Date().getFullYear() - b
+//     }
+//     return fn()
+//   }
+// }
+// console.log(obj.getAge()) //21
+
+// var obj = {
+//   birth: 2000,
+//   getAge: function () {
+//     var b = this.birth
+//     var fn = () => {
+//       return new Date().getFullYear() - this.birth //箭头函数不认识this ，写了this被箭头函数所处的环境读到，不是当前箭头函数
+//     }
+//     return fn()
+//   }
+// }
+// console.log(obj.getAge()) // 21 
+
+var obj = {
+  birth: 2000,
+  getAge: function () {
+    var b = this.birth
+    let that = this
+    var fn = function () {
+      return new Date().getFullYear() - that.birth
+    }
+    return fn()
+  }
+}
+console.log(obj.getAge()) //21
