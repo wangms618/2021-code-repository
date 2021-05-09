@@ -8,7 +8,7 @@ body {
   width: 100%;
   height: 100%;
 }
-@media screen and (min-width: 414px) {
+@media screen and (min-width: 410px) {
   html {
     font-size: 25px;
   }
@@ -72,4 +72,57 @@ body {
   position: relative;
   top: -2.5rem;
   box-shadow: 0 30px 50px #f1f1f1;
+}
+.music-container .music-content .music-name {
+  text-align: center;
+  position: relative;
+  top: -1.5rem;
+}
+.music-container .music-content .music-name .music-title {
+  display: block;
+  font-size: 25px;
+  color: #000;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+}
+.music-container .music-content .music-name .music-singer {
+  display: block;
+}
+.music-container .music-content .music-bar {
+  top: -1rem;
+  position: relative;
+  height: 0.125rem;
+  width: 12.8rem;
+  background: #c6c6c6;
+  border-radius: 49px;
+  margin-left: 2rem;
+}
+.music-container .music-content .music-bar__now {
+  position: absolute;
+  height: 0.125rem;
+  width: 5.4rem;
+  background: #f00;
+  border-radius: 49px;
+}
+.music-container .music-content .music-time {
+  font-size: 7px;
+  top: -1rem;
+  color: #c6c6c6;
+  position: relative;
+  width: 12.8rem;
+  margin-left: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.music-container .music-content .music-start {
+  position: relative;
+  margin-left: 2rem;
+  display: flex;
+  width: 12.8rem;
+  height: 4rem;
+}
+.music-container .music-content .music-start span {
+  flex: 1;
+  text-align: center;
+  font-size: 30px;
 }
