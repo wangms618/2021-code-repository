@@ -6,7 +6,8 @@ Page({
    */
   data: {
     left: 48,
-    list:{}
+    list: {},
+    list2:{}
   },
 
   tapChange(e) {
@@ -42,6 +43,16 @@ Page({
         console.log(res.data);
         this.setData({
           list: res.data
+        })
+      }
+    })
+    wx.request({
+      url: 'https://www.fastmock.site/mock/39ac87de3060aa2bb2ba20a0ff375c81/cat-movie/hot',
+      method: 'GET',
+      success: (res) => {
+        console.log(res.data);
+        this.setData({
+          list2:res.data
         })
       }
     })

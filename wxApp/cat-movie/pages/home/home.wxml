@@ -18,22 +18,61 @@
     </view>
   </view>
   <scroll-view class="sc-view" scroll-y="true">
+
+
+
     <view class="most-like">
       <text class="most-like__title">最受好评的电影</text>
       <view class="most-like__list">
-      <scroll-view class="lists" scroll-x="true" scroll-y="{{true}}">
-        <view class="movie-item" wx:for="{{list.movieList}}">
-          <view class="item-pic ">
-            <image mode="widthFix" src="{{item.img}}" />
-            <view class="item-score">
-              <text>观众评分</text>
-              <text>{{item.sc}}</text>
-            </view>        
+        <scroll-view class="lists" scroll-x="true" scroll-y="true">
+          <view class="movie-item" wx:for="{{list.movieList}}">
+            <view class="item-pic ">
+              <image mode="widthFix" src="{{item.img}}" />
+              <view class="item-score">
+                <text>观众评分</text>
+                <text>{{item.sc}}</text>
+              </view>        
+            </view>
+            <text class="item-name">{{item.nm}}</text>
           </view>
-          <text class="item-name">{{item.nm}}</text>
-        </view>
-      </scroll-view>
+        </scroll-view>
       </view>
     </view>
+    
+    <view class="list-wrap">
+      <view class="list-wrap__item">
+        <view class="movie-item2" wx:for="{{list2.movieList}}">
+          <view class="list-wrap__block">
+            <view class="wrap-pic">
+              <image mode="widthFix" src="{{item.img}}" />
+            </view>
+            <view class="wrap-list">
+              <view class="wrap-list__title">
+                <view class="movie-title line-ellipsis">{{item.nm}}</view>
+                <view class="movie-score line-ellipsis">
+                  <text>观众评</text>
+                  <text>{{item.sc}}</text>
+                </view>
+                <view class="movie-part line-ellipsis">
+                  主演：{{item.star}}
+                </view>
+                <view class="movie-num line-ellipsis">
+                  {{item.showInfo}}
+                </view>
+              </view>
+              <view class="button-block">
+                <view class="btn">
+                  <text>购票</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+
   </scroll-view>
 </view>
