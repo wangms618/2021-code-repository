@@ -1,21 +1,39 @@
 <!--pages/home/home.wxml-->
 <view class="container">
   <view class="header">
-  <view class="header_hd">
-  <text>南昌</text>
-  <view class="downtips"></view>
+    <view class="header_hd">
+    <text>南昌</text>
+    <view class="downtips"></view>
+    </view>
+    <view class="header_ct">
+      <view class="header_ct-hot header_Ct-btn" bindtap="tapChange" data-index="1">热映</view>
+      <view class="header_ct-cinema header_Ct-btn" bindtap="tapChange" data-index="2">影院</view>
+      <view class="header_ct-waiting header_Ct-btn" bindtap="tapChange" data-index="3">待映</view>
+      <view class="header_ct-classic header_Ct-btn" bindtap="tapChange" data-index="4">经典电影</view>
+      <view class="bottomLine" style="left:{{left}}px"></view>
+    </view>
+    <view class="header_bd">
+      <image src="../../images/chaxun.png">
+      </image>
+    </view>
   </view>
-  <view class="header_ct">
-    <view class="header_ct-hot header_Ct-btn" bindtap="tapChange" data-index="1">热映</view>
-    <view class="header_ct-cinema header_Ct-btn" bindtap="tapChange" data-index="2">影院</view>
-    <view class="header_ct-waiting header_Ct-btn" bindtap="tapChange" data-index="3">待映</view>
-    <view class="header_ct-classic header_Ct-btn" bindtap="tapChange" data-index="4">经典电影</view>
-    <view class="bottomLine" style="left:{{left}}px"></view>
-  </view>
-  <view class="header_bd">
-    <image src="../../images/chaxun.png">
-      
-    </image>
-  </view>
-  </view>
+  <scroll-view class="sc-view" scroll-y="true">
+    <view class="most-like">
+      <text class="most-like__title">最受好评的电影</text>
+      <view class="most-like__list">
+      <scroll-view class="lists" scroll-x="true" scroll-y="{{true}}">
+        <view class="movie-item" wx:for="{{list.movieList}}">
+          <view class="item-pic ">
+            <image mode="widthFix" src="{{item.img}}" />
+            <view class="item-score">
+              <text>观众评分</text>
+              <text>{{item.sc}}</text>
+            </view>        
+          </view>
+          <text class="item-name">{{item.nm}}</text>
+        </view>
+      </scroll-view>
+      </view>
+    </view>
+  </scroll-view>
 </view>

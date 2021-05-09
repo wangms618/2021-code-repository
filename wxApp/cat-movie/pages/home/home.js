@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    left: 48
+    left: 48,
+    list:{}
   },
 
   tapChange(e) {
@@ -34,7 +35,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: 'https://www.fastmock.site/mock/39ac87de3060aa2bb2ba20a0ff375c81/cat-movie/mostLike',
+      method: 'GET',
+      success:(res) => {
+        console.log(res.data);
+        this.setData({
+          list: res.data
+        })
+      }
+    })
   },
 
   /**
