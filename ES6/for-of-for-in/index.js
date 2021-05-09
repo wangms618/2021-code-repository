@@ -31,4 +31,4 @@ const obj = {
   b: 2,
   c: 3
 }
-console.log(Object.keys(obj));
+console.log(Object.keys(obj)); // [ 'a', 'b', 'c' ]

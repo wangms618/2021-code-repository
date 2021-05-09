@@ -195,7 +195,7 @@ var obj = {
   birth: 2000,
   getAge: function () {
     var b = this.birth
-    let that = this
+    let that = this //语言精粹
     var fn = function () {
       return new Date().getFullYear() - that.birth
     }
@@ -203,3 +203,7 @@ var obj = {
   }
 }
 console.log(obj.getAge()) //21
+
+// 箭头函数与普通函数的区别
+// 箭头更简单
+// 箭头函数内部的this对象，其实就是自己所处环境的this对象，并不是箭头函数在哪生效
