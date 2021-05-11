@@ -6,3 +6,5 @@ function bar() {
   console.log(d);
 }
 bar()
+
+// 深拷贝和浅拷贝
