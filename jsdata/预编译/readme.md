@@ -4,6 +4,8 @@
 3. 将实参和形参统一
 4. 在函数体里找函数声明，将函数名作为AO对象的属性名，值赋予函数体
 
+
+
 # 预编译也发生在全局，三部曲
 1. 创建GO对象
 2. 找变量声明，将变量声明作为GO对象的属性名，值赋予undefined
@@ -22,6 +24,16 @@ function test(a, b) {
       console.log(b);
     }
 ```
+
+AO:{
+  a:undefined 1 3
+  b:undefined function(){} 2
+  c:undefined 0 
+  d:function(){}
+}
+1 2 2
+
+
 a un 1  输出1   3
 b un fun  b=2  输出b
 c un 
