@@ -36,5 +36,3 @@ console.log(str); //abcd
 console.log(str.length); // 4
 // new String('abcd').length 字符串对象，天生具备length属性
 
-
-// 为什么呢
