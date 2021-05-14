@@ -12,8 +12,11 @@
   </view>
 </view>
 <!-- 弹出层 -->
-<van-dialog use-slot id="new-group-model" title="创建一个群组" show="{{newGroupModel}}" show-cancel-button bind:confirm="createGroup" bind:cancel="closeDialog">
+<van-dialog asyncClose use-slot id="new-group-model" title="创建一个群组" show="{{newGroupModel}}" show-cancel-button bind:confirm="createGroup" bind:cancel="closeDialog" z-index="1">
   <view class="group-dialog-body">
-    <van-field value="{{}}" placeholder="起个名字吧" label="群组名" bind:change="onGroupNameChange" />
+    <van-field value="{{groupName}}" placeholder="起个名字吧" label="群组名" bind:change="onGroupNameChange" />
   </view>
 </van-dialog>
+<view></view>
+<!-- 提示 -->
+<van-notify id="notify-selector" />

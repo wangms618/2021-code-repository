@@ -1,2 +1,18 @@
-<!--miniprogram/pages/group/group.wxml-->
-<text>miniprogram/pages/group/group.wxml</text>
+<view class="group-body">
+  <view class="public-list">
+    <view class="public-header">
+      <view class="public-icon">
+        <van-icon name="https://677a-gzhiyi-154dd4-1256703754.tcb.qcloud.la/group3.png?sign=1119403c4109bbb505d07aa6d42ffdff&t=1545558495" />
+      </view>
+      我的群组
+    </view>
+    <!-- 列表 -->
+    <view class="public-item" wx:for="{{groupList}}">
+      <view class="public-item-name">{{item.name}}</view>
+      <view>
+        <image class="creater" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2271338977,1611087163&fm=26&gp=0.jpg" />
+        <van-icon name="arrow" style="color:#c6c6c6" />
+      </view>
+    </view>
+  </view>
+</view>

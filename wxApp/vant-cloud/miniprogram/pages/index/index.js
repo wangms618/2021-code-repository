@@ -1,4 +1,5 @@
 // miniprogram/pages/index/index.js
+import Notify from '../../minnprogram/@vant/weapp/notify/notify';
 Page({
 
   /**
@@ -29,8 +30,47 @@ Page({
 
   createGroup() { // 确认创建
     // 把用户输入的群组名传给后端，由后端保存到服务器里面
-    console.log(this.data.groupName);
-
+    // console.log(this.data.groupName);
+    let self = this
+    if (this.data.groupName === '') {
+      // 出现notify
+      Notify({
+        message: '起个名字吧',
+        color: '#ad0000',
+        background: '#dc3545',
+        selector: '#notify-selector',
+        duration: 2000
+      });
+      self.selectComponent('#new-group-model').stopLoading()
+      return
+    }
+    // 调用云函数
+    wx.cloud.callFunction({
+      // 调用云函数
+      name: 'createGroup',
+      // 传数据
+      data: {
+        groupName: self.data.groupName
+      },
+      success(res) {
+        console.log(res);
+        Notify({
+          message: '新建成功',
+          background: '#28a745',
+          selector: '#notify-selector',
+          duration: 2000
+        });
+        self.setData({
+          newGroupModel: false,
+          groupName: ''
+        })
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/group/group'
+          });
+        })
+      }
+    })
   },
 
   /**
