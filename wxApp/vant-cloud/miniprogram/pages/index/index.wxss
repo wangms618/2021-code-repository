@@ -1,0 +1,37 @@
+/* miniprogram/pages/index/index.wxss */
+.new-outer{
+  width: 100%;
+}
+.new-item{
+  width: 80%;
+  margin: 40rpx auto;
+  background: #fff;
+  height: 200rpx;
+  text-align: center;
+  display: flex;
+  /* 在x轴方向上中间空白填充 */
+  justify-content: space-between;
+  padding: 20rpx;
+  box-shadow: 0px 7px 20px #ececec;
+  border-radius: 38rpx;
+}
+.new-item image{
+  width: 124rpx;
+  height: 124rpx;
+}
+.right-conner{
+  display: flex;
+  /* y轴方向上的弹性布局 */
+  flex-direction: column;
+  justify-content: space-between;
+}
+.right-conner.item-name{
+  margin-right: 14rpx;
+}
+.icon-arrow{
+  text-align: right;
+  padding-right: 13rpx;
+}
+.new-item:hover{
+  box-shadow: none;
+}
