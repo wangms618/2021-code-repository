@@ -5,14 +5,41 @@ Page({
    * 页面的初始数据
    */
   data: {
+    bookDetailData: [],
+    lastData: [],
+    pageData: []
+  },
+  getSection(url) {
+    let self = this
+    wx.showLoading({
+      title: '正在加载'
+    });
+    wx.cloud.callFunction({
+      name: 'bookSection',
+      data: {
+        url: url
+      },
+      success(res) {
+        console.log(res.result);
+        wx.hideLoading()
+        const { result } = res  //const result = res.result
+        self.setData({
+          bookDetailData: result.bookDetailData,
+          lastData: result.lastData,
+          pageData: result.pageData
+        })
 
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log(options);
+    const { url } = options // const url = options.url
+    this.getSection(url);
   },
 
   /**
