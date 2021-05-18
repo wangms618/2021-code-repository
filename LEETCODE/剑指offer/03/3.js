@@ -1,0 +1,3 @@
+var findRepeatNumber = function(nums) {
+
+};
