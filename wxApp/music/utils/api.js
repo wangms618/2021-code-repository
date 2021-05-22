@@ -19,7 +19,13 @@ function request(method, url, data) {
         if (res.data.code == 200) {
           reslove(res)
         } else {
-          reject('运行出错，请稍后再试')
+          let msg = res.data.msg
+          wx.showToast({
+            title: msg,
+            icon: 'none',
+            mask: true,
+            duration: 2000
+          })
         }
       },
       fail(err) {
@@ -30,7 +36,8 @@ function request(method, url, data) {
 }
 
 const API = {
-  login: (data) => request(GET, '/login/cellphone', data) // 手机登录
+  login: (data) => request(GET, '/login/cellphone', data), // 手机登录
+  getUserDetail:(data)=>request(GET,'/user/detail',data) //登录之后获取用户信息
 }
 
 module.exports = {

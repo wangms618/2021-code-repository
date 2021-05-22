@@ -1,6 +1,7 @@
 // pages/login/login.js
 import api from '../../utils/api'
 let $api = api.API
+const app = getApp();
 Page({
 
   /**
@@ -29,10 +30,30 @@ Page({
     }).then(res => {
       console.log(res);
       let code = res.data.code
+
       if (code === 200) {
-        console.log('登录成功')
+        console.log('登录成功');
+        // 本地存储
+        wx.setStorageSync('userId', res.data.account.id)
+        app.globalData.userId = res.data.account.id
+        // 保存cookie登录信息到本地
+        this.saveUserLoginInfo(res.cookies)
+        // 页面重定向，自动跳去某页面
+        wx.redirectTo({
+          url: '/pages/mine/mine',
+        })
+      } else {
       }
     })
+  },
+  // 保存用户登录凭证
+  saveUserLoginInfo(cookies) {
+    for (let i = 0; i < cookies.length; i++) {
+      if (cookies[i].search('MUSIC_U=') !== -1) {
+        wx.setStorageSync('login_token', cookies[i])
+        app.globalData.login_token = cookies[i]
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面加载

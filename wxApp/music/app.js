@@ -1,20 +1,20 @@
 // app.js
 App({
   onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+    wx.db = {}
+    // 异步获取当前设备信息
+    let info = wx.getSystemInfoSync()
+    wx.db.statusBarHeight = info.statusBarHeight
+    if (info.platform === 'android') {
+      wx.db.navBarHeight = 48
+    } else {
+      wx.db.navBarHeight = 44
+    }
   },
   globalData: {
     userInfo: null,
-    login_token:''
+    login_token: '',
+    userId: 0,
+    navId:1
   }
 })

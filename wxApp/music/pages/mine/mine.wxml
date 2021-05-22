@@ -1,0 +1,11 @@
+<nav-bar navBarColor="#16151b" statusBarColor="#16151b" titleColor="#fff"></nav-bar>
+<view class="wrapper">
+  <view class="mian">
+    <view class="mine">
+      <image class="mine-pic" src="{{user.profile.avatarUrl}}"></image>
+      <text class="mine-name">{{user.profile.nickname}}</text>
+      <text class="mine-vip">开通黑胶vip</text>
+      <text class="mine-grade">Lv.{{user.level}}</text>
+    </view>
+  </view>
+</view>

@@ -6,7 +6,7 @@
     <form bindsubmit="searchBox">
       <view class="login-input">
         <input class="login-inp" value="" type="text" placeholder="手机号" placeholder-class="pla-class" name="username"></input>
-        <input class="login-inp" value="" type="text" placeholder="密码" placeholder-class="pla-class" name="pwd"></input>
+        <input class="login-inp" value="" type="password" placeholder="密码" placeholder-class="pla-class" name="pwd"></input>
       </view>
       <button class="default" style="width:75vw" form-type="submit">登录</button>
     </form>

@@ -1,0 +1,40 @@
+<view>
+  <view style="height: {{topHeight}}px"></view>
+  <view class="container">
+    <view style="{{stuatusBarStyle}}"></view>
+    <view class="nav-bar" style="{{navBarStyle}}">
+      <view class="nav">
+        <view class="nav-back">
+          <image class="nav-img back__img" src="../../image/nav_back.png" />
+        </view>
+        <view class="nav-change">
+          <view class="nav-text nav-mine" data-id="1" bindtap="changeTab">
+            <navigator class="{{navId == 1 ? 'mineActive':''}}" url="../../pages/mine/mine">
+              我的
+            </navigator>
+          </view>
+          <view class="nav-text nav-mine" data-id="2" bindtap="changeTab">
+            <navigator class="{{navId == 2 ? 'active':''}}" url="../../pages/find/find">
+              发现
+            </navigator>
+          </view>
+          <view class="nav-text nav-mine" data-id="3" bindtap="changeTab">
+            <navigator class="{{navId == 3 ? 'active':''}}" url="../../pages/cloud/cloud">
+              云村
+            </navigator>
+          </view>
+          <view class="nav-text nav-mine" data-id="4" bindtap="changeTab">
+            <navigator class="{{navId == 4 ? 'active':''}}" url="../../pages/video/video">
+              视频
+            </navigator>
+          </view>
+        </view>
+        <view class="nav-search">
+          <navigator url="">
+            <image class="nav-img serach__img" src="../../image/nav_seach.png" />
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
