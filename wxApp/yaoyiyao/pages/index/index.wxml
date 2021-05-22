@@ -1,2 +1,10 @@
-<!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<view>
+  <view>
+    <block wx:for="{{list}}" wx:for-index="index">
+      <view class='yao'>{{item.title}}</view>
+    </block>
+    <view wx:if="{{list==null || list==''}}">
+      <view class='yao'>拿起手机摇一摇</view>
+    </view>
+  </view>
+</view>

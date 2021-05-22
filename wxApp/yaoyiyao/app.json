@@ -8,21 +8,6 @@
     "navigationBarTitleText": "摇一摇",
     "navigationBarTextStyle": "white"
   },
-  "tabBar": {
-    "color": "",
-    "selectedColor": "",
-    "backgroundColor": "",
-    "position": "bottom",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "",
-        "text": "",
-        "iconPath": "",
-        "selectedIconPath": ""
-      }
-    ]
-  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
