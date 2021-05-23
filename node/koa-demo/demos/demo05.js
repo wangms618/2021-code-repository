@@ -1,18 +1,14 @@
 const Koa = require('koa')
+const route = require('koa-route')
 const app = new Koa()
 
 const main = ctx => {
-  // console.log(ctx.request.path);
-  if (ctx.request.path == '/') {
-    ctx.response.body = '首页'
-  } else if (ctx.request.path == '/a') {
-    ctx.response.body = 'a页面'
-  } else if (ctx.request.path == '/b') {
-    ctx.response.body = 'b页面'
-  } else {
-    ctx.response.body = 'c页面'
-  }
+  ctx.response.body = '首页'
+}
+const about = ctx => {
+  ctx.response.body = '关于'
 }
 
-app.use(main)
+app.use(route.get('/about', about))
+app.use(route.get('/', main))
 app.listen(3000)
