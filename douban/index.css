@@ -1,0 +1,113 @@
+body{
+  padding-top: 30px;
+}
+div{
+  padding: 0;
+  margin: 0;
+}
+#anony-nav-banner{
+  clear: both;
+  overflow: hidden;
+  background-color: #edf4ec;
+  margin-bottom: 30px;
+  margin-top: -30px;
+}
+#anony-nav-banner h1{
+  height: 20px;
+  width: 102px;
+  margin: 7px 13px;
+  background-size:contain ;
+}
+#anony-nav-banner h1 a{
+  height: 20px;
+}
+html{
+  color: #111;
+  background: #fff;
+}
+.anony-nav{
+  width: 1080px;
+  margin: 0 auto 25px;
+}
+.anony-nav-links{
+  float: right;
+  margin-top: 6px;
+}
+.anony-nav-links li{
+  display: inline-block;
+  zoom: 1;
+  margin: 0 14px 0 0px;
+}
+#anony-nav .anony-nav-links li a{
+  display: inline-block;
+  zoom: 1;
+  width: 40px;
+  height: 20px;
+  overflow: hidden;
+  margin: 0;
+  /* line-height: 20em; */
+  outline: none;
+  vertical-align: middle;
+}
+.site-name{
+  display: inline-block;
+  line-height: 24px;
+  height: 24px;
+  margin-top: 4px;
+  margin-right: 24px;
+  width: 73px;
+  background-image: url(https://img3.doubanio.com/f/sns/714b8751a533ef592bea5cd4603dbb9e713ded61/pics/sns/sitename.png);
+  /* 此时会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。 */
+  background-size: contain;
+  /* background-repeat 属性定义了图像的平铺模式。 */
+  background-repeat: no-repeat;
+  /* text-indent 属性规定文本块中首行文本的缩进。 */
+  text-indent: -999em;
+}
+#anony-nav .anony-srh{
+  position: relative;
+  display: inline-block;
+  zoom: 1;
+  /* 把此元素放置在父元素的中部。 */
+  vertical-align: middle;
+  width: 270px;
+  height: 30px;
+  border: 1px solid #c3c3c3;
+}
+from{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+#anony-nav .anony-srh .inp{
+  display: block;
+  height: 30px;
+  overflow: hidden;
+}
+#anony-nav .anony-srh .inp input{
+  width: 240px;
+  border: none;
+  font-size: 13px;
+  height: 20px;
+  padding: 5px;
+}
+#anony-nav .anony-srh .bn{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  background:url(https://img3.doubanio.com/f/sns/f71f15922ebd7c0ff0ea0e7a25577529efd8981a/pics/icon/bn_srh_1.png) 50% 50% no-repeat;
+}
+#anony-nav .anony-srh .bn input{
+  border: none;
+  background: transparent;
+  overflow: hidden;
+  width: 30px;
+  height: 30px;
+  font-size: 0;
+  color:transparent;
+  cursor: pointer;
+}
