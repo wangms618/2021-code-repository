@@ -1,0 +1,119 @@
+/* pages/noteClass/noteClass.wxss */
+.isClickMenu-note{
+  transform: translateX(100%) !important;
+}
+.isClickMenu-info{
+  transform: translateX(0%) !important;
+}
+.note-class-wrapper{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.note-class{
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  transform: translateX(0%);
+  padding: 0 44rpx;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  transition: transform 0.2s;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 10px 0;
+}
+.like{
+  margin-right: 10px;
+}
+
+.note-item{
+  position: relative;
+  height: 240rpx;
+  border-radius: 20rpx;
+  margin-bottom: 48rpx;
+  box-shadow: 0 0 10px 2px #ccc;
+}
+
+.note-item .bg{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 20rpx;
+  background-color: #ccc;
+  z-index: -1;
+  overflow: hidden;
+}
+.note-item .bg image{
+  width: 100%;
+  height: 100%;
+}
+.title{
+  display: inline-block;
+  width: 100%;
+  margin-top: 40rpx;
+  color: rgba(255, 255, 255, 1);
+  font-size: 40rpx;
+  text-align: center;
+}
+
+.person-info {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  transform: translateX(-100%);
+  background: #fff;
+  padding-right: 50rpx;
+  transition: transform 0.2s;
+}
+
+.person-info-content{
+  height: 100vh;
+  background: #e8e6e8;
+  padding: 105rpx 80rpx;
+  position: relative;
+  border-right: 1px solid #ccc;
+}
+.info-arrow-left{
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+.person-info-content .avatar{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.avatar image{
+  width: 100%;
+  height: 100%;
+}
+.username{
+  color: #101010;
+  font-size: 40rpx;
+  display: block;
+  text-align: center;
+}
+.setting{
+  margin-top: 80rpx;
+}
+.set-item{
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.set-item text{
+  vertical-align: middle;
+}
+.set-item van-icon{
+  vertical-align: middle;
+}

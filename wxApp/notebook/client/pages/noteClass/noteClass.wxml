@@ -1,0 +1,47 @@
+<!-- pages/noteClass/noteClass.wxml -->
+<view class="note-class-wrapper">
+  <view class="note-class {{ isClickMenu ? 'isClickMenu-note':''}}">
+    <view class="header">
+      <view bindtap="showMenu">
+        <van-icon name="wap-nav" size="20px" />
+      </view>
+      <view>
+        <van-icon class="like" name="like" size="20px" />
+        <van-icon name="search" size="20px" />
+      </view>
+    </view>
+    <scroll-view scroll-y="{{true}}">
+      <view class="note-item" wx:for="{{noteClassList}}" wx:key="index">
+        <view class="bg">
+          <image src="{{item.img}}" />
+        </view>
+        <text class="title">{{item.title}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="person-info {{ isClickMenu ? 'isClickMenu-info':''}}">
+    <view class="person-info-content">
+      <view class="info-arrow-left" bindtap="hideMenu">
+        <van-icon name="arrow-left" size="20px" />
+      </view>
+      <view class="avatar">
+        <image src="{{avatar}}" />
+      </view>
+      <text class="username">{{username}}</text>
+      <view class="setting">
+        <view class="set-item">
+          <van-icon name="friends-o" size="18px" />
+          <text>个人主页</text>
+        </view>
+        <view class="set-item">
+          <van-icon name="friends-o" size="18px" />
+          <text>通知</text>
+        </view>
+        <view class="set-item">
+          <van-icon name="friends-o" size="18px" />
+          <text>退出登录</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
