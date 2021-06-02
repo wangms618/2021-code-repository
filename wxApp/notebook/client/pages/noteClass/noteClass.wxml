@@ -11,7 +11,7 @@
       </view>
     </view>
     <scroll-view scroll-y="{{true}}">
-      <view class="note-item" wx:for="{{noteClassList}}" wx:key="index">
+      <view class="note-item" wx:for="{{noteClassList}}" wx:key="index" bindtap="goNoteList" data-index="{{index}}">
         <view class="bg">
           <image src="{{item.img}}" />
         </view>

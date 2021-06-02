@@ -8,38 +8,46 @@ Page({
     avatar: "../../images/raw_1512446140.jpeg",
     username: "KiKa",
     noteClassList: [{
-        img: "../../images/raw_1512446214.jpeg",
-        title: "美食",
-      },
-      {
-        img: "../../images/raw_1512446225.jpeg",
-        title: "旅行",
-      },
-      {
-        img: "../../images/raw_1512446234.jpeg",
-        title: "汽车",
-      },
-      {
-        img: "../../images/raw_1512446243.jpeg",
-        title: "时尚",
-      },
-      {
-        img: "../../images/raw_1512446251.jpeg",
-        title: "科技",
-      },
+      img: "../../images/raw_1512446214.jpeg",
+      title: "美食",
+    },
+    {
+      img: "../../images/raw_1512446225.jpeg",
+      title: "旅行",
+    },
+    {
+      img: "../../images/raw_1512446234.jpeg",
+      title: "汽车",
+    },
+    {
+      img: "../../images/raw_1512446243.jpeg",
+      title: "时尚",
+    },
+    {
+      img: "../../images/raw_1512446251.jpeg",
+      title: "科技",
+    },
     ],
-    isClickMenu:false
+    isClickMenu: false
   },
 
   showMenu() {
     this.setData({
-      isClickMenu:true
+      isClickMenu: true
     })
   },
   hideMenu() {
     this.setData({
-      isClickMenu:false
+      isClickMenu: false
     })
+  },
+
+  goNoteList(e) {
+    console.log(e);
+    let title = this.data.noteClassList[e.currentTarget.dataset.index].title
+    wx.navigateTo({ url: `/pages/noteList/noteList?title=${title}` });
+
+    // console.log(e.currentTarget.dataset.index);
   },
   /**
    * 生命周期函数--监听页面加载

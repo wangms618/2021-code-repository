@@ -50,8 +50,22 @@ let insertUser = function (username, userpwd, nickname) {
   let _sql = `insert into users(username,userpwd,nickname) values("${username}","${userpwd}","${nickname}");`
   return allServices.query(_sql)
 }
+
+
+// 根据类型查找对应文章列表
+let findNoteListByType = function (type) {
+  let _sql = `select * from note where note_type="${type}";`
+  return allServices.query(_sql)
+}
+
+let findNoteDetailById = function (id) {
+  let _sql = `select * from note where id = "${id}";`
+  return allServices.query(_sql)
+}
 module.exports = {
   userLogin,
   finduser,
-  insertUser
+  insertUser,
+  findNoteListByType,
+  findNoteDetailById
 }

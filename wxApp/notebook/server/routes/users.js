@@ -84,4 +84,56 @@ router.post('/userRegister', async (ctx, next) => {
     }
   })
 })
+
+
+// 根据类型查找对应文章列表
+router.post('/findNoteListByType', async (ctx, next) => {
+  let note_type = ctx.request.body.note_type
+  console.log(note_type);
+  await userService.findNoteListByType(note_type).then(res => {
+    // console.log(res);
+    let r = ''
+    if (res.length) {
+      r = 'ok'
+      ctx.body = {
+        code: 200,
+        data: res,
+        mess: '成功'
+      }
+    } else {
+      r = 'error'
+      ctx.body = {
+        code: '80001',
+        data: r,
+        mess: '失败'
+      }
+    }
+  })
+})
+
+// 根据id查找对象的文章详情
+router.post('/findNoteDetailById', async (ctx, next) => {
+  let id = ctx.request.body.id
+  // console.log(id);
+  await userService.findNoteDetailById(id).then(res => {
+    // console.log(res);
+    let r = ''
+    if (res.length) {
+      r = 'ok'
+      ctx.body = {
+        code: 200,
+        data: res,
+        mess: '成功'
+      }
+    } else {
+      r = 'error'
+      ctx.body = {
+        code: '80001',
+        data: r,
+        mess: '失败'
+      }
+    }
+  })
+})
+
 module.exports = router
