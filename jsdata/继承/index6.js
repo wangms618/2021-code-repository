@@ -1,18 +1,25 @@
+function SuperType(name) {
+  this.name = name
+  this.colors = ['red', 'blue', 'green']
+}
 SuperType.prototype.sayName = function () {
   console.log(this.name);
 }
-function SuperType(name) {
-  this.name = name
-  this.colors = ['red', 'green', 'blue']
-}
 
-SubType.prototype = new SuperType()
-SubType.prototype.sayAge = function () {
-  console.log(this.age);
-}
-function SubType(name, age) {
+// 创建超类原型的一个副本
+var anotherPrototype = Object.create(SuperType.prototype)
+anotherPrototype.constructor = SubType
+SubType.prototype = anotherPrototype
+
+// SubType.prototype = new SuperType()
+
+
+function subType(name, age) {
   SuperType.call(this, name)
   this.age = age
+}
+SubType.prototype.sayAge = function () {
+  console.log(this.age);
 }
 
 var instance1 = new SubType('凯凯', 18)
