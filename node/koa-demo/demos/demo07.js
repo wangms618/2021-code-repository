@@ -1,6 +1,6 @@
 const Koa = require('koa')
 const app = new Koa()
-const logger = (ctx, next) => {
+const logger = (ctx, next) => {  // 中间键
   console.log(`${Date.now()} ${ctx.request.method} ${ctx.request.url}`);
   next()
 }
