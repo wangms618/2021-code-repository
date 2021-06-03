@@ -58,8 +58,17 @@ let findNoteListByType = function (type) {
   return allServices.query(_sql)
 }
 
+// 根据id查找对象的文章详情
 let findNoteDetailById = function (id) {
   let _sql = `select * from note where id = "${id}";`
+  return allServices.query(_sql)
+}
+
+// 发布笔记
+let insertNote = function (options) {
+  let _sql = `insert into note set c_time="${options.c_time}",m_time="${options.m_time}",
+  note_content="${options.noteContent}",head_img="${options.noteImg}",title="${options.noteTitle}",
+  note_type="${options.note_type}",useId="${options.useId}",nickname="${options.nickname}";`
   return allServices.query(_sql)
 }
 module.exports = {
@@ -67,5 +76,6 @@ module.exports = {
   finduser,
   insertUser,
   findNoteListByType,
-  findNoteDetailById
+  findNoteDetailById,
+  insertNote
 }

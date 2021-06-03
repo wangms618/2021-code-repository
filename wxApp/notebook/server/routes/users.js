@@ -91,7 +91,7 @@ router.post('/findNoteListByType', async (ctx, next) => {
   let note_type = ctx.request.body.note_type
   console.log(note_type);
   await userService.findNoteListByType(note_type).then(res => {
-    // console.log(res);
+    console.log(res.length);
     let r = ''
     if (res.length) {
       r = 'ok'
@@ -119,6 +119,41 @@ router.post('/findNoteDetailById', async (ctx, next) => {
     // console.log(res);
     let r = ''
     if (res.length) {
+      r = 'ok'
+      ctx.body = {
+        code: 200,
+        data: res,
+        mess: '成功'
+      }
+    } else {
+      r = 'error'
+      ctx.body = {
+        code: '80001',
+        data: r,
+        mess: '失败'
+      }
+    }
+  })
+})
+
+
+// 发布笔记
+router.post('/publishNote', async (ctx, next) => {
+  let options = {}
+  options.noteContent = ctx.request.body.noteContent
+  options.noteTitle = ctx.request.body.noteTitle
+  options.noteImg = ctx.request.body.noteImg
+  options.note_type = ctx.request.body.note_type
+  let timestamp = Date.parse(new Date());
+  let n = timestamp;
+  let date = new Date(n);
+  options.c_time = date.toLocaleDateString()
+  options.m_time = date.toLocaleDateString()
+  options.useId = ctx.request.body.useId
+  options.nickname = ctx.request.body.nickname
+  await userService.insertNote(options).then(res => {
+    // console.log(res.length)
+    if (res.affectedRows) {
       r = 'ok'
       ctx.body = {
         code: 200,

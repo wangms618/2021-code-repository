@@ -6,7 +6,7 @@
         <van-icon name="wap-nav" size="20px" />
       </view>
       <view>
-        <van-icon class="like" name="like" size="20px" />
+        <van-icon class="like" name="edit" size="20px" bindtap="toPublish"/>
         <van-icon name="search" size="20px" />
       </view>
     </view>

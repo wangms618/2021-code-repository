@@ -41,13 +41,18 @@ Page({
       isClickMenu: false
     })
   },
-
   goNoteList(e) {
     console.log(e);
     let title = this.data.noteClassList[e.currentTarget.dataset.index].title
     wx.navigateTo({ url: `/pages/noteList/noteList?title=${title}` });
 
     // console.log(e.currentTarget.dataset.index);
+  },
+  // 写文章，写日记
+  toPublish() {
+    wx.navigateTo({
+      url: '/pages/noteEdit/noteEdit',
+    })
   },
   /**
    * 生命周期函数--监听页面加载

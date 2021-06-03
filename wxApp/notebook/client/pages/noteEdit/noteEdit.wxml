@@ -1,0 +1,24 @@
+<!-- pages/noteEdit/noteEdit.wxml -->
+<view class="publish-note">
+  <editor placeholder="insert text here..." bindinput="noteContent"></editor>
+  <view class="note-wrap">
+    <view class="note-title">
+      <view>请输入标题</view>
+      <van-field value="{{ value }}" placeholder="请输入标题" border="{{ true }}" bind:change="noteTitle" />
+    </view>
+    <view class="note-title">
+      <view>上传图片</view>
+      <van-uploader file-list="{{ fileList }}" bind:after-read="noteImg" />
+    </view>
+    <view class="note-title">
+      <view>
+        请选择分类
+        <text class="note-type" bindtap="showAction">选择分类</text>
+      </view>
+      <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:click-overlay="onClose" bind:select="onSelect" />
+    </view>
+    <view class="publish-btn">
+      <van-button type="primary" size="large" bindtap="publish">发布笔记</van-button>
+    </view>
+  </view>
+</view>
