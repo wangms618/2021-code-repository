@@ -1,0 +1,238 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+/* .audio{
+  position: absolute;
+  z-index: 99999;
+} */
+.swiper-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}  
+.swiper-slide{
+  width: 100%;
+  height: 100%;
+}
+.swiper-wrapper{
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide:first-child{
+  /* background-image: url(./img/indexbg.png); */
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.f-background img{
+  width: 100%;
+  height: 100%;
+}
+.music-btn{
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 9999;
+  width: 100px;
+  height: 100px;
+}
+.music-btn img{
+  width: 100%;
+  height: 100%;
+}
+.baogao-img{
+  position: absolute;
+  top: 90px;
+  right: 150px;;
+  height: 86px;
+}
+.next-pages{
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  z-index: 9999;
+}
+.view{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: linear-gradient(60deg,#f8ddd1,#faece5 73%,#fad2c0);
+  position: relative;
+}
+.sun{
+  position: absolute;
+  top: 20%;
+  left: 14%;
+}
+.sun img{
+  width: 125%;
+  height: 125%;
+}
+.art{
+  /* transform: scale(.5); */
+  position: absolute;
+  width: 750px;
+  height: 1334px;
+  top: -140px;
+  right: 0;
+  transform-origin: top right;
+}
+.swing{
+  background: url(./img/body.png);
+  width: 478px;
+  height: 1038px;
+  position: absolute;
+  z-index: 21;
+  top: -180.25px;
+  left: 226px;
+  transform-origin: -16.10878661% -29.76878613%;
+  /* animation  使用简写属性，将动画与 div 元素绑定*/
+  /* cubic-bezier 从开始到结束的不同速度过渡效果： */
+  /* 重复无限次 infinite */
+  animation: qiuqian 6s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite; 
+  /* animation-iteration-count: infinite; */
+}
+.swing .leg2{
+  position: absolute;
+  z-index: 22;
+  width: 130px;
+  height: 32px;
+  left: 185.375px;
+  top: 958px;
+  background: url(./img/leg.png) no-repeat;
+  /* 该属性可以改变元素的原点位置 */
+  transform-origin: 91.1538461538462% 33.59375%;
+  animation: leg2 8s ease infinite;;
+}
+.swing .leg2 .jiojio{
+  position: absolute;
+  background: url(./img/jio.png);
+  left: -27.75px;
+  top: -10.5px;
+  width: 57px;
+  height: 44px;
+  z-index: 22;
+}
+.leg1{
+  position: absolute;
+  background:url(./img/leg-right.png);
+  left: 290.375px;
+  top: 955.25px;
+  width: 63px;
+  height: 130px;
+  animation: leg1 8s cubic-bezier(.455,.03,.515,.955) infinite;
+  transform-origin: 17.5% 15%;
+}
+.leg1 .jiojio{
+  position: absolute;
+  background: url(./img/jio2.png);
+  left: 26.25px;
+  top: 102.5px;
+  width: 39px;
+  height: 62px;
+  z-index: 22;
+}
+.neck{
+  position: absolute;
+  background: url(./img/neck.png);
+  left: 451.125px;
+  top: 855.5px;
+  width: 51px;
+  height: 42px;
+}
+.head{
+  position: absolute;
+  background: url(./img/head.png);
+  left: 451.125px;
+  top: 855.5px;
+  width: 51px;
+  height: 42px;
+  animation: head 6s infinite;
+}
+.head .part{
+  position: absolute;
+  background: url(./img/part.png);
+  left: 20px;
+  top: 2px;
+  width: 40px;
+  height: 47px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes qiuqian {
+  0%{
+    transform: rotateZ(0deg);
+  }
+  50%{
+    transform: rotateZ(31.99359208deg);
+  }
+  100%{
+    transform: rotateZ(0deg);
+  }
+}
+@keyframes leg2{
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+      transform: rotate(-86.98199658deg);
+  }
+  50% {
+      transform: rotate(0deg);
+  }
+  75% {
+      transform: rotate(-86.98199658deg);
+  }
+  100% {
+      transform: rotate(0deg);
+  }
+}
+@keyframes leg1{
+  0%{
+    transform: rotate(0deg);
+  }
+  25%{
+    transform: rotate(90deg);
+  }
+  50%{
+    transform: rotate(0deg);
+  }
+  75%{
+    transform: rotate(90deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+
+}
+@keyframes head{
+  0%{
+    transform: rotate(0deg);
+  }
+  25%{
+    transform: rotate(-60deg);
+  }
+  50%{
+    transform: rotate(0deg);
+  }
+  75%{
+    transform: rotate(-60deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+
+}

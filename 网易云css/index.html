@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>网易云</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <!-- <audio controls="controls">
+    <source src="./img/bgm.mp3" type="audio/ogg" />
+  </audio> -->
+  <div class="music-btn off">
+    <img src="./img/music.png" alt="">
+  </div>
+  <div class="next-pages">
+    <img src="http://s5.music.126.net/static_public/5c21db8d4684556c72180904/gx.4ae36e08269404412ecdb99e9453ca17.svg"
+      alt="">
+  </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="f-background">
+          <img src="./img/indexbg.png" alt="">
+        </div>
+        <div class="baogao-img">
+          <img src="./img/baogao.png" alt="">
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="view">
+          <div class="sun">
+            <img src="./img/sun.png" alt="">
+          </div>
+          <div class="art">
+            <div class="swing">
+              <div class="leg2">
+                <div class="jiojio"></div>
+              </div>
+              <div class="leg1">
+                <div class="jiojio"></div>
+              </div>
+              <div class="neck"></div>
+              <div class="head">
+                <div class="part"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">Slide 3</div>
+    </div>
+  </div>
+  <script>
+    // const viewSpecial = document.querySelector('.view .paras');
+    // const musicBtn = document.querySelector('.music-btn');
+    // let defaultMusicPlay = true;
+    // const bgMusic = document.querySelector('#j-bgm');
+    // const id18Juian = document.querySelector('.z-juanAni2');
+    // setInterval(() => {
+    //   id18Juian.classList.remove('z-juanAni2');
+    //   setTimeout(() => {
+    //     id18Juian.classList.add('z-juanAni2');
+    //   }, 100);
+    // }, 3000)
+    // musicBtn.addEventListener('click', () => {
+    //   if (defaultMusicPlay) {
+    //     bgMusic.play();
+    //   } else {
+    //     bgMusic.pause();
+    //   }
+    //   defaultMusicPlay = !defaultMusicPlay;
+    //   musicBtn.classList.toggle('off');
+    // });
+    var mySwiper = new Swiper('.swiper-container', {
+      direction: 'vertical', // 垂直切换选项
+      autoplay: false,
+    })
+  </script>
+</body>
+
+</html>
