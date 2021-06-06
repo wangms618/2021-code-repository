@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <input type="text" id="inp">
+    <span id="sp">hello world</span>
+  </div>
+  <script>
+    let inp = document.getElementById('inp')
+    let sp = document.getElementById('sp')
+    // demo.addEventListener('input', function (e) {
+    //   console.log(e.data);
+    //   document.getElementById('sp').innerHTML = this.value
+    // })
+
+
+    let obj = {
+      text: 1
+    }
+    let temp = null
+    // 数据劫持
+    Object.defineProperty(obj, 'text', {
+      get() {
+        // 获取数据 
+        return temp
+      },
+      set(newVal) {
+        // 数据更新
+        // console.log();
+        temp = newVal
+        sp.innerHTML = newVal
+      }
+    })
+    inp.addEventListener('keyup', function (e) {
+      // console.log(e.target.value);
+      obj.text = e.target.value
+      console.log(obj.text);
+    })
+  </script>
+</body>
+
+</html>
