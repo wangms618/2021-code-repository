@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/homePage/homePage",
+    "pages/find/find",
+    "pages/mine/mine",
+    "pages/footPrint/footPrint"
+  ],
+  "tabBar": {
+    "color": "",
+    "selectedColor": "",
+    "backgroundColor": "white",
+    "position": "bottom",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "",
+        "iconPath": "./images/6.png",
+        "selectedIconPath": "./images/5.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "",
+        "iconPath": "./images/2.png",
+        "selectedIconPath": "./images/1.png"
+      },
+      {
+        "pagePath": "pages/footPrint/footPrint",
+        "text": "",
+        "iconPath": "./images/8.png",
+        "selectedIconPath": "./images/7.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "",
+        "iconPath": "./images/3.png",
+        "selectedIconPath": "./images/4.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "心情瓶子",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
