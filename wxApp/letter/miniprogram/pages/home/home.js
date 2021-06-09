@@ -1,4 +1,6 @@
 // pages/home/home.js
+let collect = false
+let thumbs = false
 Page({
 
   /**
@@ -30,7 +32,31 @@ Page({
       imgUrl:'../../images/love.png',
       selectName:'心情'
     }
-  ],
+    ],
+    thumbsImg:'../../images/thumbs-down.png',
+    collectImg:'../../images/collect-down.png',
+    comment:'../../images/comment.png',
+  },
+  // 点赞
+  thumbsClick(){
+    // 如果默认状态为false，则不满足条件，用第二张图片地址，点赞变亮
+    this.setData({
+      thumbsImg:thumbs ? "../../images/thumbs-down.png" : "../../images/thumbs-up.png"
+    })
+    thumbs = !thumbs
+  },
+  // 收藏
+  collectClick(){
+    this.setData({
+      collectImg:collect ? "../../images/collect-down.png" : "../../images/collect-up.png"
+    })
+    collect = !collect
+  },
+  // 评论
+  commentClick(){
+    wx.navigateTo({
+      url: '/pages/nowArticle/nowArticle',
+    })
   },
 
   /**

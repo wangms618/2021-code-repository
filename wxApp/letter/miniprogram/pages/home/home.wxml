@@ -1,14 +1,16 @@
 <!-- pages/home/home.wxml -->
 <view class="main">
-  <swiper autoplay="true" interval="3000" duration="1500" circular="true" indicator-dots="true" indicator-color="white" >
-    <block wx:for="{{imgUrls}}" wx:key="index">
-      <swiper-item><image mode="aspectFill" class="slide-image" src="{{item}}"></image></swiper-item>
-    </block>
-  </swiper>
+  <view class="head">
+    <swiper autoplay="true" interval="3000" duration="1500" circular="true" indicator-dots="true" indicator-color="white" class="head-sw">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item><image mode="aspectFill" class="slide-image" src="{{item}}"></image></swiper-item>
+      </block>
+    </swiper>
+  </view>
   <view class="select">
     <scroll-view scroll-x="true" class="select-sv">
       <block wx:for="{{imgSelect}}" wx:key="index">
-      <view class="scroll-view_H">
+      <view class="select-page">
         <image mode="aspectFit" src="{{item.imgUrl}}"></image>
         <text class="select-name">{{item.selectName}}</text>
       </view>
@@ -17,19 +19,42 @@
     </scroll-view>
   </view>
   <view class="content">
+        <!-- 热点文章 -->
+    <view class="hot-essay">最热文章</view>
+
     <view class="content-mode">
       <!-- 头像 名字 时间 -->
-      <view class="content-news">
-        <image></image>
+      <view class="content-title">
+        <view class="content-title_pic"><image src="../../images/dbook.jpg" mode="aspectFill"></image></view>
+        <view class="content-title_xinxi">
+          <text class="xinxi-name">龙江王冰冰</text>
+          <text class="xinxi-time">昨天</text>
+        </view>
       </view>
       <!-- 文章节选 -->
       <view class="content-text">
-        <text>我们遗憾的并不是错过了最好的人，而是遇到再好的人，却已经把最好的自己用完了</text>
+        <text>我们遗憾的并不是错过了最好的人，而是遇到再好的人，却已经把最好的自己用完了。我们遗憾的并不是错过了最好的人，而是遇到再好的人，却已经把最好的自己用完了</text>
       </view>
       <!-- 文章配图 -->
-      <view class="content-pic">
+      <!-- <view class="content-pic">
         <image></image>
+      </view> -->
+      <view class="community">
+      <!-- 点赞 -->
+      <view class="community-thumbs_up">
+        <image src="{{thumbsImg}}" bindtap="thumbsClick"/>
+      </view>
+      <!-- 评论 -->
+      <view class="community-comment" bindtap="commentClick">
+        <image src="{{comment}}" />
+      </view>
+      <!-- 收藏 -->
+      <view class="community-collect" bindtap="collectClick">
+      <image src="{{collectImg}}" />
+      </view>
       </view>
     </view>
+
+
   </view>
 </view>

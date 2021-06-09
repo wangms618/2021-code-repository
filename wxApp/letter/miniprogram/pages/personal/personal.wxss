@@ -1,0 +1,51 @@
+/* miniprogram/pages/mine/personal/personal.wxss */
+.box1{
+  margin:80rpx 40rpx 0 0;
+  float: right;
+ 
+}
+
+ .picture{
+  background-size:cover;
+  z-index: 1;
+  width: 250rpx;
+  height: 250rpx;
+  border: 5rpx solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 6rpx 16rpx rgba(25,118,210,0.1);
+ }
+ .picture2{
+  margin: 20rpx;
+  float: right;
+   width: 70rpx;
+   height: 70rpx;
+
+ }
+ .picture3{
+  margin: 20rpx;
+  width: 70rpx;
+  height: 70rpx;
+  
+}
+ .boxs{
+   margin: 400rpx 0;
+ }
+ .box2{
+   margin: 50rpx auto;
+   width: 75%;
+   border-bottom: 1px solid rgba(101, 142, 214, .71);
+ }
+ .box3{
+   letter-spacing: 5rpx;
+   padding-bottom: 20rpx;
+   margin-left: 20rpx;
+   color:rgba(79, 108, 167, 100)
+ }
+ .picture1{
+  width:100vw;
+  background-size:cover;
+  height:100vh;
+  position:fixed; 
+  z-index: 1;
+  opacity: 0.23;
+}

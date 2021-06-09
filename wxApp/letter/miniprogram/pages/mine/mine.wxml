@@ -1,2 +1,15 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<!-- 用户信息 -->
+<view class="user-info_container">
+  <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill" />
+  <view class="info">
+    <view class="name" wx:if="{{userInfo}}">{{userInfo.nickName}}</view>
+    <button class="authorize" wx:else open-type="getUserInfo" bindgetuserinfo="onAuthorize">
+      授权登录
+    </button>
+  </view>
+</view>
+<view class="pi-container">
+  <view class="pie">
+    <ec-vanvas></ec-vanvas>
+  </view>
+</view>

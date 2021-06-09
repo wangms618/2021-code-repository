@@ -1,0 +1,23 @@
+<!--miniprogram/pages/mine/thumbs-up/thumbs-up.wxml-->
+<view>
+  <image src="../../../images/10.jpg"  class="picture1" mode="aspectFill"></image>
+  <view>
+    <image src="../../../images/14.png"  class="picture3"></image>
+    <view class="boxx">
+  <view class="box1">
+    <image src="../../../images/12.jpg" mode="aspectFit" class="picture"></image>
+      <view class="box2">
+          <text class="adress"> xxx地方</text>
+          <image src="../../../images/16.png" class="picture2"></image>
+      </view>
+  </view>
+  <view class="box1">
+    <image src="../../../images/12.jpg" mode="aspectFit" class="picture"></image>
+      <view class="box2">
+          <text class="adress"> xxx地方</text>
+          <image src="../../../images/16.png" class="picture2"></image>
+      </view>
+  </view>
+</view>
+</view>
+</view>

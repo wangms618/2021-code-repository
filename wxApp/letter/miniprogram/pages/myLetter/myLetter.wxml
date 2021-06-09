@@ -1,0 +1,23 @@
+<!--miniprogram/pages/mine/myLetter/myLetter.wxml-->
+<view>
+  <image src="../../../images/10.jpg"  class="picture1" mode="aspectFill"></image>
+  <view>
+    <image src="../../../images/14.png"  class="picture3"></image>
+  <view class="box1">
+    <view class="data1">x年x月x日</view>
+    <view class="letter">对他并没有多大印象，他个子跟我差 不多高，喜欢打篮球，直到活动结束 那天要离开了，他一句对我关心的话 使我沦陷了，后面的几天就经常想 他，我知道离开的那一刻我心动了， 可能他只是一句客套话，但是就是心 动了，骗不了自己，虽然他不是你们 印象中的帅哥，</view>
+  </view>
+  <view class="box1">
+    <view class="data1">x年x月x日</view>
+    <view class="letter">对他并没有多大印象，他个子跟我差 不多高，喜欢打篮球，直到活动结束 那天要离开了，他一句对我关心的话 使我沦陷了，后面的几天就经常想 他，我知道离开的那一刻我心动了， 可能他只是一句客套话，但是就是心 动了，骗不了自己，虽然他不是你们 印象中的帅哥，</view>
+  </view>
+  <view class="box1">
+    <view class="data1">x年x月x日</view>
+    <view class="letter">对他并没有多大印象，他个子跟我差 不多高，喜欢打篮球，直到活动结束 那天要离开了，他一句对我关心的话 使我沦陷了，后面的几天就经常想 他，我知道离开的那一刻我心动了， 可能他只是一句客套话，但是就是心 动了，骗不了自己，虽然他不是你们 印象中的帅哥，</view>
+  </view>
+  <view class="box1">
+    <view class="data1">x年x月x日</view>
+    <view class="letter">对他并没有多大印象，他个子跟我差 不多高，喜欢打篮球，直到活动结束 那天要离开了，他一句对我关心的话 使我沦陷了，后面的几天就经常想 他，我知道离开的那一刻我心动了， 可能他只是一句客套话，但是就是心 动了，骗不了自己，虽然他不是你们 印象中的帅哥，</view>
+  </view>
+</view>
+</view>

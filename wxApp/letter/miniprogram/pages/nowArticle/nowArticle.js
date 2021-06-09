@@ -1,27 +1,18 @@
-// pages/mine/mine.js
+// miniprogram/pages/nowArticle/nowArticle.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo:'',
+
   },
-  onAuthorize(e){
-    console.log(e.detail.userInfo);
-    this.setData({
-      userInfo:e.detail.userInfo
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getUserInfo({
-      success:function(res){
-        // console.log(res);
-      }
-    })
+
   },
 
   /**

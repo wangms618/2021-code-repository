@@ -1,0 +1,41 @@
+/* miniprogram/pages/mine/myLetter/myLetter.wxss */
+.box1{
+  margin: 60rpx auto;
+  height:20vh;
+  width: 80%;
+  border: 1px solid rgba(130, 153, 188, 100);
+} 
+.data1{
+  font-size:40rpx;
+  color: #4d4d7c;
+   text-align: left;
+   margin-left: 40rpx;
+}
+
+.picture1{
+  width:100vw;
+  background-size:cover;
+  height:100vh;
+  position:fixed; 
+  z-index: 1;
+  opacity: 0.23;
+}
+.picture3{
+  margin: 20rpx;
+  width: 70rpx;
+  height: 70rpx;
+  
+}
+.letter{
+  display: -webkit-box;
+   word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3; 
+  margin: 0 40rpx;
+  text-indent: 2rem;
+  letter-spacing: 5rpx;
+  line-height: 55rpx;
+  color: rgb(124, 171, 209);
+}

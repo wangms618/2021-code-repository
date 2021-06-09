@@ -1,0 +1,24 @@
+<view>
+  <image src="../../../images/10.jpg"  class="picture1" mode="aspectFill"></image>
+  <view>
+    <image src="../../../images/14.png"  class="picture3"></image>
+  <image src="../../../images/15.png"  class="picture2"></image>
+    <view class="box1">
+     <image src="../../../images/12.jpg" class="picture" mode="aspectFit"></image>
+    </view>
+    <view class="boxs">
+    <view class="box2">
+      <view class="box3">用户名 <input type="text"></input></view>
+    </view>
+    <view class="box2">
+      <view class="box3">性别 <input type="text"></input></view>
+    </view>
+    <view class="box2">
+      <view class="box3">生日 <input type="text"></input></view>
+    </view>
+    <view class="box2">
+      <view class="box3">个性签名 <input type="text"></input></view>
+    </view>
+  </view>
+</view>
+</view>

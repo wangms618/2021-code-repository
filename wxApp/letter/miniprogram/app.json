@@ -1,10 +1,15 @@
 {
   "pages": [
-    "pages/home/home",
-    "pages/homePage/homePage",
-    "pages/find/find",
     "pages/mine/mine",
-    "pages/footPrint/footPrint"
+    "pages/home/home",
+    "pages/write/write",
+    "pages/footPrint/footPrint",
+    "pages/collection/collection",
+    "pages/homePage/homePage",
+    "pages/myLetter/myLetter",
+    "pages/personal/personal",
+    "pages/thumbs-up/thumbs-up",
+    "pages/nowArticle/nowArticle"
   ],
   "tabBar": {
     "color": "",
@@ -15,27 +20,27 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "",
-        "iconPath": "./images/6.png",
-        "selectedIconPath": "./images/5.png"
+        "text": "今选",
+        "iconPath": "./images/1.png",
+        "selectedIconPath": "./images/2.png"
       },
       {
-        "pagePath": "pages/find/find",
-        "text": "",
-        "iconPath": "./images/2.png",
-        "selectedIconPath": "./images/1.png"
+        "pagePath": "pages/write/write",
+        "text": "随笔",
+        "iconPath": "./images/write1.png",
+        "selectedIconPath": "./images/write2.png"
       },
       {
         "pagePath": "pages/footPrint/footPrint",
-        "text": "",
-        "iconPath": "./images/8.png",
-        "selectedIconPath": "./images/7.png"
+        "text": "动态",
+        "iconPath": "./images/3.png",
+        "selectedIconPath": "./images/4.png"
       },
       {
         "pagePath": "pages/mine/mine",
-        "text": "",
-        "iconPath": "./images/3.png",
-        "selectedIconPath": "./images/4.png"
+        "text": "我的",
+        "iconPath": "./images/5.png",
+        "selectedIconPath": "./images/6.png"
       }
     ]
   },
