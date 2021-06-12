@@ -1,18 +1,109 @@
 // miniprogram/pages/write/write.js
+wx.cloud.init()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    show:false,
+    actions:[
+      {name:'美食'},
+      {name:'创意'},
+      {name:'时尚'},
+      {name:'旅行'},
+      {name:'心情'},
+    ],
+    writeContent:'',
+    writeTitle:'',
+    fileList: [],
+    writeImg:'',
+    write_type:'',
+    userInfo:''
   },
-
+  writeContent(e){
+    console.log(e.detail.html);
+    this.setData({
+      writeContent:e.detail.html
+    })
+  },
+  writeTitle(e){
+    // console.log(e.detail);
+    this.setData({
+      writeTitle:e.detail
+    })
+  },
+  writeImg(event){
+    const { file } = event.detail;
+    wx.cloud.uploadFile({
+      cloudPath:`${new Date().getTime()}.png`,
+      filePath:file.url,
+    }).then(res=>{
+      let  fileList = []
+      // 传值类型为对象
+      fileList.push({url:res.fileID})
+      this.setData({
+        fileList,
+        writeImg:res.fileID // 保存这个字符串，后面传给后端
+      })
+      // console.log(this.data.writeImg);
+    }).catch(error=>{
+      console.log(error);
+    })
+  },
+  showAction(){
+    this.setData({
+      show:true
+    })
+  },
+  onClose(){
+    this.setData({
+      show:false
+    })
+  },
+  onSelect(e){
+    // console.log(e.detail.name);
+    this.setData({
+      show:false,
+      write_type: e.detail.name
+    })
+  },
+  // 发布事件
+  publish(){
+    let self = this
+    // console.log(this.data.userInfo);
+    wx.cloud.callFunction({
+      name:'getWriteInfo',
+      data:{
+        localUserInfo: self.data.userInfo,
+        write_type:self.data.write_type,
+        writeImg:self.data.writeImg,
+        writeTitle:self.data.writeTitle,
+        writeContent:self.data.writeContent
+      },
+      success(res){
+        console.log(res);
+      }
+    })
+  },
+  // 取本地信息
+  initUserInfo() {
+    wx.getStorage({
+      key: 'userInfo',
+      success: (res) => {
+        // console.log(res);
+        // 回调函数返回本地信息，将本地信息放入data
+        this.setData({
+          userInfo: res.data
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initUserInfo()
   },
 
   /**

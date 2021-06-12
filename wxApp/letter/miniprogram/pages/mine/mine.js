@@ -7,21 +7,52 @@ Page({
   data: {
     userInfo:'',
   },
+  gotoPage(){
+    wx.navigateTo({
+      url: '/pages/collection/collection',
+    })
+  },
   onAuthorize(e){
-    console.log(e.detail.userInfo);
-    this.setData({
-      userInfo:e.detail.userInfo
+    // 判断用户信息
+    if (e.detail.userInfo) { 
+      this.setData({
+        userInfo: e.detail.userInfo  // 存储
+      })
+      // 本地保存首次授权得到的用户信息
+      wx.setStorageSync('userInfo', e.detail.userInfo);
+      let self = this
+      // 存入数据库，后序可删除
+      wx.cloud.callFunction({
+        name:'getUserInfo',
+        data:{
+          abc: self.data.userInfo
+        },
+        // 返回函数
+        success(res){
+          console.log(res);
+        }
+    })
+  }
+  },
+  // 取本地信息
+  initUserInfo() {
+    wx.getStorage({
+      key: 'userInfo',
+      success: (res) => {
+        // console.log(res);
+        // 回调函数返回本地信息，将本地信息放入data
+        this.setData({
+          userInfo: res.data
+        })
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getUserInfo({
-      success:function(res){
-        // console.log(res);
-      }
-    })
+    // 页面加载时调用函数，如果本地有信息则调用成功
+    this.initUserInfo()
   },
 
   /**

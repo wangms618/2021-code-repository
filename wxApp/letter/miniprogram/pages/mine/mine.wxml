@@ -8,8 +8,25 @@
     </button>
   </view>
 </view>
-<view class="pi-container">
-  <view class="pie">
-    <ec-vanvas></ec-vanvas>
+<view class="options">
+  <view class="boxs">
+    <navigator >
+      <view class="box2" bindtap="gotoPage">
+        <view class="box3">编辑个人信息<image src="../../images/13.png" class="picture2"></image>
+        </view>
+      </view>
+    </navigator>
+    <view class="box2">
+      <view class="box3">我的信件<image src="../../images/13.png" class="picture2"></image>
+      </view>
+    </view>
+    <view class="box2">
+      <view class="box3">收藏的信件<image src="../../images/13.png" class="picture2"></image>
+      </view>
+    </view>
+    <view class="box2">
+      <view class="box3">点赞的信件<image src="../../images/13.png" class="picture2"></image>
+      </view>
+    </view>
   </view>
 </view>
