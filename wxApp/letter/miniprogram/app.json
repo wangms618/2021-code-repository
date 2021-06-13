@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/letterDetail/letterDetail",
+    "pages/home/home",
     "pages/write/write",
     "pages/mine/mine",
     "pages/collection/collection",
-    "pages/home/home",
     "pages/footPrint/footPrint",
     "pages/homePage/homePage",
     "pages/myLetter/myLetter",

@@ -8,7 +8,8 @@ cloud.init({
 // 云函数入口函数
 exports.main = async (event, context) => {
   // const localUserInfo = event.localUserInfo
-  console.log(event);
+  // console.log(event);
+  // const userInfo = event.userInfo
   return await cloud.database().collection('write-group').add({
     data:{
       // createBy:userInfo.openId,
@@ -16,7 +17,8 @@ exports.main = async (event, context) => {
       write_type:event.write_type,
       writeImg:event.writeImg,
       writeTitle:event.writeTitle,
-      writeContent:event.writeContent
+      writeContent:event.writeContent,
+      createTime:new Date()
     }
   })
 }

@@ -36,6 +36,7 @@ Page({
     thumbsImg:'../../images/thumbs-down.png',
     collectImg:'../../images/collect-down.png',
     comment:'../../images/comment.png',
+    writeInfo:[]
   },
   // 点赞
   thumbsClick(){
@@ -58,12 +59,28 @@ Page({
       url: '/pages/nowArticle/nowArticle',
     })
   },
-
+  showDetail(e){
+    console.log(e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '/pages/letterDetail/letterDetail?id='+e.currentTarget.dataset.id,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 从数据库取数据
+    let self = this
+    wx.cloud.database().collection('write-group').get({
+      success:function(res){
+        console.log(res.data);
+        let writeInfo = self.data.writeInfo
+        writeInfo = res.data
+        self.setData({
+          writeInfo:writeInfo
+        })
+      }
+    })
   },
 
   /**

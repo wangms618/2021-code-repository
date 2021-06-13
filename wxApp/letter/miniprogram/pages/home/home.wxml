@@ -20,20 +20,23 @@
   </view>
   <view class="content">
         <!-- 热点文章 -->
-    <view class="hot-essay">最热文章</view>
+    <view class="hot-essay" >最热文章</view>
 
-    <view class="content-mode">
+    <view class="content-mode" wx:for="{{writeInfo}}" wx:key="index" >
       <!-- 头像 名字 时间 -->
-      <view class="content-title">
-        <view class="content-title_pic"><image src="../../images/dbook.jpg" mode="aspectFill"></image></view>
+      <view class="content-title" >
+        <view class="content-title_pic"><image src="{{item.localUserInfo.avatarUrl}}" mode="aspectFill"></image></view>
         <view class="content-title_xinxi">
-          <text class="xinxi-name">龙江王冰冰</text>
+          <text class="xinxi-name">{{item.localUserInfo.nickName}}</text>
           <text class="xinxi-time">昨天</text>
         </view>
       </view>
       <!-- 文章节选 -->
-      <view class="content-text">
-        <text>我们遗憾的并不是错过了最好的人，而是遇到再好的人，却已经把最好的自己用完了。我们遗憾的并不是错过了最好的人，而是遇到再好的人，却已经把最好的自己用完了</text>
+      <view class="contentTitle" data-id="{{item._id}}" bindtap="showDetail"><text>{{item.writeTitle}}</text></view>
+      <!-- <view>{{item.createTime}}</view> -->
+      <view class="content-text" data-id="{{item._id}}" bindtap="showDetail">
+        <rich-text nodes="{{item.writeContent}}"></rich-text>
+        
       </view>
       <!-- 文章配图 -->
       <!-- <view class="content-pic">

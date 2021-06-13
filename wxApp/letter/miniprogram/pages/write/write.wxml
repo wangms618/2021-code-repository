@@ -15,7 +15,8 @@
     <view class="note-title">
       <view>
         请选择分类
-        <text class="note-type" bindtap="showAction">选择分类</text>
+        <text class="note-new_type" bindtap="showAction" wx:if="{{write_type}}">{{write_type}}</text>
+        <text class="note-type" bindtap="showAction" wx:else>选择分类</text>
       </view>
       <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:click-overlay="onClose" bind:select="onSelect" />
     </view>

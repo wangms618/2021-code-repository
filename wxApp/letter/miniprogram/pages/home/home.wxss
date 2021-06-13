@@ -96,6 +96,7 @@ swiper{
 }
 .content-text{
   padding: 40rpx 40rpx 20rpx 40rpx;
+  opacity: 0.5;
 }
 .community{
   display: flex;
@@ -118,4 +119,9 @@ swiper{
 .community-collect{
   position: absolute;
   right: 100rpx;
+}
+.contentTitle{
+  padding: 40rpx 40rpx 0 40rpx;
+  font-size: 40rpx;
+  font-family:Monospace;
 }

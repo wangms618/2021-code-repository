@@ -20,12 +20,28 @@
   color: rgba(69,90,100,0.6);
   padding: 10rpx;
 }
+.note-new_type{
+  float: right;
+  width: 100rpx;
+  position: relative;
+}
 .note-type{
   float: right;
   width: 140rpx;
   position: relative;
 }
 .note-type::after{
+  content: "";
+  position: absolute;
+  border-top:2rpx solid rgba(69,90,100,0.6);
+  border-right: 2rpx solid rgba(69,90,100,0.6);
+  right: 0;
+  top: 10rpx;
+  width: 15rpx;
+  height: 15rpx;
+  transform:rotate(45deg) ;
+}
+.note-new_type::after{
   content: "";
   position: absolute;
   border-top:2rpx solid rgba(69,90,100,0.6);

@@ -1,0 +1,17 @@
+<!--miniprogram/pages/letterDetail/letterDetail.wxml-->
+<view class="container">
+  <view class="detail-head">
+    <image class="detail-leave" src="../../images/14.png"></image>
+    <text class="detail-all">详情</text>
+  </view>
+  <view class="detail-title">
+    <text>标题</text>
+  </view>
+  <view class="userInfo">
+    <view class="userInfo-pic">头像</view>
+    <view class="userInfo-nickName">昵称</view>
+    <view class="userInfo-time">时间</view>
+  </view>
+  <view class="detail-content">正文</view>
+  <view class="detail-pic">配图</view>
+</view>
