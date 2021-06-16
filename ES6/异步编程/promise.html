@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>function makeRequest(request_url) {
+      let request = {
+        method: 'Get',
+        url: request_url,
+        Headers: '',
+        body: '',
+        sync: true,
+        responseType: 'text',
+        timeout: 3000
+      }
+      return request
+    }
+    function XFetch(request, reslove, reject) {
+      let xhr = new XMLHttpRequest()
+      xhr.ontimeout = function (e) { reject(e) }
+      xhr.onerror = function (e) { reject(e) }
+      xhr.onreadystatechange = function () {
+        if (xhr.status == 200) {
+          reslove(xhr.response)
+        }
+      }
+      xhr.open(request.method, URL, request.sync)
+      xhr.timeout = request.timeout
+      xhr.responseType = request.responseType
+      xhr.send()
+    }
+    XFetch(makeRequest('https://time.geekbang.org'),
+      function reslove(data) { console.log(data); },
+      function reject(err) { console.log(err); })</script>
+</body>
+
+</html>
