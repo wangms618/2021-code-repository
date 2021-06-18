@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../underscore-min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="name_list">
+  </ul>
+  <!-- // 打造模板引擎 -->
+  <script id="user_tmpl" type="text/html">
+    <% for(let i = 0;i< users.length;i++) { %>
+      <li>
+        <a href="<%= users[i].url%>"><%= users[i].name%></a>
+      </li>
+    <% } %>
+  </script>
+
+  <script>
+    let data = {
+      users: [
+        { name: 'xhs', url: 'http://xhs.com' },
+        { name: 'lol', url: 'http://lol.com' },
+        { name: 'baidu', url: 'http://baidu.com' }
+      ]
+    }
+    let Ul = document.getElementById('name_list')
+    console.log(document.getElementById('user_tmpl').innerHTML);
+    let precompile = _.template(document.getElementById('user_tmpl').innerHTML)
+    Ul.innerHTML = precompile(data)
+
+    // for (let i = 0; i < 3; i++) {
+    //   let Li = document.createElement("li")
+    //   Ul.appendChild(Li)
+    //   Li.innerHTML = '111'
+    // }
+    // ul.createElement(li)
+  </script>
+  <!-- <script>
+    let tpl = `hello:<%= name %>`
+    let compiled = _.template(tpl)
+    // compiled({ name: ' 顺哥 ' })
+    // console.log(compiled({ name: ' 顺哥 ' }));
+  </script> -->
+</body>
+
+</html>
