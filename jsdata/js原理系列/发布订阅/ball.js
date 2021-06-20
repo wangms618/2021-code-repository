@@ -1,10 +1,29 @@
+if (typeof Subscribe === 'undefined') {
+  throw 
+}
+
+
 class Drag {
   constructor(ele) {
     // 初始化参数
     this.ele = ele
     Array.from(['strX', 'strY', 'strL', 'strT', 'curL', 'curT']).forEach(item => {
       this[item] = null
-    })
+    });
+    // +++++
+    this.subDown = new Subscribe()
+    this.subMove = new Subscribe()
+    this.subUP = new Subscribe()
+
+
+
+
+
+
+
+
+
+
     this.DOWN = this.down.bind(this)
     this.ele.addEventListener('mousedown', this.DOWN)
   }
@@ -17,11 +36,15 @@ class Drag {
 
     this.MOVE = this.move.bind(this)
     this.UP = this.up.bind(this)
+
     document.addEventListener('mousemove', this.MOVE)
     document.addEventListener('mouseup', this.UP)
-    // 清除上一次的定时器
-    clearInterval(this.flyTimer)
-    this.speedFly = undefined
+
+    // // 清除上一次的定时器
+    // clearInterval(this.flyTimer)
+    // this.speedFly = undefined
+    // clearInterval(this.dropTimer)
+    this.subDown.fire(ele,ev)
   }
   move(ev) {
     let ele = this.ele
@@ -36,7 +59,7 @@ class Drag {
       this.speedFly = 0
       return
     }
-    this.speedFly = ele.offsetLeft - this.lastFly // 最后松手的距离
+    this.speedFly = ele.offsetLeft - this.lastFly
     this.lastFly = ele.offsetLeft
   }
   up(ev) {
@@ -45,13 +68,14 @@ class Drag {
     document.removeEventListener('mouseup', this.UP)
 
     // 水平垂直运动
-    this.horizen.call(this)
-    this.vertical.call(this)
+    // this.horizen.call(this)
+    // this.vertical.call(this)
+    this.subUP.fire(this.ele,ev)
   }
   // 水平运动
   horizen() {
     let minL = 0,
-      maxL = document.documentElement.clientWidth - this.ele.offsetWidth  // 左边极限距离
+      maxL = document.documentElement.clientWidth - this.ele.offsetWidth;
     let speed = this.speedFly
     speed = Math.abs(speed)
     this.flyTimer = setInterval(() => {
@@ -60,12 +84,13 @@ class Drag {
       // 当小球到达窗口最左边
       let curL = this.ele.offsetLeft
       curL += speed
-      if (curL > maxL) { // 往左反弹
+
+      if (curL >= maxL) { // 往左反弹
         this.ele.style.left = maxL + 'px'
         speed *= -1
         return
       }
-      if (curL <= minL) {
+      if (curL <= minL) { // 往右反弹
         this.ele.style.left = minL + 'px'
         speed *= -1
         return
@@ -75,6 +100,28 @@ class Drag {
   }
   // 垂直运动
   vertical() {
+    let speed = 9.8,
+      minT = 0,
+      maxT = document.documentElement.clientHeight - this.ele.offsetHeight,
+      flag = 0;
+    this.dropTimer = setInterval(() => {
+      speed += 10
+      speed *= 0.98
+      Math.abs(speed) <= 0.1 ? clearInterval(this.dropTimer) : null
 
+      let curT = this.ele.offsetTop
+      curT += speed
+      if (curT >= maxT) { // 触底反弹
+        this.ele.style.top = maxT + 'px'
+        speed *= -1
+        return
+      }
+      if (curT <= minT) { // 触顶反弹
+        this.ele.style.top = minT + 'px'
+        speed *= -1
+        return
+      }
+      this.ele.style.top = curT + 'px'
+    }, 20)
   }
 }

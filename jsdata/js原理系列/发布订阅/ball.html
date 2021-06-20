@@ -34,9 +34,14 @@
 <body>
   <div id="box"></div>
   <script src="./ball.js"></script>
+  <script src="./ball-emit.js"></script>
   <script>
-    let box = document.getElementById('box')
-    new Drag(box)
+    // let box = document.getElementById('box')
+    // new Drag(box)
+    let subscribe = new Subscribe()
+    let fn1  =function(x,y){
+      console.log();
+    }
   </script>
 </body>
 
