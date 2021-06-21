@@ -1,7 +1,6 @@
 /* miniprogram/pages/letterDetail/letterDetail.wxss */
 .container{
   width: 100vw;
-  height: 100vh;
   background: #f0f0f0;
 }
 .detail-head{
@@ -10,7 +9,8 @@
   height: 60rpx;
   font-size: 36rpx;
   border-bottom: 3px solid #e0e0e0;
-  position: relative;
+  position: fixed;
+  z-index: 999;
 }
 .detail-leave{
   position: absolute;
@@ -23,4 +23,120 @@
   width: 100vw;
   text-align: center;
   line-height: 60rpx;
+}
+.detail-title{
+  background:#fff;
+  margin-top: 60rpx;
+  font-size: 40rpx;
+  letter-spacing: 5rpx;
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.userInfo{
+  background:#fff;
+  width: 100vw;
+  position: relative;
+  z-index: 99;
+}
+.userInfo-pic image{
+  margin: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+
+}
+.userInfo-nickName{
+  position: absolute;
+  top: 25rpx;
+  left: 140rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.userInfo-time{
+  position: absolute;
+  top: 80rpx;
+  left: 140rpx;
+  font-size: 26rpx;
+  opacity: 0.7;
+}
+.detail-content{
+  background:#fff;
+  padding: 20rpx;
+  line-height: 46rpx;
+  letter-spacing: 4rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.detail-pic{
+  background: #fff;
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.detail-pic image{
+  width: 100%;
+  border-radius: 60rpx;
+}
+.detail-class{
+  background: #fff;
+  width: 100%;
+  padding: 20rpx;
+}
+.detail-class text{
+  display: inline-block;
+  width: 100rpx;
+  height: 50rpx;
+  margin-left: 20rpx;
+  background: rgba(64, 243, 222, 0.8);
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  color: #fff;
+}
+.comment{
+  margin-top: 20rpx;
+  width: 100%;
+  background: #fff;
+}
+.comment-head{
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-left: 20rpx;
+  margin-top: 30rpx;
+}
+.content-user{
+  position: relative;
+}
+.comment-content{
+  padding: 20rpx;
+}
+.content-user_pic image{
+  margin-top: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.content-user_nickName{
+  position: absolute;
+  left: 130rpx;
+  top: 26rpx;
+  font-weight: bold;
+}
+.comment-time{
+  position: absolute;
+  left: 130rpx;
+  top: 75rpx;
+  font-size: 26rpx;
+}
+.comment-content_main{
+  padding: 30rpx 130rpx 50rpx 130rpx;
+  border-bottom: 1px solid #e0e0e0;
+}
+.comment-thumbsup image{
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 50rpx;
+  height: 50rpx;
 }

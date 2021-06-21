@@ -1,17 +1,34 @@
 <!--miniprogram/pages/letterDetail/letterDetail.wxml-->
 <view class="container">
   <view class="detail-head">
-    <image class="detail-leave" src="../../images/14.png"></image>
+    <!-- <image class="detail-leave" src="../../images/14.png"></image> -->
     <text class="detail-all">详情</text>
   </view>
   <view class="detail-title">
-    <text>标题</text>
+    <text>{{details.writeTitle}}</text>
   </view>
   <view class="userInfo">
-    <view class="userInfo-pic">头像</view>
-    <view class="userInfo-nickName">昵称</view>
-    <view class="userInfo-time">时间</view>
+    <view class="userInfo-pic"><image src="{{details.localUserInfo.avatarUrl}}"></image></view>
+    <view class="userInfo-nickName">{{details.localUserInfo.nickName}}</view>
+    <view class="userInfo-time">{{createTime}}</view>
   </view>
-  <view class="detail-content">正文</view>
-  <view class="detail-pic">配图</view>
+  <view class="detail-content"><rich-text nodes="{{details.writeContent}}"></rich-text></view>
+  <view class="detail-pic" wx:if="{{details.writeImg}}"> <image src="{{details.writeImg}}"></image></view>
+  <view class="detail-class">
+      <text>#{{details.write_type}}</text>
+  </view>
+  <view class="comment">
+    <view class="comment-head">全部评论</view>
+    <view class="comment-content" wx:for="{{reply}}" wx:key="index">
+      <view class="content-user">
+        <view class="content-user_pic"><image mode="aspectFill" src="{{item.user.avatarUrl}}"></image></view>
+        <view class="content-user_nickName">{{item.user.nickName}}</view>
+        <!-- <view class="comment-time">刚刚</view> -->
+        <view class="comment-thumbsup"><image src="../../images/thumbs-down.png"></image></view>
+      </view>
+      <view class="comment-content_main">
+        <text>{{item.reply}}</text>
+      </view>
+    </view>
+  </view>
 </view>

@@ -5,17 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    details:[],
+    createTime:'',
+    reply:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options.id);
-    // wx.cloud.database().collection('write-group').doc(options.id).get().then(res=>{
-    //   console.log(res.data);
-    // })
+    console.log(options);
+    wx.cloud.database().collection('note-group').doc(options.id).get().then(res=>{
+      // console.log(res.data);
+      this.setData({
+        details:res.data,
+        createTime:options.createTime
+      })
+    }).then(res=>{
+      // console.log(res);
+    })
+    wx.cloud.database().collection('note-TCC').where({
+      content_id:options.id
+    })
+    .get()
+    .then(res=>{
+      console.log(res.data);
+      this.setData({
+        reply:res.data,
+      })
+    })
   },
 
   /**

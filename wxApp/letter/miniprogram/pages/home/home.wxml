@@ -14,7 +14,6 @@
         <image mode="aspectFit" src="{{item.imgUrl}}"></image>
         <text class="select-name">{{item.selectName}}</text>
       </view>
-      
     </block>
     </scroll-view>
   </view>
@@ -28,28 +27,28 @@
         <view class="content-title_pic"><image src="{{item.localUserInfo.avatarUrl}}" mode="aspectFill"></image></view>
         <view class="content-title_xinxi">
           <text class="xinxi-name">{{item.localUserInfo.nickName}}</text>
-          <text class="xinxi-time">昨天</text>
+          <text class="xinxi-time">{{item.createTime}}</text>
         </view>
       </view>
       <!-- 文章节选 -->
-      <view class="contentTitle" data-id="{{item._id}}" bindtap="showDetail"><text>{{item.writeTitle}}</text></view>
+      <view class="contentTitle" data-id="{{item._id}}" data-cTime="{{item.createTime}}" bindtap="showDetail"><text>{{item.writeTitle}}</text></view>
       <!-- <view>{{item.createTime}}</view> -->
-      <view class="content-text" data-id="{{item._id}}" bindtap="showDetail">
+      <view class="content-text" data-id="{{item._id}}" data-cTime="{{item.createTime}}" bindtap="showDetail">
         <rich-text nodes="{{item.writeContent}}"></rich-text>
-        
       </view>
       <!-- 文章配图 -->
-      <!-- <view class="content-pic">
-        <image></image>
-      </view> -->
+      <view class="content-pic" wx:if="{{item.writeImg}}">
+        <image mode="aspectFill" bindtap="toPreview" data-index="{{index}}" src="{{item.writeImg}}"></image>
+      </view>
+      <!-- 点赞收藏栏 -->
       <view class="community">
       <!-- 点赞 -->
       <view class="community-thumbs_up">
         <image src="{{thumbsImg}}" bindtap="thumbsClick"/>
       </view>
       <!-- 评论 -->
-      <view class="community-comment" bindtap="commentClick">
-        <image src="{{comment}}" />
+      <view class="community-comment" >
+        <image src="{{comment}}" bindtap="onClosePopup" data-id="{{item._id}}"/>
       </view>
       <!-- 收藏 -->
       <view class="community-collect" bindtap="collectClick">
@@ -57,7 +56,19 @@
       </view>
       </view>
     </view>
-
-
   </view>
 </view>
+<!-- 遮罩层 -->
+<van-popup show="{{show}}" 
+        bind:close="onClose" 
+        position="bottom"
+        custom-style="height: 30%; width:100%;" 
+        overlay="false"
+        round="true">
+  <view class="comment-reply">
+    <textarea type="text" bindinput="toReply"class="comment-reply_input">{{reply}}</textarea>
+  </view>
+  <view class="commentClick" bindtap="addComment">
+    <image src="../../images/reply.png"></image>
+  </view>
+</van-popup>

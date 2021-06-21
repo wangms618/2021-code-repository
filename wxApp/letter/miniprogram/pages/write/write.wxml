@@ -2,7 +2,7 @@
   <view class="note-wrap">
     <view class="note-title">
       <view>标题</view>
-      <van-field value="{{ value }}" placeholder="请输入标题" border="{{ true }}" bind:change="writeTitle" />
+      <van-field value="{{ writeTitle }}" placeholder="请输入标题" border="{{ true }}" bind:change="writeTitle"></van-field>
     </view>
     <view class="note-title">
       <view>正文</view>

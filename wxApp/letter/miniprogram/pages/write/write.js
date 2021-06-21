@@ -72,19 +72,64 @@ Page({
   publish(){
     let self = this
     // console.log(this.data.userInfo);
-    wx.cloud.callFunction({
-      name:'getWriteInfo',
-      data:{
-        localUserInfo: self.data.userInfo,
-        write_type:self.data.write_type,
-        writeImg:self.data.writeImg,
-        writeTitle:self.data.writeTitle,
-        writeContent:self.data.writeContent
-      },
-      success(res){
-        console.log(res);
-      }
-    })
+    if(!self.data.writeTitle){
+      wx.showToast({
+        title: '请输入标题',
+        icon:'error',
+        duration:1000
+      })
+    }else if(self.data.writeContent.length<3){
+      wx.showToast({
+        title: '请至少写三个字',
+        icon:'error',
+        duration:1000
+      })
+    }else if(!self.data.userInfo){
+      wx.showToast({
+        title: '请先登录',
+        icon:'error',
+        duration:1000
+      })
+      wx.switchTab({
+        url: '/pages/home/home',
+      })
+    }else if(!self.data.write_type){
+      wx.showToast({
+        title: '请选择分类',
+        icon:'error',
+        duration:1000
+      })
+    }else{
+      wx.cloud.callFunction({
+        name:'getWriteInfo',
+        data:{
+          localUserInfo: self.data.userInfo,
+          write_type:self.data.write_type,
+          writeImg:self.data.writeImg,
+          writeTitle:self.data.writeTitle,
+          writeContent:self.data.writeContent
+        },
+        success(res){
+          // console.log(res);
+          wx.showToast({
+            title: '发布成功',
+            icon:'success',
+            duration:2000
+          })
+          self.setData({
+            writeContent:'',
+            writeTitle:'',
+            writeImg:'',
+            write_type:''
+          })
+          setTimeout(()=>{
+            wx.switchTab({
+              url: '/pages/home/home',
+            })
+          },2000)
+        }
+      })
+    }
   },
   // 取本地信息
   initUserInfo() {

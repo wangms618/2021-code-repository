@@ -15,21 +15,35 @@ Page({
   onAuthorize(e){
     // 判断用户信息
     if (e.detail.userInfo) { 
+      // console.log(e.detail.userInfo);
       this.setData({
         userInfo: e.detail.userInfo  // 存储
       })
       // 本地保存首次授权得到的用户信息
       wx.setStorageSync('userInfo', e.detail.userInfo);
       let self = this
-      // 存入数据库，后序可删除
+      // 查询数据库是否有对应的用户
       wx.cloud.callFunction({
         name:'getUserInfo',
         data:{
-          abc: self.data.userInfo
+          user: self.data.userInfo
         },
         // 返回函数
         success(res){
+          // 如果没有则创建
           console.log(res);
+          // if(res.result===null){
+          //   console.log('无此用户');
+          //   wx.cloud.callFunction({
+          //     name:'getUserInfo',
+          //     data:{
+          //       create:'500',
+          //       user: self.data.userInfo
+          //     }
+          //   })
+          // }else{
+          //   console.log('有此用户');
+          // }
         }
     })
   }
