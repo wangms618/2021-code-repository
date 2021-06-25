@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .item {
+      width: 100px;
+    }
+
+    .container {
+      /* 网格布局 */
+      display: grid;
+      /* 定义每一列的宽度 */
+      /* 将当前表格分成三列 */
+      grid-template-columns: 1fr 1fr 1fr;
+      /* grid-template-rows: 1fr 1fr 1fr; */
+      /* 间距 */
+      column-gap: 5px;
+      height: 540px;
+      /* 设置多余的网格高度 */
+      grid-auto-rows: 10px;
+      grid-row-gap: 10px;
+    }
+
+    .item1 {
+      /* 让当前这个容器位于 */
+      grid-row-start: 1;
+      /* 设置倍数 */
+      grid-row-end: span 10;
+    }
+
+    /* .item2 {
+      grid-row-start: 1;
+      grid-row-end: span 15;
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+  </div>
+  <script>
+    let heights = [150, 200, 130, 193, 200, 124, 111, 140, 153]
+    let colors = [
+      "#ef3429",
+      "#f68f25",
+      "#4ba846",
+      "#0476c2",
+      "#c077af",
+      "#f8d29d",
+      "#b4a87f",
+      "#d0e4a8",
+      "#4dc7ec"]
+    let item = document.getElementsByClassName('item')
+    for (let i = 0; i < heights.length; i++) {
+      let height = Math.round(heights[i] / 10)
+      item[i].style.gridRowEnd = `span ${height}`
+      item[i].style.background = colors[i]
+    }
+
+  </script>
+</body>
+
+</html>
