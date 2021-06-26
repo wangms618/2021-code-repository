@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="index.css">
+   <script src="./index.js"></script>
+</head>
+
+<body>
+   <script>
+      var user = prompt("请输入您的用户名");
+      if (!!user) {
+         //把输入的信息转换为布尔值
+         var ok = confirm("您输入的用户名为：\n" + user + "\n 请确认。"); //输入信息确认
+         if (ok) {
+            alert("欢迎您：\n" + user);
+         } else {
+            //重新输入信息
+            user = prompt("请重新输入您的用户名：");
+            alert("欢迎您：\n" + user);
+         }
+      } else {
+         //提示输入信息
+         user = prompt("请输入您的用户名：");
+      }
+   </script>
+</body>
+
+</html>
