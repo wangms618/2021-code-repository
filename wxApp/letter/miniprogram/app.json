@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/noteClass/noteClass",
     "pages/mine/mine",
     "pages/letterDetail/letterDetail",
     "pages/write/write",

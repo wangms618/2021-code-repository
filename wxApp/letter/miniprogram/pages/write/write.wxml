@@ -2,15 +2,23 @@
   <view class="note-wrap">
     <view class="note-title">
       <view>标题</view>
-      <van-field value="{{ writeTitle }}" placeholder="请输入标题" border="{{ true }}" bind:change="writeTitle"></van-field>
+      <van-field value="{{ writeTitle }}"  maxlength="50"
+    show-word-limit placeholder="请输入标题" border="{{ true }}" bind:change="writeTitle"></van-field>
     </view>
     <view class="note-title">
       <view>正文</view>
-    <editor placeholder="insert text here..." bindinput="writeContent"></editor>
+    <!-- <editor placeholder="insert text here..." bindinput="writeContent"></editor> -->
+    <van-field value="{{ writeContent }}" 
+    placeholder="发表你的文章吧！" 
+    border="{{ true }}"
+    maxlength="1000"
+    show-word-limit
+    autosize
+    bind:change="writeContent"></van-field>
     </view>
     <view class="note-title">
       <view>上传图片</view>
-      <van-uploader file-list="{{ fileList }}" bind:after-read="writeImg" deletable="{{ true }}" />
+      <van-uploader file-list="{{ fileList }}" bind:after-read="writeImg" max-count="9"/>
     </view>
     <view class="note-title">
       <view>

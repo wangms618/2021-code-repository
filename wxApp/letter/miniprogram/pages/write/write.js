@@ -1,10 +1,7 @@
 // miniprogram/pages/write/write.js
 wx.cloud.init()
+let  fileList = []
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     show:false,
     actions:[
@@ -13,6 +10,8 @@ Page({
       {name:'时尚'},
       {name:'旅行'},
       {name:'心情'},
+      {name:'体育'},
+      {name:'其他'}
     ],
     writeContent:'',
     writeTitle:'',
@@ -22,9 +21,9 @@ Page({
     userInfo:''
   },
   writeContent(e){
-    console.log(e.detail.html);
+    console.log(e.detail);
     this.setData({
-      writeContent:e.detail.html
+      writeContent:e.detail
     })
   },
   writeTitle(e){
@@ -34,17 +33,17 @@ Page({
     })
   },
   writeImg(event){
+    console.log(event);
     const { file } = event.detail;
     wx.cloud.uploadFile({
       cloudPath:`${new Date().getTime()}.png`,
       filePath:file.url,
     }).then(res=>{
-      let  fileList = []
       // 传值类型为对象
       fileList.push({url:res.fileID})
       this.setData({
         fileList,
-        writeImg:res.fileID // 保存这个字符串，后面传给后端
+        // writeImg:res.fileID // 保存这个字符串，后面传给后端
       })
       // console.log(this.data.writeImg);
     }).catch(error=>{
@@ -70,6 +69,7 @@ Page({
   },
   // 发布事件
   publish(){
+    console.log(this.data.fileList);
     let self = this
     // console.log(this.data.userInfo);
     if(!self.data.writeTitle){
@@ -100,33 +100,40 @@ Page({
         duration:1000
       })
     }else{
+      wx.showLoading({
+        title: '发布中',
+      })
       wx.cloud.callFunction({
         name:'getWriteInfo',
         data:{
           localUserInfo: self.data.userInfo,
           write_type:self.data.write_type,
-          writeImg:self.data.writeImg,
+          writeImg:self.data.fileList,
           writeTitle:self.data.writeTitle,
           writeContent:self.data.writeContent
         },
         success(res){
-          // console.log(res);
+          wx.hideLoading()
+          wx.switchTab({
+            url: '/pages/home/home',
+            // 跳转刷新
+            success: function (e) {
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              page.onLoad();
+            }
+          })
           wx.showToast({
             title: '发布成功',
             icon:'success',
             duration:2000
-          })
+          }).then()
           self.setData({
             writeContent:'',
             writeTitle:'',
             writeImg:'',
             write_type:''
           })
-          setTimeout(()=>{
-            wx.switchTab({
-              url: '/pages/home/home',
-            })
-          },2000)
         }
       })
     }

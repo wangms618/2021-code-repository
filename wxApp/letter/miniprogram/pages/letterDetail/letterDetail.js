@@ -5,16 +5,91 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:'',
+    show:false,
     details:[],
     createTime:'',
-    reply:''
+    reply:'',
+    addReply:'',
+    userInfo:''
+  },
+  toPreview(e){
+    // console.log(e.currentTarget.dataset.index);
+    if(e.currentTarget.dataset.index||e.currentTarget.dataset.index==0){
+      let index = e.currentTarget.dataset.index
+      let len = this.data.details.writeImg.length
+      let url =[]
+      for(let i =0;i<len;i++){
+        url.push(this.data.details.writeImg[i].url)
+      }
+      wx.previewImage({
+        current:this.data.details.writeImg[index].url,
+        urls: url,
+      })
+    }else{
+      wx.previewImage({
+        urls: [this.data.details.writeImg[0].url],
+      })
+    }
+  },
+  onClosePopup(){
+    this.setData({
+      show:true,
+    })
+  },
+  onClose(){
+    this.setData({
+      show:false
+    })
+  },
+  // 内容框提取
+  toReply(e){
+    this.setData({
+      addReply:e.detail.value
+    })
+  },
+  // 发布评论
+  addComment(){
+    if(!this.data.addReply){
+      wx.showToast({
+        title: '评论内容不能为空',
+        icon:'none',
+        duration:2000
+      })
+    }else{
+      let self = this
+      wx.showLoading({
+        title: '发表中',
+      })
+      console.log(self.data.id);
+      wx.cloud.callFunction({
+        name:'addComment',
+        data:{
+          id:self.data.id,
+          newReply:self.data.addReply,
+          user:self.data.userInfo,
+        }
+      })  
+      .then(res=>{
+        self.setData({
+          addReply:'',
+          show:false
+        })
+        wx.hideLoading()
+        wx.showToast({
+          title: '评论成功',
+          icon:'success',
+          duration:2000
+        })
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
-    console.log(options);
+    this.setData({
+      id:options.id
+    })
     wx.cloud.database().collection('note-group').doc(options.id).get().then(res=>{
       // console.log(res.data);
       this.setData({
@@ -29,10 +104,21 @@ Page({
     })
     .get()
     .then(res=>{
-      console.log(res.data);
+      // console.log(res.data);
+      res.data.reverse()
       this.setData({
         reply:res.data,
       })
+    })
+    wx.getStorage({ 
+      key: 'userInfo',
+      success: (res) => {
+        // console.log(res);
+        // 回调函数返回本地信息，将本地信息放入data
+        this.setData({
+          userInfo: res.data
+        })
+      }
     })
   },
 

@@ -1,27 +1,15 @@
-<!-- pages/home/home.wxml -->
-<view class="main">
-  <view class="head">
-    <swiper autoplay="true" interval="3000" duration="1500" circular="true" indicator-dots="true" indicator-color="white" class="head-sw">
-      <block wx:for="{{imgUrls}}" wx:key="index">
-        <swiper-item><image mode="aspectFill" class="slide-image" src="{{item}}"></image></swiper-item>
-      </block>
-    </swiper>
+<view class="container">
+  <image class="container-pic" mode="aspectFill" src="{{backgroundImg}}"></image>
+  <view class="container-header">
+    <image src="{{columnImg}}"></image>
+    <text>{{noteClass}}栏目</text>
   </view>
-  <view class="select">
-    <scroll-view scroll-x="true" class="select-sv">
-      <block wx:for="{{imgSelect}}" wx:key="index">
-      <view class="select-page" bindtap="onClass" data-id="{{index}}">
-        <image mode="aspectFit" src="{{item.imgUrl}}"></image>
-        <text class="select-name">{{item.selectName}}</text>
-      </view>
-    </block>
-    </scroll-view>
-  </view>
-  <view class="content">
+  <view class="container-content">
+    <view class="content-note">
+      <view class="content">
         <!-- 热点文章 -->
-    <view class="hot-essay" >最新发布</view>
-
-    <view class="content-mode" wx:for="{{writeInfo}}" wx:key="index" >
+    <view class="hot-essay" >最热文章</view>
+    <view class="content-mode" wx:for="{{writeInfo}}" wx:key="index" wx:if="{{writeInfo}}">
       <!-- 头像 名字 时间 -->
       <view class="content-title" >
         <view class="content-title_pic"><image src="{{item.localUserInfo.avatarUrl}}" mode="aspectFill"></image></view>
@@ -51,28 +39,35 @@
             wx:for-index="childindex" 
             data-parent='{{index}}'
             data-imgindex="{{childindex}}"
-            mode="aspectFill" lazy-load="true" bindtap="toPreview"  src="{{item.url}}"></image>
+            mode="aspectFill" lazy-load="true" bindtap="toPreview"  src="{{item.url}}">
+          </image>
         </block>
       </view>
       <!-- 点赞收藏栏 -->
       <view class="community">
       <!-- 点赞 -->
-      <view class="community-thumbs_up">
-        <image src="{{thumbsImg}}" bindtap="thumbsClick"/>
+        <view class="community-thumbs_up">
+          <image src="{{thumbsImg}}" bindtap="thumbsClick"/>
+        </view>
+        <!-- 评论 -->
+        <view class="community-comment" >
+          <image src="{{comment}}" bindtap="onClosePopup" data-id="{{item._id}}"/>
+        </view>
+        <!-- 收藏 -->
+        <view class="community-collect" bindtap="collectClick">
+          <image src="{{collectImg}}" />
+        </view>
       </view>
-      <!-- 评论 -->
-      <view class="community-comment" >
-        <image src="{{comment}}" bindtap="onClosePopup" data-id="{{item._id}}"/>
-      </view>
-      <!-- 收藏 -->
-      <view class="community-collect" bindtap="collectClick">
-      <image src="{{collectImg}}" />
-      </view>
-      </view>
+    </view>
+    <view class="no-content" wx:if="{{writeInfo.length==0}}">
+      <image class="no-content_pic" src="../../images/noArticles.png"></image>
+      <text class="no-content_text">暂无文章，期待您的发表 !</text>
+    </view>
+  </view>
     </view>
   </view>
 </view>
-<!-- 遮罩层 -->
+<!-- <view>{{noteClass}}</view> -->
 <van-popup show="{{show}}" 
         bind:close="onClose" 
         position="bottom"

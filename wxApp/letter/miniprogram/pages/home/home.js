@@ -9,9 +9,9 @@ Page({
   data: {
     show:false,
     imgUrls:[
-      '../../images/lunbo1.png',
-      '../../images/lunbo2.jpg',
-      '../../images/lunbo3.png'
+      'cloud://cloud1-1gi75vec59a0d51e.636c-cloud1-1gi75vec59a0d51e-1305911576/1624191271011.png',
+      'cloud://cloud1-1gi75vec59a0d51e.636c-cloud1-1gi75vec59a0d51e-1305911576/1624191271011.png',
+      'cloud://cloud1-1gi75vec59a0d51e.636c-cloud1-1gi75vec59a0d51e-1305911576/1624191271011.png'
     ],
     imgSelect:[{
       imgUrl:'../../images/food.png',
@@ -32,6 +32,14 @@ Page({
     {
       imgUrl:'../../images/love.png',
       selectName:'心情'
+    },
+    {
+      imgUrl:'../../images/sport.png',
+      selectName:'体育'
+    },
+    {
+      imgUrl:'../../images/other.png',
+      selectName:'其他'
     }
     ],
     thumbsImg:'../../images/thumbs-down.png',
@@ -42,9 +50,16 @@ Page({
     userInfo:'',
     id:''
   },
+  // 选择分类
+  onClass(e){
+    // console.log(e.currentTarget.dataset.id);
+    const noteClass = this.data.imgSelect[e.currentTarget.dataset.id].selectName
+      wx.navigateTo({
+        url: `/pages/noteClass/noteClass?id=${noteClass}`,
+      })
+  },
   // 回复框弹出
   onClosePopup(e){
-    console.log(e.currentTarget.dataset.id);
     this.setData({
       show:true,
       id:e.currentTarget.dataset.id
@@ -52,28 +67,40 @@ Page({
   },
   // 发布评论
   addComment(e){
-    let self = this
-    // console.log(e.currentTarget.dataset.id);
-    wx.cloud.callFunction({
-      name:'addComment',
-      data:{
-        id:self.data.id,
-        newReply:self.data.reply,
-        user:self.data.userInfo,
-      }
-    })  
-    .then(res=>{
-      console.log(res);
-      self.setData({
-        reply:'',
-        show:false
-      })
+    if(!this.data.reply){
       wx.showToast({
-        title: '评论成功',
-        icon:'success',
+        title: '评论内容不能为空',
+        icon:'none',
         duration:2000
       })
-    })
+    }else{
+      let self = this
+      wx.showLoading({
+        title: '发表中',
+      })
+      // console.log(e.currentTarget.dataset.id);
+      wx.cloud.callFunction({
+        name:'addComment',
+        data:{
+          id:self.data.id,
+          newReply:self.data.reply,
+          user:self.data.userInfo,
+        }
+      })  
+      .then(res=>{
+        self.setData({
+          reply:'',
+          show:false
+        })
+        wx.hideLoading()
+        wx.showToast({
+          title: '评论成功',
+          icon:'success',
+          duration:2000
+        })
+      })
+    }
+
   },
   // 点击虚化层收回回复框
   onClose(){
@@ -83,20 +110,37 @@ Page({
   },
   // 内容框提取
   toReply(e){
-    console.log(e);
     this.setData({
       reply:e.detail.value
     })
   },
+
   // 图片预览
   toPreview(e){
-    // console.log(e.currentTarget.dataset.index);
-    let index = e.currentTarget.dataset.index
-    wx.previewImage({
-      current: this.data.writeInfo[index].writeImg, // 当前显示图片的http链接
-      urls: [this.data.writeInfo[index].writeImg] // 需要预览的图片http链接列表
-    })
+    console.log(e.currentTarget.dataset);
+    if(e.currentTarget.dataset.flag){
+      let index = e.currentTarget.dataset.index
+      wx.previewImage({
+        current: this.data.writeInfo[index].writeImg, // 当前显示图片的http链接
+        urls: [this.data.writeInfo[index].writeImg[0].url] // 需要预览的图片http链接列表
+      })
+    }else{
+      let index=e.currentTarget.dataset.parent
+      let imgindex = e.currentTarget.dataset.imgindex
+      console.log(this.data.writeInfo[index].writeImg.length);
+      let len = this.data.writeInfo[index].writeImg.length
+      let url = []
+      for(let i =0;i<len;i++){
+        url.push(this.data.writeInfo[index].writeImg[i].url)
+      }
+      console.log(url);
+      wx.previewImage({
+        current: this.data.writeInfo[index].writeImg[imgindex].url, // 当前显示图片的http链接
+        urls: url // 需要预览的图片http链接列表
+      })
+    }
   },
+
   // 点赞
   thumbsClick(){
     // 如果默认状态为false，则不满足条件，用第二张图片地址，点赞变亮
@@ -114,7 +158,7 @@ Page({
   },
   // 显示详情
   showDetail(e){
-    console.log(e.currentTarget.dataset);
+    // console.log(e.currentTarget.dataset);
     wx.navigateTo({ // 将文章id和时间传到详情页
       url: `/pages/letterDetail/letterDetail?id=${e.currentTarget.dataset.id}&createTime=${e.currentTarget.dataset.ctime}`,
     })
@@ -154,6 +198,8 @@ Page({
         // console.log(res.data[1].createTime); // 秒数
         let writeInfo = self.data.writeInfo
         writeInfo = res.data
+        // 反转
+        writeInfo.reverse()
         self.setData({
           writeInfo:writeInfo
         })

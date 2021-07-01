@@ -13,13 +13,29 @@
     <view class="userInfo-time">{{createTime}}</view>
   </view>
   <view class="detail-content"><rich-text nodes="{{details.writeContent}}"></rich-text></view>
-  <view class="detail-pic" wx:if="{{details.writeImg}}"> <image src="{{details.writeImg}}"></image></view>
+
+  <view wx:if="{{details.writeImg.length}}" class="detail-pic">
+    <block wx:if="{{details.writeImg.length==1}}">
+      <image class="detail-pic_one" bindtap="toPreview" src="{{details.writeImg[0].url}}"></image>
+    </block>
+    <block wx:else>
+      <image 
+        bindtap="toPreview"
+        wx:for="{{details.writeImg}}"
+        wx:key="index" 
+        data-index="{{index}}"
+        src="{{item.url}}"
+        class="detail-pic_two"
+        bindtap="toPreview"></image>
+    </block>
+  </view>
+
   <view class="detail-class">
       <text>#{{details.write_type}}</text>
   </view>
   <view class="comment">
     <view class="comment-head">全部评论</view>
-    <view class="comment-content" wx:for="{{reply}}" wx:key="index">
+    <view class="comment-content" wx:for="{{reply}}" wx:key="index" wx:if="{{reply}}">
       <view class="content-user">
         <view class="content-user_pic"><image mode="aspectFill" src="{{item.user.avatarUrl}}"></image></view>
         <view class="content-user_nickName">{{item.user.nickName}}</view>
@@ -30,5 +46,37 @@
         <text>{{item.reply}}</text>
       </view>
     </view>
+    <view class="no-reply" wx:if="{{reply.length==0}}">
+      <text class="no-reply_text">尚未评论，快来抢楼吧 !</text>
+      <image class="no-reply_pic" src="../../images/nocomment.png"></image>
+    </view>
   </view>
 </view>
+<view class="reply">
+  <view class="reply-container" bindtap="onClosePopup">
+    <image src="{{details.localUserInfo.avatarUrl}}"></image>
+    <text>我来评论</text>
+  </view>
+  <view class="utils">
+    <view class="utils-thumbs">
+      <image  src="../../images/thumbs-down.png"></image>
+    </view>
+    <view class="utils-collection">
+      <image mode="aspectFit" src="../../images/collect-down.png"></image>
+    </view>
+  </view>
+</view>
+
+<van-popup show="{{show}}" 
+        bind:close="onClose" 
+        position="bottom"
+        custom-style="height: 30%; width:100%;" 
+        overlay="false"
+        round="true">
+  <view class="comment-reply">
+    <textarea type="text" bindinput="toReply"class="comment-reply_input" value="{{addReply}}"></textarea>
+  </view>
+  <view class="commentClick" bindtap="addComment">
+    <image src="../../images/reply.png"></image>
+  </view>
+</van-popup>

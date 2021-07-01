@@ -1,0 +1,24 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/noteClass/noteClass",
+          "pathName": "pages/noteClass/noteClass",
+          "query": "id=美食",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
