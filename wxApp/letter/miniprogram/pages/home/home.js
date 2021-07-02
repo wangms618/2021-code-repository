@@ -10,8 +10,8 @@ Page({
     show:false,
     imgUrls:[
       'cloud://cloud1-1gi75vec59a0d51e.636c-cloud1-1gi75vec59a0d51e-1305911576/1624191271011.png',
-      'cloud://cloud1-1gi75vec59a0d51e.636c-cloud1-1gi75vec59a0d51e-1305911576/1624191271011.png',
-      'cloud://cloud1-1gi75vec59a0d51e.636c-cloud1-1gi75vec59a0d51e-1305911576/1624191271011.png'
+      'https://inews.gtimg.com/newsapp_bt/0/13719665687/1000',
+      'https://inews.gtimg.com/newsapp_bt/0/13719076848/1000'
     ],
     imgSelect:[{
       imgUrl:'../../images/food.png',

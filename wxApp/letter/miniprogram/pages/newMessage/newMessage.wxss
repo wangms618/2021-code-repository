@@ -1,0 +1,48 @@
+/* pages/newMessage/newMessage.wxss */
+.cantainer{
+  background: #fff;
+}
+.message-none{
+  display: flex;
+  align-items: center;
+  background:rgba(108, 177, 234, 0.2);
+  width: 100vw;
+  height: 140rpx;
+  font-size: 40rpx;
+}
+.message-exist{
+  display: flex;
+  align-items: center;
+  background:#fff;
+  width: 100vw;
+  height: 140rpx;
+  font-size: 40rpx;
+}
+.message-none_pic{
+  margin: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: rgb(112, 233, 255);
+  border-radius: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.message-none_pic image{
+  height: 80rpx;
+  width: 80rpx;
+}
+.message-none_text{
+  margin-left: 60rpx;
+  color: gray;
+}
+.message-none_pic2{
+  margin: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: rgb(255, 84, 71);
+  border-radius: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

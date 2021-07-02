@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/newMessage/newMessage",
     "pages/home/home",
     "pages/noteClass/noteClass",
     "pages/mine/mine",
     "pages/letterDetail/letterDetail",
     "pages/write/write",
     "pages/collection/collection",
-    "pages/footPrint/footPrint",
     "pages/homePage/homePage",
     "pages/myLetter/myLetter",
     "pages/personal/personal",
@@ -22,7 +22,7 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "今选",
+        "text": "推荐",
         "iconPath": "./images/1.png",
         "selectedIconPath": "./images/2.png"
       },
@@ -33,7 +33,7 @@
         "selectedIconPath": "./images/write2.png"
       },
       {
-        "pagePath": "pages/footPrint/footPrint",
+        "pagePath": "pages/newMessage/newMessage",
         "text": "动态",
         "iconPath": "./images/3.png",
         "selectedIconPath": "./images/4.png"
@@ -49,9 +49,9 @@
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#000",
-    "navigationBarTitleText": "心情瓶子",
-    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "分享天地",
+    "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
   "sitemapLocation": "sitemap.json"

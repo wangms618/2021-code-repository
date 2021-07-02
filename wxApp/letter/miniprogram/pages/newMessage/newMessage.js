@@ -1,18 +1,33 @@
-// pages/footPrint/footPrint.js
+// pages/newMessage/newMessage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.getStorage({ 
+      key: 'userInfo',
+      success: (res) => {
+        // console.log(res);
+        // 回调函数返回本地信息，将本地信息放入data
+        this.setData({
+          userInfo: res.data
+        })
+        console.log(this.data.userInfo);
+      }
+    })
+    wx.cloud.callFunction({
+      name:'getNewMessage',
+    }).then(res=>{
+      console.log(res);
+    })
   },
 
   /**
