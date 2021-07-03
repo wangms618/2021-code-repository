@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+    img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .green {
+      color: greenyellow
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    蜗牛的颜值:{{count}}
+    <!-- v-on绑定的是标签上的事件 -->
+    <button v-on:click="add">+</button>
+    <!-- @绑定方法 -->
+    <button @click="minus">-</button>
+    <!-- v-model 一旦input里面的值变了，数据源里的inpValue一定会改变 -->
+    <!-- v-model 这里是双向绑定，数据源里值变化了input框里面的值也相应改变 -->
+    <input type="text" @keyup.enter="carry" v-model="inpValue">
+    <!-- v-bind src才会将imgUrl识别成变量而不是字符串 -->
+    <p><img v-bind:src="imgUrl" alt=""></p>
+    <!-- v-bind 快捷键是 ':' -->
+    <div class="name" :class="isGreen ? 'green': '' " @click="toGreen">老刘</div>
+    <!-- isOK的值绝对name是否为这个容器的类名 -->
+    <div :class="{name:isOK}">杰哥</div>
+    <div :class="[classA,classB]">素质奥特曼</div>
+    <div :style="{color:'red',fontSize:30}">咿呀诶</div>
+    <div :style="styleObj">这不是走位，这是走</div>
+  </div>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        count: 1,
+        inpValue: '',
+        imgUrl: 'https://inews.gtimg.com/newsapp_bt/0/13723265811/1000',
+        isGreen: false,
+        isOK: true,
+        classA: 'name',
+        classB: 'red',
+        styleObj: { color: 'red', fontSize: 30 }
+      },
+      methods: {
+        add() {
+          this.count++
+          this.inpValue = this.count++
+        },
+        minus() {
+          this.count--
+        },
+        carry() {
+          console.log(this.inpValue);
+        },
+        toGreen() {
+          this.isGreen = !this.isGreen
+          console.log(this.isGreen);
+        },
+      }
+    })
+  </script>
+</body>
+
+</html>
