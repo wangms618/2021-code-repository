@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>v-text & v-html 案例</title>
+</head>
+
+<body>
+  <h1>v-text & v-html 案例</h1>
+  <hr>
+  <div id="app">
+    <!-- v-text作用 如果message加载不出来，不显示 -->
+    <span v-text="message"></span><br />
+    <!-- v-html 可以运行html语言 -->
+    <span v-html="msgHtml"></span>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello Vue!',
+        msgHtml: '<h2>hello Vue!</h2>'
+      }
+    })
+  </script>
+</body>
+
+</html>

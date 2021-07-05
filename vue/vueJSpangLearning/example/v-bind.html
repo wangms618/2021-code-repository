@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>v-bind</title>
+</head>
+
+<body>
+  <div id="app">
+    <img :src="url" alt="">
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello Vue!',
+        url: 'https://sports.gtimg.com/shequ/duc2TvpEgST0icIzMAOYupCRrgqscnSMHyIgDmCLz5QicW38QeVVdXfGicIssBhgUBn/0/0'
+      }
+    })
+  </script>
+</body>
+
+</html>
