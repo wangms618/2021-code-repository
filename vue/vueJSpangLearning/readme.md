@@ -8,3 +8,14 @@
 
 当你利用索引直接设置一个项时，vue不会为我们自动更新。
 当你修改数组的长度时，vue不会为我们自动更新。
+
+vue里不支持from-here使用-这种形式，需要将-修改成驼峰形式才可使用
+挂载   new xxx().$mount('xxx');
+
+```js
+      updated: function () {
+        console.log('我是原生的update');
+      },
+      mixins: [addLog]//混入
+```
+全局混入最先执行,混入的先执行，原生的后执行

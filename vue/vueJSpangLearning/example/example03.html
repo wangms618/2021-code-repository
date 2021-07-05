@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>methods Option</title>
+</head>
+
+<body>
+  <h1>methods Option</h1>
+  <hr>
+  <div id="app">
+    {{num}}
+    <p><button @click="add">add</button></p>
+  </div>
+  <p><button onclick="reduce()">reduce</button></p>
+  <p><button onclick="reduceOnce()">reduceOnce</button></p>
+  <p><button onclick="off()">off</button></p>
+
+
+  <script type="text/javascript">
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        num: 1
+      },
+      methods: {
+        add: function () {
+          this.num++
+        }
+      }
+    });
+    app.$on("reduce", function () {
+      console.log('执行了reduce方法');
+      this.num--;
+    })
+    function reduce() {
+      // 如果按钮在作用域外部，可以利用$emit来执行
+      app.$emit('reduce')
+    }
+
+    app.$once('reduceOnce', function () {
+      console.log('只执行一次的方法');
+      this.num--;
+    });
+    function reduceOnce() {
+      app.$emit('reduceOnce')
+    }
+
+    //关闭事件
+    function off() {
+      app.$off('reduce');
+    }
+  </script>
+</body>
+
+</html>
