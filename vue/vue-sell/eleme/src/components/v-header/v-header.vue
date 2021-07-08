@@ -70,7 +70,7 @@ export default {
 };
 </script>
 
-<style lang='less'>
+<style lang="less">
 .header {
   position: relative;
   overflow: hidden;

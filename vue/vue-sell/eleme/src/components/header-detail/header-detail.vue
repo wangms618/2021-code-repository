@@ -164,6 +164,7 @@ export default {
 
 // 是transition标签自动加上这两个类名,fade是自己定的,enter等是固定的
 .fade-enter {
+  overflow: 1;
   background: #fff;
 }
 .fade-leave-to {
