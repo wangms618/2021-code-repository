@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>history实现</title>
+</head>
+<body>
+  <div class="page">
+    <ul>
+      <!-- 在地址前面加#，页面跳转不刷新 -->
+      <li><a href="/home">首页</a></li>
+      <!-- hash实现，# -->
+      <li><a href="/about">关于</a></li>
+    </ul>
+    <div id="routerView"></div>
+  </div>
+  <script>
+    let routerView = document.getElementById('routerView')
+    // dom结构处理完成触发DOMContentLoaded事件
+    window.addEventListener('DOMContentLoaded',onLoad)
+    window.addEventListener('popstate',onPopState)
+    // 点击浏览器的前进后退按钮使URL发生变化，靠监听popstate渲染正确的页面
+    function onLoad(){
+      onPopState()
+      // 拿到a标签
+      let linkList = document.querySelectorAll('.page a[href]')
+      linkList.forEach(el=>{
+        el.addEventListener('click',function(e){
+          // 阻止冒泡
+          e.preventDefault() // 阻止掉href的默认跳转事件
+          // 手动让URL发生改变
+          // getAttribute获取当前a标签身上的href值
+          history.pushState(null,'',el.getAttribute('href'))
+          // console.log(el.getAttribute('href'));
+          onPopState()
+        })
+      })
+    }
+    function onPopState(){
+      // console.log(location.pathname);
+      // Location.pathName 去域名后面部分
+      switch(location.pathname){
+        case '/home':
+          routerView.innerHTML = '<h2>Home页面</h2>'; return 
+        case '/about':
+          routerView.innerHTML = '<h2>About页面</h2>'; return 
+        default: return 
+      }
+    }
+  </script>
+</body>
+</html>
