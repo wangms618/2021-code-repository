@@ -23,3 +23,11 @@ Access-Control-Allow-Age // 预检请求能被缓存的最长时间，在这个�
 
 - 简单请求
   如果是简单请求，该请求会携带Origin，如果该Origin不在服务端的Access-Control-Allow-Origin中，浏览器就会拦截响应
+
+- 复杂请求
+  和简单请求不同的地方主要体现在 预检 和 响应
+
+3. Nginx Proxy
+  Nginx启动服务器代理请求，因为服务器是没有同源策略的
+
+4. webscoket
