@@ -33,6 +33,9 @@ export default {
     clear() {
       this.query = "";
     },
+    setQuery(query){
+      this.query = query
+    }
   },
 };
 </script>

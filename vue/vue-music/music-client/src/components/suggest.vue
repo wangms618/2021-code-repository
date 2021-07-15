@@ -5,14 +5,20 @@
     @scrollToEnd="searchMore"
     :beforeScroll="beforeScroll"
     @beforeScroll="listScroll"
+    :data="result"
   >
     <ul class="suggest-list">
-      <li class="suggest-item">
+      <li
+        class="suggest-item"
+        v-for="(item, index) in result"
+        :key="index"
+        @click="selectItem(item)"
+      >
         <div class="icon">
           <i class="icon">&#xe641;</i>
         </div>
         <div class="name">
-          <p class="text">青花瓷</p>
+          <p class="text">{{ getDisplayName(item) }}</p>
         </div>
       </li>
     </ul>
@@ -21,7 +27,7 @@
 
 <script>
 import scroll from "@/components/scroll";
-import api from '@/api'
+import api from "@/api";
 export default {
   props: {
     query: {
@@ -42,7 +48,11 @@ export default {
     "v-scroll": scroll,
   },
   methods: {
-    searchMore() {},
+    searchMore() {
+      if (!this.hasMore) return;
+      this.page++;
+      this.fetchResult(this.page);
+    },
     listScroll() {},
     search() {
       this.page = 1;
@@ -54,11 +64,19 @@ export default {
       const params = {
         limit: 20,
         offset: page - 1,
-        keywords:this.query
-      }
-      api.MusiceSearch(params).then(res=>{
+        keywords: this.query,
+      };
+      api.MusiceSearch(params).then((res) => {
         console.log(res);
-      })
+        this.result = [...this.result, ...res.data.result.songs];
+        this.hasMore = res.data.result.hasMore;
+      });
+    },
+    getDisplayName(item) {
+      return `${item.name}-${item.artists[0] && item.artists[0].name}`;
+    },
+    selectItem(item) {
+      this.$emit("select",item);
     },
   },
   watch: {

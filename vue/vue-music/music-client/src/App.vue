@@ -6,6 +6,9 @@
       <i class="icon" slot="right-icon">&#xe63c;</i>
     </v-header>
     <v-tab></v-tab>
+
+    <v-play></v-play>
+
     <!-- keep-alive保存缓存，返回页面可以返回之前的位置 -->
     <keep-alive>
       <router-view></router-view>
@@ -19,11 +22,13 @@
 import header from "./components/header.vue";
 import Menu from "./components/menu.vue";
 import Tab from "./components/tab.vue";
+import play from "@/components/play.vue";
 export default {
   components: {
     "v-header": header,
     "v-menu": Menu,
     "v-tab": Tab,
+    "v-play": play,
   },
 };
 </script>
