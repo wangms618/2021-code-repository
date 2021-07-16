@@ -33,7 +33,7 @@ export const persons: Person[] = [
     age: 64,
     role: 'World saver'
   }
-];
+];x
 
 export function logPerson(person: Person) {
   let additionalInformation: string;
