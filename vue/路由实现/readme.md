@@ -16,4 +16,3 @@
 html 提供了一个**history**对象，该对象提供了pushState 和 replaceState 两个方法
 history提供了类似于hashchange的事件popState,通过pushState/replaceState/a/标签改变URL是不会触发popState的
 用pushState和replaceState顶替掉href的事件，且这两个事件会改变url
-当pushState或replaceState执行了 popState 一定会生效

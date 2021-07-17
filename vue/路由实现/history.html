@@ -20,8 +20,8 @@
     let routerView = document.getElementById('routerView')
     // dom结构处理完成触发DOMContentLoaded事件
     window.addEventListener('DOMContentLoaded',onLoad)
-    window.addEventListener('popstate',onPopState)
     // 点击浏览器的前进后退按钮使URL发生变化，靠监听popstate渲染正确的页面
+    window.addEventListener('popstate',onPopState)
     function onLoad(){
       onPopState()
       // 拿到a标签
@@ -32,8 +32,9 @@
           e.preventDefault() // 阻止掉href的默认跳转事件
           // 手动让URL发生改变
           // getAttribute获取当前a标签身上的href值
+          // 通过 history.pushState 手动修改地址栏，
+         // popstate 是监听不到地址栏的变化，所以此处需要手动执行回调函数 PopChange
           history.pushState(null,'',el.getAttribute('href'))
-          // console.log(el.getAttribute('href'));
           onPopState()
         })
       })

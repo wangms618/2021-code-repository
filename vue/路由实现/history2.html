@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>history实现</title>
+</head>
+<body>
+  <div class="page">
+    <ul>
+      <!-- 希望能干掉这两个页面的自动跳转，下面实现 -->
+      <li><a href="/home">首页</a></li>
+      <li><a href="/about">关于</a></li>
+    </ul>
+    <div id="routerView"></div>
+    <script>
+      let routerView = document.getElementById('routerView')
+      // 点击浏览器的前进后退按钮使URL发生变化，靠监听popstate渲染正确的页面
+      window.addEventListener('popstate',onPopState)
+
+      // 为全部 a 标签安上点击事件
+      window.addEventListener('DOMContentLoaded',onLoad)
+
+      function onLoad(){
+        // 页面初始加载
+        onPopState()
+        // 取到对应具有href属性的a标签数组
+        let linkList = document.querySelectorAll('.page a[href]')
+        // 手动给a标签安排点击事件
+        linkList.forEach(el=>{
+          el.addEventListener('click',function(e){
+            e.preventDefault()  // 阻止a标签的默认事件
+            // 手动让url发生改变，且页面不刷新
+            history.pushState(null,'',el.getAttribute('href')) // getAttribute获取当前a标签的href属性
+            // 手动调用onPopState()检测url的变化
+            onPopState()
+          })
+        })
+      }
+
+
+
+      function onPopState() {
+        // Location.pathName 去域名后面部分，所以必须live-server打开
+        switch (location.pathname) {
+          case '/home':
+            routerView.innerHTML = '<h2>Home页面</h2>';
+            return
+          case '/about': 
+            routerView.innerHTML = '<h2>About页面</h2>';
+            return
+          default:
+            return
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>
