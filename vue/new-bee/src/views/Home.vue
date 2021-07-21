@@ -22,7 +22,12 @@
   <div class="good">
     <header class="good-header">新品上线</header>
     <div class="good-box">
-      <div class="good-item" v-for="item in newGoodses" :key="item.goodsId">
+      <div
+        class="good-item"
+        v-for="item in newGoodses"
+        :key="item.goodsId"
+        @click="goToDetail(item)"
+      >
         <img :src="item.goodsCoverImg" alt="" />
         <div class="good-desc">
           <div class="title">{{ item.goodsName }}</div>
@@ -65,12 +70,14 @@ import { getHome } from "@/api/service/home.js";
 import { reactive, toRefs } from "@vue/reactivity";
 import { nextTick, onMounted } from "@vue/runtime-core";
 import { Toast } from "vant";
+import { useRouter } from "vue-router";
 export default {
   components: {
     NavBar,
     Swiper,
   },
   setup() {
+    let router = useRouter();
     const state = reactive({
       swiperList: [],
       categoryList: [
@@ -149,19 +156,28 @@ export default {
     });
     // 页面滚动加载，自己项目可以做
     nextTick(() => {
-      window.addEventListener("scroll", () => {
-        let scrollTop =
-          window.pageYOffset ||
-          document.documentElement.scrollTop ||
-          document.body.scrollTop;
-        scrollTop > 100
-          ? (state.headerScroll = true)
-          : (state.headerScroll = false);
-      },true);
+      window.addEventListener(
+        "scroll",
+        () => {
+          let scrollTop =
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            document.body.scrollTop;
+          scrollTop > 100
+            ? (state.headerScroll = true)
+            : (state.headerScroll = false);
+        },
+        true
+      );
       // true开启捕获
     });
+    const goToDetail = (item) => {
+      // console.log(item);
+      router.push({ path: `/product/${item.goodsId}` });
+    };
     return {
       ...toRefs(state),
+      goToDetail,
     };
   },
 };

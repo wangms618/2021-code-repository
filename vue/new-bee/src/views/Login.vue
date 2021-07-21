@@ -1,16 +1,16 @@
 <template>
   <div class="login">
-    <s-header></s-header>
+    <s-header :name="type === 'login' ? '登录' : '注册'"></s-header>
     <img
       class="logo"
       src="//s.yezgea02.com/1604045825972/newbee-mall-vue3-app-logo.png"
     />
-    <div class="login-body login">
+    <div class="login-body login" v-if="type === 'login'">
       <van-form @submit="onSubmit">
         <van-cell-group inset>
           <van-field
             v-model="username1"
-            name="用户名"
+            name="username"
             label="用户名"
             placeholder="用户名"
             :rules="[{ required: true, message: '请填写用户名' }]"
@@ -18,7 +18,7 @@
           <van-field
             v-model="password1"
             type="password"
-            name="密码"
+            name="password"
             label="密码"
             placeholder="密码"
             :rules="[{ required: true, message: '请填写密码' }]"
@@ -29,14 +29,66 @@
             placeholder="请输入验证码"
             :rules="[{ required: true, message: '请填写验证码' }]"
           >
-            <template>
+            <template #button>
               <!-- 验证码 -->
+              <vue-img-verify ref="verifyRef"></vue-img-verify>
             </template>
           </van-field>
         </van-cell-group>
         <div style="margin: 16px">
-          <van-button round block color="#1baeae" type="primary" native-type="submit">
+          <div class="link-register" @click="toggle('register')">立即注册</div>
+          <van-button
+            round
+            block
+            color="#1baeae"
+            type="primary"
+            native-type="submit"
+          >
             登录
+          </van-button>
+        </div>
+      </van-form>
+    </div>
+    <div class="login-body register" v-else>
+      <van-form @submit="onSubmit">
+        <van-cell-group inset>
+          <van-field
+            v-model="username1"
+            name="username"
+            label="用户名"
+            placeholder="用户名"
+            :rules="[{ required: true, message: '请填写用户名' }]"
+          />
+          <van-field
+            v-model="password1"
+            type="password"
+            name="password"
+            label="密码"
+            placeholder="密码"
+            :rules="[{ required: true, message: '请填写密码' }]"
+          />
+          <van-field
+            v-model="verify"
+            label="验证码"
+            placeholder="请输入验证码"
+            :rules="[{ required: true, message: '请填写验证码' }]"
+          >
+            <template #button>
+              <!-- 验证码 -->
+              <vue-img-verify ref="verifyRef"></vue-img-verify>
+            </template>
+          </van-field>
+        </van-cell-group>
+        <div style="margin: 16px">
+          <div class="link-login" @click="toggle('login')">已有登录账号</div>
+          <van-button
+            round
+            block
+            color="#1baeae"
+            type="primary"
+            native-type="submit"
+          >
+            注册
           </van-button>
         </div>
       </van-form>
@@ -45,24 +97,72 @@
 </template>
 
 <script>
+import vueImgVerify from "@/components/VueImgVerify.vue";
 import sHeader from "@/components/SimpleHeader";
-import { reactive, toRefs } from "@vue/reactivity";
+import { reactive, toRefs, ref } from "@vue/reactivity";
+import { Toast } from "vant";
+import { login, register } from "../api/service/user";
+import Md5 from "js-md5";
+import { setLocal } from "../common/js/utils";
+// import { useRouter } from "vue-router";
 export default {
   components: {
     sHeader,
+    vueImgVerify,
   },
   setup() {
+    // const router = useRouter();
+    const verifyRef = ref(null);
     const state = reactive({
-      username: "",
-      password: "",
+      type: "login",
+      username1: "",
+      password1: "",
+      verify: "",
     });
-    const onSubmit = (values) => {
+    const onSubmit = async (values) => {
+      console.log(verifyRef.value.imgCode);
       console.log("submit", values);
+      if (!verifyCode(verifyRef.value.imgCode, state.verify)) {
+        Toast("验证码输入有误");
+        return;
+      }
+      if (state.type === "login") {
+        const { data } = await login({
+          loginName: values.username,
+          passwordMd5: Md5(values.password),
+        });
+        console.log(data);
+        setLocal("token", data);
+        // 跳去首页
+        // router.push({ path: "/" });
+        // 刷新页面，让axios.js里面的token重置
+        window.location.href = '/'
+      } else {
+        await register({
+          loginName: values.username,
+          password: values.password,
+        });
+        Toast.success("注册成功");
+        state.type = "login";
+        state.verify = "";
+      }
     };
-
+    const verifyCode = function (verify, inverify) {
+      if (verify === inverify.toUpperCase()) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+    const toggle = function (type) {
+      state.type = type;
+      state.verify = "";
+    };
     return {
       ...toRefs(state),
       onSubmit,
+      verifyRef,
+      toggle,
     };
   },
 };
