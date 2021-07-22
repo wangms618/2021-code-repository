@@ -36,6 +36,7 @@
               square
               type="danger"
               icon="delete"
+              @click="deleteCart(item.cartItemId)"
             />
           </template>
         </van-swipe-cell>
@@ -63,13 +64,15 @@ import { useRouter } from "vue-router";
 import { reactive, ref, toRefs } from "@vue/reactivity";
 import { computed, onMounted } from "@vue/runtime-core";
 import { Toast } from "vant";
-import { getCart } from "../api/service/cart";
+import { getCart,deleteCartItem } from "../api/service/cart";
+import {  useStore } from 'vuex';
 export default {
   components: {
     sHeader,
     NavBar,
   },
   setup() {
+    const store = useStore()
     const checked = computed(() => {
       return state.result.length == state.list.length ? true : false;
     });
@@ -104,6 +107,10 @@ export default {
       console.log(data);
       state.list = data;
     });
+    const deleteCart = async(id)=>{
+      await deleteCartItem(id)
+      store.dispatch('updateCart')
+    }
     return {
       ...toRefs(state),
       router,
@@ -111,6 +118,7 @@ export default {
       checkboxGroup,
       checked,
       allPay,
+      deleteCart
     };
   },
 };
