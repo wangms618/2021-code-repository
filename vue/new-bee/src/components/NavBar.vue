@@ -24,16 +24,16 @@
 <script>
 import { getLocal } from "@/common/js/utils";
 import { computed, onMounted } from "@vue/runtime-core";
-import { useRouter } from "vue-router";
+// import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 export default {
   setup() {
-    const route = useRouter();
+    // const route = useRouter();
     const store = useStore();
     onMounted(() => {
       const token = getLocal("token");
-      const path = route.path; // 当前页面的路径
-      if (token && !["/home", "/category"].includes(path)) {
+      // const path = route.path; // 当前页面的路径
+      if (token ) {
         // 已登录的情况下做页面跳转
         store.dispatch('updateCart')
       }

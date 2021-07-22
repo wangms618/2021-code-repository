@@ -59,13 +59,15 @@ import { computed, onMounted } from "@vue/runtime-core";
 import { useRoute, useRouter } from "vue-router";
 import { addCart } from "../api/service/cart";
 import { useStore } from "vuex";
+import { Toast } from "vant";
 export default {
   components: {
     sHeader,
   },
   setup() {
-    const router = useRouter();
+    // const router = useRouter();
     const store = useStore();
+    const router = useRouter()
     const route = useRoute();
     const state = reactive({
       detail: {},
@@ -77,35 +79,46 @@ export default {
         state.detail = res.data;
       });
       const token = getLocal("token");
-      const path = router.path; // 当前页面的路径
-      if (token && !["/home", "/category"].includes(path)) {
+      // const path = router.path; // 当前页面的路径
+      if (token) {
         // 已登录的情况下做页面跳转
         store.dispatch("updateCart");
       }
-      const count = computed(() => {
-        return store.state.cartCount;
-      });
-      state.count = count.value;
     });
-
-    const goToCart = () => {};
-    const handleAddCart = () => {
-      addCart({
+    const count = computed(() => {
+      return store.state.cartCount;
+    });
+    state.count = count.value;
+    const handleAddCart = async () => {
+      await addCart({
         goodsCount: 1,
         goodsId: route.params.id,
       }).then((res) => {
         console.log(res);
-        if(res.message==="SUCCESS"){
-          state.count++
+        if (res.message === "SUCCESS") {
+          Toast.success("添加成功");
+          state.count++;
         }
       });
     };
-    const goToPay = () => {};
+    const goToCart = ()=>{
+      router.push({path:'/cart'})
+    }
+    const goToPay = async () => {
+      await addCart({
+        goodsCount:1,
+        goodsId:route.params.id,
+      }).then(()=>{
+      }).catch(()=>{
+      })
+      router.push({path:'/cart'})
+      
+    };
     return {
       ...toRefs(state),
-      goToCart,
       handleAddCart,
       goToPay,
+      goToCart 
     };
   },
 };

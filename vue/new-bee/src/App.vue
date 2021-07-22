@@ -19,7 +19,7 @@ export default {
     }
     // 路由守卫
     router.beforeEach((to,from)=>{
-      console.log(to,from);
+      // console.log(to,from);
       // 过渡动画
       if(to.meta.index > from.meta.index){
         state.transitionName = 'slide-left'

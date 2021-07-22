@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 import {getCart} from '../api/service/cart'
 export default createStore({
   state: {
-    cartCount:0 // 购物车商品数量
+    cartCount: 0 ,// 购物车商品数量
+    // isBack:false
   },
   mutations: {
     addCart(state,payload) { // 添加购物车记录

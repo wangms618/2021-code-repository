@@ -17,12 +17,21 @@ const routes = [
     path: '/login',
     name: 'login',
     component : () =>import ('@/views/Login.vue')
-  }, {
+  },
+  {
     path: '/product/:id',
     name: 'product',
     component: Product,
     meta: {
       index:3
+    }
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: () => import('@/views/Cart.vue'),
+    meta: {
+      index:0
     }
   }
 ]
