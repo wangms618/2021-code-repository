@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100vw;
+  display: flex;
+}
+
+.navbar-brand {
+  width: 800px;
+}
+.navbar-start{
+  display: flex;
+  width: 100px;
+  justify-content: space-between;
+}
+.navbar-menu {
+  flex: 1;
+  display: flex;
+}
+
+.navbar-end {
+  display: flex;
+}
