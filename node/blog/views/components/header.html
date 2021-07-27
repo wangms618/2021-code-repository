@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="../public/css/header.css" type="text/css">
-<nav id="navbar" class="navbar has-shadow is-spaced">
+<nav id="navbar" class="navbar has-shadow">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="#">JS之禅</a>
@@ -12,29 +11,33 @@
     <div id="navMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="/">主页</a>
-        <a class="navbar-item" href="/about">关于</a>
+        <a class="navbar-item" href="http://a.lmongo.com">前端面试题</a>
       </div>
       <div class="navbar-end">
-        <!-- {% if ctx.session.user %} -->
+        {% if ctx.session.user.isAdmin %}
         <div class="navbar-item">
-          <!-- {{ctx.session.user.name}} -->
+          <a class="button is-small is-primary" href="/category">分类</a>
+        </div>
+        {% endif %}
+        {% if ctx.session.user %}
+        <div class="navbar-item">
+          <a class="button is-small is-primary" href="/posts/new">写文章</a>
+        </div>
+        <div class="navbar-item">
+          <a href="/user/{{ctx.session.user.name}}">{{ctx.session.user.name}}</a>
         </div>
         <div class="navbar-item">
           <a href="/signout">退出</a>
         </div>
-        <!-- {% else %} -->
+        {% else %}
         <div class="navbar-item">
           <a class="button is-small is-primary" href="/signup">注册</a>
         </div>
         <div class="navbar-item">
           <a class="button is-small" href="/signin">登录</a>
         </div>
-        <!-- {% endif %} -->
+        {% endif %}
       </div>
     </div>
   </div>
 </nav>
-
-<div class="body">
-  <!-- {% block body %}{% endblock %} -->
-</div>

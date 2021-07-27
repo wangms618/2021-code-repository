@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const CONFIG = require('./config/config')
 const session = require('koa-session')
 const bodyParser = require('koa-bodyparser')
-
+const flash = require('./middlewares/flash')
 
 
 
@@ -15,6 +15,9 @@ mongoose.connect(CONFIG.mongodb) // 连接上mongodb
 
 
 const app = new Koa()
+app.use(flash())
+
+
 // 使用模板引擎
 app.use(views(path.join(__dirname, 'views'), {
   map: {
@@ -33,6 +36,13 @@ app.use(session({
 },app))
 
 app.use(bodyParser())
+
+app.use(async (ctx, next) => {
+  ctx.state.ctx = ctx
+  await next()
+})
+
+
 router(app)
 
 app.listen(3000, () => {

@@ -51,10 +51,18 @@ module.exports = {
           isAdmin: user.isAdmin,
           email: user.email
         }
+        ctx.flash = {success:'登录成功'}
         ctx.redirect('/')
       } else {
-        ctx.body = '账户或密码错误'
+        ctx.flash = { warning: '账户或密码错误' }
+        ctx.redirect('back')
       }
     }
+  },
+  // 退出登录回到首页
+  signout(ctx,next) {
+    ctx.session.user = null
+    ctx.flash = { warning: '退出登录' }
+    ctx.redirect('/')
   }
 }
