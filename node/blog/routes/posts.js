@@ -81,24 +81,35 @@ module.exports = {
     }
   },
 
-  async show(ctx,next) {
+  async show(ctx, next) {
     const postId = ctx.params.id
     if (postId.length !== 24) {
-      ctx.throw(404,'该文章不存在或已被删除')
+      ctx.throw(404, '该文章不存在或已被删除')
     }
     // 查找文章数据且将关联的表数据一并取到
-    const post = await PostModel.findById(postId).populate([
-      {path:'author',select:'name'},
-      {path:'category',select:['title','name']},
+    const post = await PostModel.findById(postId).populate([{
+        path: 'author',
+        select: 'name'
+      },
+      {
+        path: 'category',
+        select: ['title', 'name']
+      },
     ])
     if (!post) {
-      ctx.throw(404,'该文章不存在或已被删除')
+      ctx.throw(404, '该文章不存在或已被删除')
     } else {
-      const comments = await CommentModel.find({ postId }).populate({
-        path:'from',select:'name'
+      const comments = await CommentModel.find({
+        postId
+      }).populate({
+        path: 'from',
+        select: 'name'
       })
       // 渲染文章详情模板
       let content = marked(post.content)
+      comments.forEach(comment => {
+        comment.content = marked(comment.content)
+      })
       await ctx.render('post', {
         title: post.title,
         content,
@@ -106,8 +117,77 @@ module.exports = {
         comments
       })
     }
-    
+
+  },
+  async edit(ctx, next) {
+    const postId = ctx.params.id
+    const categories = await CategoryModel.find({})
+    if (ctx.method === 'GET') {
+      if (postId.length !== 24) {
+        ctx.throw(404, '此文章不存在或已被删除')
+      }
+      const post = await PostModel.findById(postId)
+      if (!post) {
+        ctx.throw(404, '文章不存在或已被删除')
+      }
+      // if (post.author.toString() !== ctx.session.user_id.toString()) {
+      //   ctx.throw(401,'没有权限')
+      // }
+      await ctx.render('edit', {
+        title: '更新文章',
+        post,
+        categories
+      })
+    } else {
+      const {
+        title,
+        content,
+        category
+      } = ctx.request.body
+      let errMsg = ''
+      if (title === '') {
+        errMsg = '标题不能为空'
+      } else if (content === '') {
+        errMsg = '内容不能为空'
+      }
+      if (errMsg) {
+        ctx.flash = {
+          warning: errMsg
+        }
+        ctx.redirect('back')
+        return
+      }
+      await PostModel.findByIdAndUpdate(postId, {
+        title,
+        content,
+        category
+      })
+      ctx.flash = {
+        success: '文章更新成功'
+      }
+      ctx.redirect(`/posts/${postId}`)
+    }
+  },
+  async delete(ctx, next) {
+    const postId = ctx.params.id
+    if (postId.length !== 24) {
+      ctx.throw(404, '文章不存在')
+    }
+    const post = await PostModel.findById(postId)
+    // console.log(category)
+    if (!post) {
+      ctx.throw(404, '文章不存在')
+      return
+    }
+    if (post.author.toString() !== ctx.session.user._id.toString()) {
+      ctx.flash = { warning: '没有权限' }
+      return
+    }
+    await PostModel.findByIdAndRemove(postId)
+    ctx.flash = {
+      success: '成功删除文章'
+    }
+    ctx.redirect('/')
   }
-  
 
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
   <link href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/app.css">
 </head>
+
 <body>
   {% include "views/components/notification.html" %}
   {% block body %}
@@ -17,15 +19,17 @@
   {# include "./components/footer.html" #}
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
-    $(function() {
+    $(function () {
       if ($('.notifications')) {
         setTimeout(() => {
           $('.notifications').fadeOut()
         }, 2000)
       }
     })
+
   </script>
   {% block script %}
   {% endblock %}
 </body>
+
 </html>

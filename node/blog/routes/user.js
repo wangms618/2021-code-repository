@@ -45,6 +45,7 @@ module.exports = {
         name
       })
       if (user && await bcrypt.compare(password, user.password)) {
+        // 登录成功，在session里存储当前用户信息，供页面使用
         ctx.session.user = {
           _id: user._id,
           name: user.name,
@@ -63,6 +64,7 @@ module.exports = {
   signout(ctx,next) {
     ctx.session.user = null
     ctx.flash = { warning: '退出登录' }
+    // 重定向
     ctx.redirect('/')
   }
 }
