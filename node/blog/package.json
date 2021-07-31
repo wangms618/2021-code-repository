@@ -1,7 +1,6 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "commit": "git cz",
@@ -50,5 +49,6 @@
       "eslint --fix",
       "git add"
     ]
-  }
+  },
+  "description": ""
 }
