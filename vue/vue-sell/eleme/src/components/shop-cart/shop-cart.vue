@@ -34,8 +34,8 @@
             <h1 class="title">购物车</h1>
             <span class="empiy">清空</span>
           </div>
-          <div class="list-content" ref="cartFood">
-            <ul>
+          <div class="list-content" >
+            <ul ref="cartFood">
               <li
                 class="food"
                 v-for="(item, index) in selectFoods"
@@ -112,7 +112,7 @@ export default {
       }
     },
   },
-  mounted() {
+  beforeUpdate() {
     this.$nextTick(() => {
       this._cartScroll();
     });

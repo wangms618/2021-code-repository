@@ -14,7 +14,7 @@
           <div class="hot-key">
             <h1 class="title">热门搜索</h1>
             <ul>
-              <li class="item" v-for="(item, index) in hotKey" :key="index">
+              <li class="item" v-for="(item, index) in hotKey" :key="index" @click="addQuery(item.first)">
                 <span>{{ item.first }}</span>
               </li>
             </ul>

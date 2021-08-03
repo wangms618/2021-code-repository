@@ -1,8 +1,8 @@
 <template>
   <section>
     <header class="top_tips">
-      <span class="num_tip" v-if="fatherComponent === 'home'">{{level}}</span>
-      <span class="num_tip">题目{{itemNum}}</span>
+      <span class="num_tip" v-if="fatherComponent === 'home'">{{ level }}</span>
+      <span class="num_tip" v-else>题目{{ itemNum }}</span>
     </header>
     <!-- 开始 -->
     <div v-if="fatherComponent === 'home'">
@@ -13,41 +13,86 @@
     <div v-else>
       <div class="item_back item_container_style">
         <div class="item_list_container">
-          <header class="item_title">浩南有几个</header>
+          <header class="item_title">
+            {{ itemDetail[itemNum - 1].topic_name }}
+          </header>
           <ul>
-            <li class="item_list" v-for="(item, index) in itemDetail[0].topic_answer" :key="index">
+            <li
+              class="item_list"
+              v-for="(item, index) in itemDetail[itemNum - 1].topic_answer"
+              :key="index"
+              @click="selected(item.topic_answer_id)"
+            >
               <!-- 放哪个字母取决于下标，在methods里写 -->
-              <span class="option_style">{{chooseType(index)}}</span>
-              <span class="option_detail">{{item.answer_name}}</span>
+              <span
+                class="option_style"
+                :class="{ has_choosed: hasSelected === item.topic_answer_id }"
+                >{{ chooseType(index) }}</span
+              >
+              <span class="option_detail">{{ item.answer_name }}</span>
             </li>
           </ul>
         </div>
-        <span class="next_item button_style"></span>
+        <span
+          class="next_item button_style"
+          @click="nextQuestion"
+          v-if="itemNum < itemDetail.length"
+        ></span>
+        <span
+          class="submit_item button_style"
+          @click="submitAnswer"
+          v-else
+        ></span>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
-  props: ['fatherComponent'],
+  props: ["fatherComponent"],
   computed: mapState([
-    'itemNum', // 第几题
-    'level', // 第几周
-    'itemDetail', // 题目详情
-    'timer' // 计时器
+    "itemNum", // 第几题
+    "level", // 第几周
+    "itemDetail", // 题目详情
+    "timer", // 计时器
   ]),
-  methods:{
-    chooseType(type){
-      switch(type){
-        case 0: return 'A';
-        case 1: return 'B';
-        case 2: return 'C';
-        case 3: return 'D';
+  methods: {
+    chooseType(type) {
+      switch (type) {
+        case 0:
+          return "A";
+        case 1:
+          return "B";
+        case 2:
+          return "C";
+        case 3:
+          return "D";
       }
-    }
-  }
+    },
+    submitAnswer() {
+      this.$store.commit("remeberId", this.hasSelected);
+      this.$router.push("score");
+    },
+    selected(index) {
+      this.hasSelected = index;
+    },
+    nextQuestion() {
+      if(this.hasSelected === -1) {
+        alert('请选择一个答案')
+        return
+      }
+      this.$store.commit("nextQuestion");
+      this.$store.commit("remeberId", this.hasSelected);
+      this.hasSelected = -1
+    },
+  },
+  data() {
+    return {
+      hasSelected: -1,
+    };
+  },
 };
 </script>
 

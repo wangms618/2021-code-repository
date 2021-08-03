@@ -169,6 +169,13 @@ export default new Vuex.Store({
 	answerid: [], //答案id
   },
   mutations: {
+    nextQuestion(state) {
+      if (state.itemNum < state.itemDetail.length){state.itemNum++}
+    },
+    remeberId(state, n) {
+      console.log(n);
+      state.answerid.push(n)
+    },
   },
   actions: {
   },

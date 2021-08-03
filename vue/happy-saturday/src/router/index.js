@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/home/home.vue'
 import item from '@/views/item/item'
+// import score from '@/views/score/score'
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,10 @@ const routes = [
   {
     path: '/item',
     component:item
+  },
+  {
+    path: '/score',
+    component: () => import('@/views/score/score.vue')
   }
 ]
 
