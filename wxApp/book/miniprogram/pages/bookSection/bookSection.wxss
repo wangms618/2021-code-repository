@@ -67,3 +67,6 @@
   border-bottom: 1rpx solid gray;
   letter-spacing: 2rpx;
 }
+.join-book van-button{
+  margin: 0 60rpx ;
+}

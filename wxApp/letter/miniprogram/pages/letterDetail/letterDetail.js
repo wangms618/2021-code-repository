@@ -11,7 +11,8 @@ Page({
     createTime:'',
     reply:'',
     addReply:'',
-    userInfo:''
+    userInfo:'',
+    updated:false
   },
   toPreview(e){
     // console.log(e.currentTarget.dataset.index);
@@ -61,7 +62,7 @@ Page({
       wx.showLoading({
         title: '发表中',
       })
-      console.log(self.data.id);
+      // console.log(self.data.id);
       wx.cloud.callFunction({
         name:'addComment',
         data:{
@@ -73,9 +74,11 @@ Page({
       .then(res=>{
         self.setData({
           addReply:'',
-          show:false
+          show:false,
+          updated:true
         })
         wx.hideLoading()
+        wx.startPullDownRefresh()
         wx.showToast({
           title: '评论成功',
           icon:'success',
@@ -154,7 +157,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.cloud.database().collection('note-TCC').where({
+      content_id:this.data.id
+    })
+    .get()
+    .then(res=>{
+      wx.stopPullDownRefresh()
+      // console.log(res.data);
+      res.data.reverse()
+      this.setData({
+        reply:res.data,
+      })
+    })
   },
 
   /**

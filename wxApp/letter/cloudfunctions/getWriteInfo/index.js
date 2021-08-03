@@ -13,7 +13,11 @@ exports.main = async (event, context) => {
   // let thumbsUp_num = 0 // 点赞数
   // let collection_num = 0 // 收藏数
   // let comment_num = 0 // 评论数
-  const nowTime = new Date().getTime()
+  const time = new Date()
+  const nowTime = time.getTime() 
+  const time1 = time.getFullYear() +'年'+ (time.getMonth()+1) +'月'+ time.getDate() + '日'
+  const time2 = time.getHours()+':'+time.getMinutes()
+  const times = [time1,time2]
   return await cloud.database().collection('note-group').add({
     data:{
       comment:[],
@@ -26,7 +30,8 @@ exports.main = async (event, context) => {
       writeImg:event.writeImg,
       writeTitle:event.writeTitle,
       writeContent:event.writeContent,
-      createTime: nowTime
+      createTime: nowTime,
+      times:times
     }
   })
 }

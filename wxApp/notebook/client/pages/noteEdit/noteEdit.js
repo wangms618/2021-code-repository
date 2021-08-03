@@ -41,7 +41,8 @@ Page({
       cloudPath: `${new Date().getTime()}.png`,
       filePath: file.url, //文件路径
     }).then(res => {
-      console.log(res.fileID);
+      // console.log(res.fileID);
+      console.log(this.data.fileList);
       let fileList = this.data.fileList
       fileList.push({ url: res.fileID })
       this.setData({

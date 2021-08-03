@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/detail/detail",
     "pages/summary/summary",
-    "pages/timer/timer"
+    "pages/timer/timer",
+    "libs/ec-canvas/ec-canvas"
   ],
   "window": {
     "backgroundColor": "#fff",

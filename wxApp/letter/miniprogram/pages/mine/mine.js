@@ -12,6 +12,16 @@ Page({
       url: '/pages/collection/collection',
     })
   },
+  gotoMyLetter(){
+    wx.navigateTo({
+      url: '/pages/myLetter/myLetter',
+    })
+  },
+  gotoMyComment(){
+    wx.navigateTo({
+      url: '/pages/myComments/myComments',
+    })
+  },
   onAuthorize(e){
     // 判断用户信息
     if (e.detail.userInfo) { 

@@ -34,7 +34,7 @@
       <text>#{{details.write_type}}</text>
   </view>
   <view class="comment">
-    <view class="comment-head">全部评论</view>
+    <view class="comment-head">最新评论</view>
     <view class="comment-content" wx:for="{{reply}}" wx:key="index" wx:if="{{reply}}">
       <view class="content-user">
         <view class="content-user_pic"><image mode="aspectFill" src="{{item.user.avatarUrl}}"></image></view>
@@ -46,6 +46,7 @@
         <text>{{item.reply}}</text>
       </view>
     </view>
+    <view class="reply-down" wx:if="{{reply.length>0}}"><text>已经到底了哦!</text></view>
     <view class="no-reply" wx:if="{{reply.length==0}}">
       <text class="no-reply_text">尚未评论，快来抢楼吧 !</text>
       <image class="no-reply_pic" src="../../images/nocomment.png"></image>

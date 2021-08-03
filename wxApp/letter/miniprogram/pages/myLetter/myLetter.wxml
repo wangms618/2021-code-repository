@@ -1,23 +1,20 @@
 <!--miniprogram/pages/mine/myLetter/myLetter.wxml-->
-<view>
-  <image src="../../../images/10.jpg"  class="picture1" mode="aspectFill"></image>
-  <view>
-    <image src="../../../images/14.png"  class="picture3"></image>
-  <view class="box1">
-    <view class="data1">x年x月x日</view>
-    <view class="letter">对他并没有多大印象，他个子跟我差 不多高，喜欢打篮球，直到活动结束 那天要离开了，他一句对我关心的话 使我沦陷了，后面的几天就经常想 他，我知道离开的那一刻我心动了， 可能他只是一句客套话，但是就是心 动了，骗不了自己，虽然他不是你们 印象中的帅哥，</view>
+<view class="container">
+  <view class="letter">
+    <text>我的文章</text>
+    <view class="null" wx:if="{{letterInfo.length==0}}">您还没写文章哦，快去发表一篇吧 </view>
+    <view  class="letter-detail" wx:for="{{letterInfo}}" wx:key="index" data-id="{{item._id}}" data-cTime="{{item.times[1]}} " bindtap="toDetail">
+      <view class="detail-header">
+        <view class="userPic">
+          <image src="{{userPicUrl}}"></image>
+        </view>
+        <view class="userName">{{userName}}</view>
+        <view class="createTime1">{{item.times[0]}}</view>
+        <view class="createTime2">{{item.times[1]}}</view>
+      </view>
+      <view class="content">{{item.writeTitle}}</view>
+      <!-- catchtap阻止冒泡 -->
+      <view class="letter-delete" data-id="{{item._id}}" catchtap="toDelete">删除</view>
+    </view>
   </view>
-  <view class="box1">
-    <view class="data1">x年x月x日</view>
-    <view class="letter">对他并没有多大印象，他个子跟我差 不多高，喜欢打篮球，直到活动结束 那天要离开了，他一句对我关心的话 使我沦陷了，后面的几天就经常想 他，我知道离开的那一刻我心动了， 可能他只是一句客套话，但是就是心 动了，骗不了自己，虽然他不是你们 印象中的帅哥，</view>
-  </view>
-  <view class="box1">
-    <view class="data1">x年x月x日</view>
-    <view class="letter">对他并没有多大印象，他个子跟我差 不多高，喜欢打篮球，直到活动结束 那天要离开了，他一句对我关心的话 使我沦陷了，后面的几天就经常想 他，我知道离开的那一刻我心动了， 可能他只是一句客套话，但是就是心 动了，骗不了自己，虽然他不是你们 印象中的帅哥，</view>
-  </view>
-  <view class="box1">
-    <view class="data1">x年x月x日</view>
-    <view class="letter">对他并没有多大印象，他个子跟我差 不多高，喜欢打篮球，直到活动结束 那天要离开了，他一句对我关心的话 使我沦陷了，后面的几天就经常想 他，我知道离开的那一刻我心动了， 可能他只是一句客套话，但是就是心 动了，骗不了自己，虽然他不是你们 印象中的帅哥，</view>
-  </view>
-</view>
 </view>

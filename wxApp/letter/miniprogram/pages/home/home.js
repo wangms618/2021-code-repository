@@ -189,7 +189,7 @@ Page({
             }else if(secondGap<172800){
               res.data[i].createTime = '昨天'
             }else{
-              res.data[i].createTime = Math.floor(secondGap/86400) +'天前'
+              res.data[i].createTime = res.data[i].times[0]
             }
             return res
           }
@@ -249,7 +249,43 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    let self = this
+    wx.cloud.database().collection('note-group').get({
+      success:function(res){
+        // console.log(res.data.length);
+        for(let i = 0;i<res.data.length;i++){
+          let oldTime = res.data[i].createTime
+          let newTime = new Date().getTime()
+          // 时间差
+          let timeGap = newTime-oldTime
+          let secondGap= Math.floor(timeGap / 1000);//计算出相差秒数
+          // 如果秒数小于60秒
+          function timemethod(res,secondGap){
+            if(secondGap<60){ // 赋值
+              res.data[i].createTime = secondGap+'秒前'
+            }else if(secondGap<3600){
+              res.data[i].createTime = Math.floor(secondGap/60) + '分前'
+            }else if(secondGap<86400){
+              res.data[i].createTime = Math.floor(secondGap/3600) + '小时前'
+            }else if(secondGap<172800){
+              res.data[i].createTime = '昨天'
+            }else{
+              res.data[i].createTime = res.data[i].times[0]
+            }
+            return res
+          }
+          res = timemethod(res,secondGap)
+        }
+        // console.log(res.data[1].createTime); // 秒数
+        let writeInfo = self.data.writeInfo
+        writeInfo = res.data
+        // 反转
+        writeInfo.reverse()
+        self.setData({
+          writeInfo:writeInfo
+        })
+      }
+    })
   },
 
   /**

@@ -1,17 +1,18 @@
 {
   "pages": [
-    "pages/newMessage/newMessage",
     "pages/home/home",
-    "pages/noteClass/noteClass",
+    "pages/myLetter/myLetter",
+    "pages/newMessage/newMessage",
     "pages/mine/mine",
+    "pages/noteClass/noteClass",
     "pages/letterDetail/letterDetail",
     "pages/write/write",
     "pages/collection/collection",
     "pages/homePage/homePage",
-    "pages/myLetter/myLetter",
     "pages/personal/personal",
     "pages/thumbs-up/thumbs-up",
-    "pages/nowArticle/nowArticle"
+    "pages/nowArticle/nowArticle",
+    "pages/myComments/myComments"
   ],
   "tabBar": {
     "color": "",
@@ -31,12 +32,6 @@
         "text": "随笔",
         "iconPath": "./images/write1.png",
         "selectedIconPath": "./images/write2.png"
-      },
-      {
-        "pagePath": "pages/newMessage/newMessage",
-        "text": "动态",
-        "iconPath": "./images/3.png",
-        "selectedIconPath": "./images/4.png"
       },
       {
         "pagePath": "pages/mine/mine",

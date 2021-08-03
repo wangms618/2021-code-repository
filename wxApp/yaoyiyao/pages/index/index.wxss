@@ -1,8 +1,0 @@
-/* pages/index/index.wxss */
-.yao{
-  font-weight: bold;
-  color:sandybrown;
-  font-size: 50rpx;
-  text-align: center;
-  margin: 500rpx auto
-}

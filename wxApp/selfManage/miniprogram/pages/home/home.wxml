@@ -9,4 +9,8 @@
     <view class="statistics">你的总累计时间为100小时</view>
   </view>
 </view>
-
+<view class="pi-container">
+  <view class="pie">
+    <ec-vanvas></ec-vanvas>
+  </view>
+</view>

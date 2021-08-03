@@ -234,3 +234,7 @@
   width: 100%;
   height: 100%;
 }
+.reply-down{
+  margin-bottom: 100rpx;
+  text-align: center;
+}
