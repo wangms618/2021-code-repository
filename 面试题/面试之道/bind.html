@@ -17,8 +17,9 @@
       context = context || window
       const _this = this
       const args = [...arguments].slice(1)
+      let fn = function () {}
       // 返回函数
-      return function F() {
+      let F = function () {
         // 如果F被new
         if (this instanceof F) {
           return new _this(...args, ...arguments)
@@ -26,6 +27,11 @@
         // 把this调用掉
         return _this.apply(context, args.concat(...arguments))
       }
+      fn.prototype = _this.prototype
+      F.prototype = new fn()
+
+      // F.prototype = _this.prototype
+      return F
     }
 
     function Animal(name, color) {
