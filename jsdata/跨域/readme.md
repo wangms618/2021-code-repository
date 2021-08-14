@@ -31,3 +31,4 @@ Access-Control-Allow-Age // 预检请求能被缓存的最长时间，在这个�
   Nginx启动服务器代理请求，因为服务器是没有同源策略的
 
 4. webscoket
+5. 跨域
