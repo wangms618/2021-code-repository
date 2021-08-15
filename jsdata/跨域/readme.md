@@ -9,7 +9,7 @@
 
 2. cors (跨域资源共享)
 浏览器会利用HTTP协议中的OPTIONS方法对请求做预检，判断是简单请求还是复杂请求
-
+看视频
 客户端预检：
 Access-Control-Request-Method  // 请求的方法
 Access-Control-Request-Headers // 请求的头部
