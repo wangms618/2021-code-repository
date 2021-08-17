@@ -1,43 +1,44 @@
 import React, { Component } from 'react'
 import 'antd/dist/antd.css';
-import { Input, Button, List } from 'antd';
 import store from './store/index.js';
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './store/actionTypes'
-import { getInputChangeAction,getAddItemAction,getDeleteItemAction } from './store/actionsCreaters'
-
+// import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './store/actionTypes'
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction,initListAction } from './store/actionsCreaters'
+import TodoListUI from './TodoListUI.jsx';
+import axios from 'axios';
+import { act } from 'react-dom/cjs/react-dom-test-utils.production.min';
 class TodoList extends Component {
   constructor(props) {
     super(props)
     // 取数据源的数据
     console.log(store.getState());
     this.state = store.getState()
-    this.hendleInputChange = this.hendleInputChange.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
     this.handleStoreChange = this.handleStoreChange.bind(this)
     this.handleBtnClick = this.handleBtnClick.bind(this)
     // this.handleItemDelete = this.handleItemDelete.bind(this)
     store.subscribe(this.handleStoreChange) // 响应式取store数据
   }
+  componentDidMount() { // 生命周期
+    axios.get('https://www.fastmock.site/mock/39ac87de3060aa2bb2ba20a0ff375c81/cat-movie/hot')
+    .then((res) => {
+      const action = initListAction(res.data.movieList)
+      store.dispatch(action)
+      console.log(action);
+    })
+  }
   render() {
     return (
-      <div style={{ marginTop: '10px', marginLeft: '10px' }}>
-        <div>
-          <Input type="text" onChange={this.hendleInputChange} value={this.state.inputValue} style={{ width: '300px', marginRight: '10px' }} placeholder="todo info" />
-          <Button type="primary" onClick={this.handleBtnClick}>提交</Button>
-        </div>
-        <List
-          style={{ marginTop: '10px', width: '300px' }}
-          bordered
-          dataSource={this.state.list}
-          renderItem={(item, index) => (
-            <List.Item onClick={this.handleItemDelete.bind(this, index)}>
-              {item}
-            </List.Item>
-          )}
-        />
-      </div>
+      <TodoListUI
+        inputValue={this.state.inputValue}
+        handleInputChange={this.handleInputChange}
+        handleBtnClick={this.handleBtnClick}
+        list={this.state.list}
+        handleItemDelete={this.handleItemDelete}
+      >
+      </TodoListUI>
     )
   }
-  hendleInputChange(e) {
+  handleInputChange(e) {
     // 创建一个action
     // const action = {
     //   type: CHANGE_INPUT_VALUE,
