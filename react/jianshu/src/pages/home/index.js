@@ -9,11 +9,9 @@ import {
 import List from './components/List'
 
 class Home extends Component {
-
   componentDidMount() {
     this.props.changeHomeData()
   }
-
   render() {
     return (
       <HomeWrapper>
