@@ -1,18 +1,15 @@
 var a = {
-  user: 'liu',
-  fn: function (x,y,z) {
-    console.log(this.user,x,y,z);
+  user: 'bind',
+  fn: function (x, y, z) {
+    console.log(this.user, x, y, z);
   }
 }
 var b = a.fn
 
 // 下面两种都可以
+var c = b.bind(a) 
+console.log(typeof c); // function
+c(1, 2, 3) // bind 1 2 3
 
-
-// var c = b.bind(a)
-// c(1,2,3)
-
-var c = b.bind(a, 1, 2, 3)
-c()
-
-// b.bind() 会return 一个函数体
+var d = b.bind(a, 1, 2)
+d(3) // bind 1 2 3
