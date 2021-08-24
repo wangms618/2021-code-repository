@@ -1,5 +1,5 @@
 const PENDING = 'pending'
-const RESOLVED = 'fulfilled'
+const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
 
 class myPromise {
@@ -24,7 +24,7 @@ class myPromise {
     // 如果state已变化则返回，因为状态改变后就不可修改
     if (this.state !== PENDING) return
     // 如果这个函数被调用，修改状态
-    this.state = RESOLVED
+    this.state = FULFILLED
     // 取到resolve里的参数
     this.value = value
   }
@@ -35,3 +35,13 @@ class myPromise {
   }
 
 }
+const test1 = new myPromise((resolve, reject) => {
+  resolve('成功')
+})
+console.log(test1) // myPromise {value: '成功',state: 'fulfilled',resolve: [Function: bound resolve],reject: [Function: bound reject]}
+
+
+const test2 = new myPromise((resolve, reject) => {
+  reject('失败')
+})
+console.log(test2) // myPromise {value: '失败',state: 'rejected',resolve: [Function: bound resolve],reject: [Function: bound reject]}

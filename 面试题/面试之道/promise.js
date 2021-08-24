@@ -49,21 +49,22 @@ function myPromise(fn) {
       onRejected(that.value)
     }
   }
-  myPromise.prototype.catch = function () {
-
-  }
 }
 
-new Promise((resolve, reject) => {
-    resolve('ok') // 2
-  })
-  .then(res => {
-      console.log(res); // ok // 1
-    },
-    err => {
-      console.log(err);
-    }
-  )
-  .then(res => { // 3
-    console.log(res);
-  })
+// new Promise((resolve, reject) => {
+//     resolve('ok') // 2
+//   })
+//   .then(res => {
+//       console.log(res); // ok // 1
+//     },
+//     err => {
+//       console.log(err);
+//     }
+//   )
+//   .then(res => { // 3
+//     console.log(res);
+//   })
+const test3 = new myPromise((resolve, reject) => {
+  throw ('失败')
+})
+console.log(test3);
