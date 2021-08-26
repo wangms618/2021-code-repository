@@ -27,13 +27,11 @@ async function isAdmin(ctx, next) {
 }
 
 module.exports = (app) => {
-  // router.get('/', require('./home').index)
   router.get('/signup', require('./user').signup)
   router.post('/signup', require('./user').signup)
   router.get('/signin', require('./user').signin)
   router.post('/signin', require('./user').signin)
   router.get('/signout', require('./user').signout)
-  // router.get('/about', require('./about').index)
   router.get('/posts/new', isAdmin, isLoginUser, require('./posts').create)
   // 文章
   router.get('/', require('./posts').index)

@@ -1,15 +1,16 @@
 const Koa = require('koa')
 const path = require('path')
+// 引入router文件夹的index
 const router = require('./routes/index')
 const views = require('koa-views') // 处理模板引擎
-const serve = require('koa-static') // 处理静态资源
+const serve = require('koa-static') // 处理静态资源，比如图片
 const mongoose = require('mongoose')
 const CONFIG = require('./config/config')
 const session = require('koa-session')
 const bodyParser = require('koa-bodyparser')
 const flash = require('./middlewares/flash')
 
-
+// mongoose.set('useCreateIndex', true) ;
 
 mongoose.connect(CONFIG.mongodb) // 连接上mongodb
 
@@ -42,7 +43,7 @@ app.use(async (ctx, next) => {
   await next()
 })
 
-
+// 将koa实例传入routes文件夹的index.js文件中
 router(app)
 
 app.listen(3000, () => {

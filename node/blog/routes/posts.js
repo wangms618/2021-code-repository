@@ -14,6 +14,7 @@ module.exports = {
       const category = await CategoryModel.findOne({
         name: cname
       })
+      console.log(category)
       if (!category) {
         ctx.throw(404, '该分类不存在')
       }

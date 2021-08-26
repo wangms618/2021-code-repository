@@ -8,7 +8,6 @@ module.exports = {
     })
   },
   async newCategory(ctx, next) {
-    // console.log(ctx)
     await ctx.render('create_category')
   },
   async addCategory(ctx, next) {
