@@ -1,21 +1,16 @@
 {% extends 'views/base.html' %}
 {% block body %}
 {% include "views/components/header.html" %}
-<!-- <section class="hero is-info is-medium is-bold">
+<section class="hero is-primary">
   <div class="hero-body">
-    <div class="container">
-      <figure class="image is-128x128">
-        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-      </figure>
-      <h1 class="title">
-        欢迎来到前端海底世界
-      </h1>
-      <h2 class="subtitle">
-        这里是老鱼吃虾米的个人博客
-      </h2>
-    </div>
+    <p class="title">
+      年年有风 风吹年年
+    </p>
+    <p class="subtitle">
+      慢慢即漫漫
+    </p>
   </div>
-</section> -->
+  </section>
 <div class="tile is-ancestor m-6">
   <div class="tile is-parent ">
     <div class="tile is-child box">
@@ -49,20 +44,12 @@
         <p class="mt-4 is-size-5">老鱼吃虾米</p>
       </div>
       <div class="is-justify-content-center is-align-items-center">
-        <p class="content">东华理工大学 | 大四</p>
-        <p class="content">文章分类</p>
-        <div class="box has-background-primary">
-          <a class="has-text-white" href="/posts?c=html">html</a>
-        </div>
-        <div class="box has-background-danger">
-          <a class="has-text-white" href="/posts?c=css">css</a>
-        </div>
-        <div class="box has-background-danger">
-          <a class="has-text-white" href="/posts?c=js">js</a>
-        </div>
-        <div class="box has-background-info ">
-          <a class="has-text-white" href="/posts">全部</a>
-        </div>
+        <p class="content">东华理工大学 | 大四在读</p>
+        <p class="content is-size-5" >文章分类</p>
+          <a class=" button is-fullwidth is-warning mb-3 has-text-white" href="/posts?c=html">html</a>
+          <a class=" button is-fullwidth is-link  mb-3 has-text-white" href="/posts?c=css">css</a>
+          <a class="has-text-white button is-fullwidth is-danger  mb-3" href="/posts?c=js">js</a>
+          <a class="has-text-white button is-fullwidth button is-primary mb-3" href="/posts">全部</a>
       </div>
 
     </div>

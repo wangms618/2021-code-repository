@@ -16,18 +16,47 @@ module.exports = {
     let {
       name,
       email,
-      password
-    } = ctx.request.body //把前端传给后端的数据都拿到
-    password = await bcrypt.hash(password, salt) //通过hash方法对password重复加密十次
-
-    const user = {
-      name,
-      email,
       password,
+      repassword
+    } = ctx.request.body //把前端传给后端的数据都拿到
+    // 输入用户名，如果用户名存在，或者
+    const userSearch = await UserModel.findOne({
+      name
+    })
+    if (name && email && password && repassword) {
+      if (userSearch !== null) {
+        ctx.flash = {
+          warning: '此用户名已使用!!!'
+        }
+        ctx.redirect('back')
+        return
+      } else if (password !== repassword) {
+        ctx.flash = {
+          warning: '重复密码有误!!!'
+        }
+        ctx.redirect('back')
+        return
+      } else {
+        console.log('成功');
+        password = await bcrypt.hash(password, salt) //通过hash方法对password重复加密十次
+        const user = {
+          name,
+          email,
+          password,
+        }
+        //存储到数据库
+        const result = await UserModel.create(user) //将数据填充到 model/user.js里面
+        // ctx.body = result
+        ctx.redirect('/signin')
+      }
+    } else {
+      ctx.flash = {
+        warning: '请全部填写!!!'
+      }
+      ctx.redirect('back')
+      return
     }
-    //存储到数据库
-    const result = await UserModel.create(user) //将数据填充到 model/user.js里面
-    ctx.body = result
+
   },
   // 登录
   async signin(ctx, next) {
@@ -52,18 +81,24 @@ module.exports = {
           isAdmin: user.isAdmin,
           email: user.email
         }
-        ctx.flash = {success:'登录成功'}
+        ctx.flash = {
+          success: '登录成功'
+        }
         ctx.redirect('/')
       } else {
-        ctx.flash = { warning: '账户或密码错误' }
+        ctx.flash = {
+          warning: '账户或密码错误'
+        }
         ctx.redirect('back')
       }
     }
   },
   // 退出登录回到首页
-  signout(ctx,next) {
+  signout(ctx, next) {
     ctx.session.user = null
-    ctx.flash = { warning: '退出登录' }
+    ctx.flash = {
+      warning: '退出登录'
+    }
     // 重定向
     ctx.redirect('/')
   }
