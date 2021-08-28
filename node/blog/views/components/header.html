@@ -12,6 +12,7 @@
       });
     }
   });
+
 </script>
 <nav id="navbar" class="navbar has-shadow has-background-primary-light">
   <div class="container">
@@ -58,13 +59,13 @@
         <div class="navbar-item">
           <a class="button is-small is-primary" href="/category">分类</a>
         </div>
-        {% endif %}
-        {% if ctx.session.user %}
         <div class="navbar-item">
           <a class="button is-small is-primary" href="/posts/new">写文章</a>
         </div>
+        {% endif %}
+        {% if ctx.session.user %}
         <div class="navbar-item">
-          <a href="/user/{{ctx.session.user.name}}">{{ctx.session.user.name}}</a>
+          <a href="/" class="has-text-black is-size-5	">{{ctx.session.user.name}}</a>
         </div>
         <div class="navbar-item">
           <a href="/signout">退出</a>
