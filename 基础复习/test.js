@@ -1,10 +1,22 @@
-const http = require('http')
-const server = http.createServer((req,res) => {
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'text/plain')
-  res.end('袁总很可爱')
-})
+var arr = new Array(30);
+arr.fill(1);
 
-server.listen(8080, () => {
-  console.log('服务器运行在http://127.0.0.1:8080');
-})
+function asyncForEach(array, handler) {
+  var t = setInterval(function () {
+    if (array.length === 0) {
+      clearInterval(t);
+    } else {
+      handler(arr.shift());
+    }
+  }, 0);
+}
+
+// 异步遍历，是逐行出现的，防止了阻塞
+// asyncForEach(arr, function (value) {
+//   console.log(value);
+// })
+
+//同步遍历，可以发现一瞬间出现，容易阻塞
+arr.forEach(function (value, index, arr) {
+  console.log(value);
+});
