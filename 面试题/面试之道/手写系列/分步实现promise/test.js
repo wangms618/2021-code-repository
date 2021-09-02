@@ -40,7 +40,7 @@
 // .then(res => console.log(res), err => console.log(err))
 
 
-const p9 new Promise((resolve, reject) => {
+const p9 = new Promise((resolve, reject) => {
   resolve(1)
 }).then(res => console.log(res), err => console.log(err))
 console.log(2)
