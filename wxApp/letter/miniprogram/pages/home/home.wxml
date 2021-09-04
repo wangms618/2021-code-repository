@@ -11,7 +11,7 @@
     <scroll-view scroll-x="true" class="select-sv">
       <block wx:for="{{imgSelect}}" wx:key="index">
       <view class="select-page" bindtap="onClass" data-id="{{index}}">
-        <image mode="aspectFit" src="{{item.writeTitle}}"></image>
+        <image mode="aspectFit" src="{{item.imgUrl}}"></image>
         <text class="select-name">{{item.selectName}}</text>
       </view>
     </block>
