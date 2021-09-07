@@ -1,9 +1,4 @@
 // [1, [2, 3], [1, 2, 3]]
-
-arr = [1, [2, 3],
-  [1, [2, 3]]
-]
-
 // arr = arr.flat(Infinity)
 // console.log(arr);
 
@@ -32,4 +27,46 @@ arr = [1, [2, 3],
 //   }
 //   return arr
 // }
-console.log(flats(arr));
+// console.log(flats(arr));
+
+
+let arr = [1, [2, 3],
+  [1, [2, 3]]
+]
+
+function flat2(arr) {
+  while (arr.some(Array.isArray)) {
+    arr = [].concat(...arr)
+  }
+  return arr
+}
+console.log(flat2(arr));
+
+
+
+
+
+
+
+
+
+
+
+
+// let arr2 = arr.flat(Infinity)
+// console.log(arr2);
+
+
+// let res = []
+// function flat1(arr) {
+//   arr.forEach(item => {
+//     if (Array.isArray(item)) {
+//       res.concat(flat1(item))
+//     } else {
+//       res.push(item)
+//     }
+//   });
+//   return res
+// }
+// let arr3 = flat1(arr)
+// console.log(arr3);

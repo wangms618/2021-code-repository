@@ -59,13 +59,13 @@
 // 7. 组合继承和
 
 // 8.判断一个对象为数组
-// function isArray(arg) {
-//   // return Array.isArray(arg)
-//   return Object.prototype.toString.call(arg)
-// }
+function isArray(arg) {
+  // return Array.isArray(arg)
+  return Object.prototype.toString.call(arg)
+}
 
-// arr = [12, 3, 4]
-// console.log(isArray(arr));
+arr = [12, 3, 4]
+console.log(isArray(arr));
 
 // 9.编写一个函数将列表子元素顺序反转
 
