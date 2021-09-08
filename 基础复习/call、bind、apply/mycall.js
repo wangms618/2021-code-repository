@@ -2,9 +2,6 @@
 var a = {
   name: '京'
 }
-// var fn = function () {
-//   console.log(this.name);
-// }
 
 // context上下文
 Function.prototype.mycall = function (context) {
