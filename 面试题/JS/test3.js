@@ -1,16 +1,15 @@
-function changeAgeAndReference(person) {
-  person.age = 25;
-  person = {
-    name: "John",
-    age: 50
-  };
-
-  return person;
-}
-var personObj1 = {
-  name: "Alex",
-  age: 30
+var numTrees = function (n) {
+  let dp = []
+  let m = 0
+  dp[0] = 1
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= i; j++) {
+      console.log(i);
+      console.log(i - j, j - 1);
+      console.log(dp[i - j], dp[j - 1]);
+    }
+  }
+  // console.log(dp[3]);
 };
-var personObj2 = changeAgeAndReference(personObj1);
-console.log(personObj1); // -> ?
-console.log(personObj2); // -> ?
+
+numTrees(2)
