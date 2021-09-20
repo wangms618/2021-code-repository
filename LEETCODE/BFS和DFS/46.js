@@ -6,8 +6,8 @@ var permute = function (nums) {
 
   function dfs(nth) {
     if (nth == len) {
-      console.log(stack);
-      res.push([...stack])
+      // slice 方法的作用是帮助我们拷贝出一个不影响curr正本的副本，以防直接修改到curr的引用。
+      res.push(stack.slice())
       return
     }
     for (let i = 0; i < len; i++) {
