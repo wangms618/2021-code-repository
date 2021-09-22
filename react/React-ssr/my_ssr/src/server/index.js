@@ -1,3 +1,4 @@
+import React from 'react'
 import { renderToString } from 'react-dom/server'
 import express from 'express'
 import Home from '../pages/home'
