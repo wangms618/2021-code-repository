@@ -24,7 +24,7 @@ event.stopImmediatePropagation() // 阻止冒泡和捕获，还能阻止该事�
 1. jsonp(借助script标签没有跨域限制)
 2. cors(后端实现跨域)
 3. webScoket(另一种协议)
-4. nignx (服务器代理)
+4. nignx(服务器代理)
 5. postMessage (通常用于获取嵌入页面中的第三方页面数据)
 6. document.domain (通常用于二级域名 a.test.com b.test.com document.domain="test.com")
 
@@ -53,7 +53,7 @@ cookie : value http-only secure same-site
 value: 如果用于保存用户登录态，应该将该值加密，不能使用明文的用户标识
 http-only： 不能通过JS访问Cookie, 减少XSS攻击
 secure： 只能在协议为HTTPS的请求中携带
-same-site：规定浏览器不能在跨域请求中携带Cookie,减少CSRF攻击，
+same-site：规定浏览器不能在跨域请求中携带Cookie,减少CSRF攻击
 
 Service Worker
 用于https请求中做缓存

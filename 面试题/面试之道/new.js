@@ -20,4 +20,5 @@ function test(x, y) {
   this.y = y
 }
 let obj = myNew(test, 1, 2)
-console.log(obj.x);
+obj.x = 2
+console.log(test.x);
