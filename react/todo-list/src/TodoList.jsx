@@ -9,7 +9,7 @@ class Todolist extends Component {
     }
   }
   handleInputChange(e) {
-    console.log(this);
+    // console.log(this);
     // this.state.inputValue = e.target.value
     // 用setState才实现响应式
     this.setState({
@@ -17,8 +17,21 @@ class Todolist extends Component {
     })
   }
   handleBtnClick() {
-    this.state.list.push(this.state.inputValue)
-    console.log(this.state.list);
+    // this.state.list.push(this.state.inputValue)
+    // console.log(this.state.list);
+    this.setState({
+      list: [...this.state.list, this.state.inputValue],
+      inputValue: ''
+    })
+
+  }
+  handleItemDelete(index) {
+    // console.log(index);
+    const list = [...this.state.list]
+    list.splice(index, 1)
+    this.setState({
+      list: list
+    })
   }
   render() {
     return (
@@ -31,7 +44,7 @@ class Todolist extends Component {
           {/* for循环，必须要用map，因为map会返回一个数组出来，再用li数组去拼接到ul */}
           {
             this.state.list.map((item, index) => {
-              return <li>{item}</li>
+              return <li key={index} onClick={this.handleItemDelete.bind(this, index)}>{item}</li>
             })
           }
         </ul>
