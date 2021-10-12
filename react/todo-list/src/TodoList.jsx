@@ -1,62 +1,43 @@
-import React, { Component, Fragment } from 'react'
-import './style.css'
-import TodoItem from './TodoItem'
-class TodoList extends Component {
+import React, { Component, Fragment } from 'react';
+
+class Todolist extends Component {
   constructor(props) {
     super(props)
     this.state = {
       inputValue: '',
-      list: ['学习', 'react']
+      list: ['学习', 'good']
     }
   }
   handleInputChange(e) {
-    // 取input框里的值
-    // console.log(e.target.value);
-    // console.log(this.state.inputValue);
-    // 响应式
+    console.log(this);
+    // this.state.inputValue = e.target.value
+    // 用setState才实现响应式
     this.setState({
       inputValue: e.target.value
     })
   }
   handleBtnClick() {
-    // this.state.list.push(this.state.inputValue)
-    this.setState({
-      list: [...this.state.list, this.state.inputValue]
-    })
-    this.state.inputValue = ''
+    this.state.list.push(this.state.inputValue)
+    console.log(this.state.list);
   }
-  handleItemDelete(index) {
-    const list = [...this.state.list]
-    list.splice(index, 1)
-    console.log(index);
-    this.setState({
-      list
-    })
-  }
-
-
   render() {
     return (
       <Fragment>
         <div>
-          <label htmlFor="insertArea">输入内容</label>
-          <input id="insertArea" className="input" type="text" value={this.state.inputValue} onChange={this.handleInputChange.bind(this)} />
+          <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}></input>
           <button onClick={this.handleBtnClick.bind(this)}>提交</button>
         </div>
         <ul>
-          {/* 返回一个新的数组 */}
+          {/* for循环，必须要用map，因为map会返回一个数组出来，再用li数组去拼接到ul */}
           {
             this.state.list.map((item, index) => {
-              return (
-                // <li key={index} onClick={this.handleItemDelete.bind(this, index)} dangerouslySetInnerHTML={{ __html: item }}></li>
-                <TodoItem DeleteItem={this.handleItemDelete.bind(this)} key={index} content={item} index={index} />
-
-              )
+              return <li>{item}</li>
             })
           }
         </ul>
       </Fragment>
-    )
+    );
   }
 }
-export default TodoList
+
+export default Todolist;
