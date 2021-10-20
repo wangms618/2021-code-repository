@@ -45,6 +45,19 @@ function deeoClone(obj) {
     return obj
   }
 }
+
+function deepClone(obj) {
+  if (typeof obj === 'object') {
+    let target = Array.isArray(obj) ? [] : {}
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        target[key] = deepClone(obj[key])
+      }
+    }
+  } else {
+    return obj
+  }
+}
 let arr = [1, 3, {
   username: ' kobe'
 }];

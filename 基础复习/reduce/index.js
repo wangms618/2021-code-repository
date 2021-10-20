@@ -1,5 +1,4 @@
-var wizards = [
-  {
+var wizards = [{
     name: 'Harry Potter',
     house: 'Gryfindor'
   },

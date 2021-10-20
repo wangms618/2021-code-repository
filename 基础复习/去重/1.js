@@ -1,3 +1,4 @@
+// 双重for循环去重，
 function unique(arr) {
   // 如果不是数组
   if (!Array.isArray(arr)) {
@@ -20,3 +21,5 @@ function unique(arr) {
   }
   return res
 }
+let nums = [1, 2, 3, 4, 4, 1]
+console.log(unique(nums));

@@ -5,4 +5,5 @@ var a = {
   }
 }
 var b = a.fn
-b.call(a,1,2,3) // call 1 2 3
+b.call(a, 1, 2, 3) // call 1 2 3
+b(1,2,3)
