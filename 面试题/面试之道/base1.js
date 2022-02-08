@@ -1,5 +1,5 @@
 // 1. 对象类型和原始类型的不同之处?
-// 对象存于栈中，对象存于堆中，对象地址存在于栈中
+// 原始类型存于栈中，对象存于堆中，对象地址存在于栈中
 
 // 2. 函数的参数是对象会发生什么？
 // 但是，如果函数的输入是对象(Array, Function, Object) ，
@@ -8,15 +8,15 @@
 // 3. typeof vs instanceof
 // typeof 判断除null以外的原始类型
 
-function _instanceof(L, R) {
-  let O = R.prototype
-  let N = L.__proto__
-  while (N !== null) {
-    if (N === O) return true
-    N = N.__proto__
-  }
-  return false
-}
+// function _instanceof(L, R) {
+//   let O = R.prototype
+//   let N = L.__proto__
+//   while (N !== null) {
+//     if (N === O) return true
+//     N = N.__proto__
+//   }
+//   return false
+// }
 
 // 4. 类型转换
 // 转布尔值

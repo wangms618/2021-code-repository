@@ -10,8 +10,8 @@ function yellow() {
   console.log('yellow');
 }
 
-const light = function (times, cb) {
-  return new Promise((resolve) => {
+const light = function (times, cb) { // 创建一个函数，参数接收时间和回调函数
+  return new Promise((resolve) => { // 返回一个Promise
     setTimeout(() => {
       cb()
       resolve()
@@ -26,7 +26,7 @@ const step = function () {
   }).then(() => {
     return light(2000, yellow)
   }).then(() => {
-    return step()
+    return step() // 递归的调用自己
   })
 }
 step()

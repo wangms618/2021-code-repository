@@ -6,26 +6,26 @@
 // 5. forEach，map，和filter的区别
 
 // 1. 对象数组如何去重
-// const list = [
-//   {id:1,a:1},
-//   {id:1,a:2},
-//   {id:3,a:3},
-//   {id:4,a:4},
-//   {id:4,a:6},
-// ]
-// function set(arr) {
-//   let fillet = new Set()
-//   for (let i = 0; i < arr.length; i++){
-//     if (fillet.has(arr[i].id)) {
-//       arr.splice(i, 1)
-//       i--
-//     } else {
-//       fillet.add(arr[i].id)
-//     }
-//   }
-// }
-// set(list)
-// console.log(list);
+const list = [
+  {id:1,a:1},
+  {id:1,a:2},
+  {id:3,a:3},
+  {id:4,a:4},
+  {id:4,a:6},
+]
+function set(arr) {
+  let fillet = new Set()
+  for (let i = 0; i < arr.length; i++){
+    if (fillet.has(arr[i].id)) {
+      arr.splice(i, 1)
+      i--
+    } else {
+      fillet.add(arr[i].id)
+    }
+  }
+}
+set(list)
+console.log(list);
 
 // 2. 如何从10000个数中找到最大的10个数
 // 堆排序
