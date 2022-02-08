@@ -9,7 +9,6 @@
 
 2. cors (跨域资源共享)
 浏览器会利用HTTP协议中的OPTIONS方法对请求做预检，判断是简单请求还是复杂请求
-看视频
 客户端预检：
 Access-Control-Request-Method  // 请求的方法
 Access-Control-Request-Headers // 请求的头部
@@ -27,7 +26,7 @@ Access-Control-Allow-Age // 预检请求能被缓存的最长时间，在这个�
 - 复杂请求
   和简单请求不同的地方主要体现在 预检 和 响应
 
-3. Nginx Proxy
+1. Nginx Proxy
   Nginx启动服务器代理请求，因为服务器是没有同源策略的
 
 4. webscoket
