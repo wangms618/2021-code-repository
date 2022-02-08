@@ -1,0 +1,12 @@
+// 写@也会提示文件路径的快捷键
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*":["src/*"]
+    },
+    // 为ES提示器
+    "experimentalDecorators": true
+  },
+  "exclude": ["node_module","dist"]
+}
