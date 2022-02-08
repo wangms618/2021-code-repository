@@ -39,3 +39,8 @@ let verify = (isAdmin) => (ctx, next) => {
     })
   }
 }
+
+module.exports = {
+  sign,
+  verify
+}
