@@ -1,9 +1,9 @@
-// function* loadUI() {
-//   showLoadingScreen()
-//   // yield是暂停，代码运行到第二行开始暂停
-//   yield loadUIDataAsynchronously()
-//   hideLoadingScreen()
-// }
+function* loadUI() {
+  showLoadingScreen()
+  // yield是暂停，代码运行到第二行开始暂停
+  yield loadUIDataAsynchronously()
+  hideLoadingScreen()
+}
 
 // var loader = loadUI()  // 返回一个遍历器
 // // 加载UI
