@@ -16,8 +16,16 @@ class Todolist extends Component {
     this.state = store.getState()
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleStoreChange = this.handleStoreChange.bind(this)
+    this.handleInputSubmit = this.handleInputSubmit.bind(this)
     // console.log(store.getState());
     store.subscribe(this.handleStoreChange) // 响应式取store数据
+  }
+  handleInputSubmit() {
+    const action = {
+      type: 'submit_input_value',
+      value: this.state.inputValue
+    }
+    store.dispatch(action)
   }
   handleStoreChange() {
     this.setState(store.getState())
@@ -35,7 +43,7 @@ class Todolist extends Component {
       <div style={{ marginTop: '10px', marginLeft: '10px' }}>
         <div>
           <Input onChange={this.handleInputChange} value={this.state.inputValue} type="text" placeholder="todoinfo" style={{ width: '300px', marginRight: '20px' }} />
-          <Button type="primary">提交</Button>
+          <Button onClick={this.handleInputSubmit} type="primary">提交</Button>
         </div>
         <List
           style={{ marginTop: '10px', width: '300px' }}
