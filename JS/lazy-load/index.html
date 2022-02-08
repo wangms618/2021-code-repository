@@ -45,14 +45,14 @@
     function lazyload() {
       // 判断某个img是否进入可视区域
       // 如果进入，就把它自身的data-original的值取出来放到src里面
-      // 获取到页面上所有的img
+      // 获取到页面上所有的img 
       let eles = document.querySelectorAll('img[data-original][lazyload]');
       eles.forEach(item => {
         let rect = item.getBoundingClientRect() //用于一次性获取某个容器相对于浏览器窗口的上下左右的位置
         if (rect.top < viewHeight && rect.bottom >= 0) {//进入可视区域
           item.src = item.dataset.original
           item.removeAttribute('data-original') // 渲染一次之后，移除掉
-          item.removeAttribute('lazyload')-
+          item.removeAttribute('lazyload')
         }
       })
     }
